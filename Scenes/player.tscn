@@ -1,32 +1,66 @@
 [gd_scene format=3 uid="uid://y4wj6ivt28dc"]
 
 [ext_resource type="Script" uid="uid://bim1gdayxa1nx" path="res://Scripts/player.gd" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://bsibe64fs5qq6" path="res://icon.svg" id="2_6t5aa"]
+[ext_resource type="Script" uid="uid://qj0g5jalgycx" path="res://Scripts/Components/healthComponent.gd" id="2_cvnsp"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_v0iea"]
-size = Vector3(1, 1.5, 0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvnsp"]
-transparency = 4
-albedo_color = Color(0, 0.3372549, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0iea"]
-render_priority = -1
-next_pass = SubResource("StandardMaterial3D_cvnsp")
-depth_test = 1
-shading_mode = 0
-albedo_color = Color(0, 1, 1, 1)
+[sub_resource type="SpriteFrames" id="SpriteFrames_vgqql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6t5aa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v0iea"]
 size = Vector3(0.5, 1.5, 1)
 
-[node name="Player" type="CharacterBody3D" unique_id=1750106946]
-script = ExtResource("1_v0iea")
+[sub_resource type="BoxShape3D" id="BoxShape3D_6t5aa"]
+size = Vector3(0.5, 0.5, 1.5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=178003631]
-transform = Transform3D(-4.3711385e-08, 0.5, 0.86602527, 0, 0.8660254, -0.49999994, -0.9999999, -2.1855694e-08, -3.785517e-08, 0, 0.53, 0)
-mesh = SubResource("BoxMesh_v0iea")
-surface_material_override/0 = SubResource("StandardMaterial3D_v0iea")
+[node name="Player" type="CharacterBody3D" unique_id=1750106946 node_paths=PackedStringArray("healthComponent")]
+script = ExtResource("1_v0iea")
+healthComponent = NodePath("Components/HealthComponent")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=86392034]
+transform = Transform3D(-4.371139e-08, 0, -1, -1.7763568e-15, 1, 0, 1, 0, -4.371139e-08, 0, 0.5, 0)
+billboard = 1
+shaded = true
+double_sided = false
+alpha_cut = 2
+sprite_frames = SubResource("SpriteFrames_vgqql")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1697268372]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("BoxShape3D_v0iea")
+
+[node name="AttackCooldown" type="Timer" parent="." unique_id=348103525]
+unique_name_in_owner = true
+wait_time = 0.3
+
+[node name="Components" type="Node" parent="." unique_id=1008916159]
+
+[node name="HealthComponent" type="Node" parent="Components" unique_id=738846835 node_paths=PackedStringArray("component_owner")]
+script = ExtResource("2_cvnsp")
+component_owner = NodePath("../..")
+maxHealth = 100.0
+
+[node name="AttackPivot" type="Node3D" parent="." unique_id=1486665941]
+unique_name_in_owner = true
+
+[node name="RangedSpawnLocation" type="Marker3D" parent="AttackPivot" unique_id=964174688]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 0)
+
+[node name="PhysicalAttackArea" type="Area3D" parent="AttackPivot" unique_id=809978617]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 0)
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackPivot/PhysicalAttackArea" unique_id=1007204661]
+shape = SubResource("BoxShape3D_6t5aa")
+
+[connection signal="body_entered" from="AttackPivot/PhysicalAttackArea" to="." method="_attack_body"]

@@ -20,9 +20,9 @@ glow_enabled = true
 [sub_resource type="BoxMesh" id="BoxMesh_ebs18"]
 size = Vector3(10, 40, 10)
 
-[sub_resource type="BoxMesh" id="BoxMesh_o0lqk"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ebs18"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bmojv"]
+[sub_resource type="BoxMesh" id="BoxMesh_o0lqk"]
 
 [node name="MundoTeste" type="Node3D" unique_id=69006548]
 
@@ -54,12 +54,11 @@ fov = 20.0
 size = 25.0
 far = 40.0
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=402987516]
-transform = Transform3D(0.8915526, 0.45291716, 0, -0.45291716, 0.8915526, 0, 0, 0, 1, -2.6283586, 0.19234347, 0)
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=1417865782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7731752, 0.42432904, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2" unique_id=800349134]
-transform = Transform3D(1, 0, 0, 0, 5.4837904, 0, 0, 0, 2.3717232, 0, 2.2898664, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1493679302]
+shape = SubResource("BoxShape3D_ebs18")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2" unique_id=911036524]
 mesh = SubResource("BoxMesh_o0lqk")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1414439219]
-shape = SubResource("BoxShape3D_bmojv")
