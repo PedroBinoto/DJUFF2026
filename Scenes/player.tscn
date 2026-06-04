@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://y4wj6ivt28dc"]
+
+[ext_resource type="Script" uid="uid://bim1gdayxa1nx" path="res://Scripts/player.gd" id="1_v0iea"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_v0iea"]
+size = Vector3(1, 1.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvnsp"]
+transparency = 4
+albedo_color = Color(0, 0.3372549, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0iea"]
+render_priority = -1
+next_pass = SubResource("StandardMaterial3D_cvnsp")
+depth_test = 1
+shading_mode = 0
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v0iea"]
+size = Vector3(0.5, 1.5, 1)
+
+[node name="Player" type="CharacterBody3D" unique_id=1750106946]
+script = ExtResource("1_v0iea")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=178003631]
+transform = Transform3D(-4.3711385e-08, 0.5, 0.86602527, 0, 0.8660254, -0.49999994, -0.9999999, -2.1855694e-08, -3.785517e-08, 0, 0.53, 0)
+mesh = SubResource("BoxMesh_v0iea")
+surface_material_override/0 = SubResource("StandardMaterial3D_v0iea")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1697268372]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("BoxShape3D_v0iea")
