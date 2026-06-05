@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjs4q1ue26wct"
-path.s3tc="res://.godot/imported/Treadnew.png-7a5e8a71695cdcaa2e615bcca4bcd66e.s3tc.ctex"
+uid="uid://biw8dl5kxiaf3"
+path.s3tc="res://.godot/imported/Engrenagem_Cog.png-0d3b82c2387315ed1fc3e44b9a216356.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "5895652b3c011aaf760a1a10919d0be0"
+}
 
 [deps]
 
-source_file="res://Graphics/Meshes/textures/Treadnew.png"
-dest_files=["res://.godot/imported/Treadnew.png-7a5e8a71695cdcaa2e615bcca4bcd66e.s3tc.ctex"]
+source_file="res://Graphics/Meshes/Engrenagem_Cog.png"
+dest_files=["res://.godot/imported/Engrenagem_Cog.png-0d3b82c2387315ed1fc3e44b9a216356.s3tc.ctex"]
 
 [params]
 

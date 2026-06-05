@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfuq5bwvr0pwd"
-path="res://.godot/imported/Cog.png-ab9092e963fc515a05edab71520d1d1e.ctex"
+uid="uid://bu141j8eah2ww"
+path="res://.godot/imported/boss_magnetismo_pol_1.png-0041c0569e9ccbf3e546664c93d3ceac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Meshes/textures/Cog.png"
-dest_files=["res://.godot/imported/Cog.png-ab9092e963fc515a05edab71520d1d1e.ctex"]
+source_file="res://Graphics/Sprites/Bosses/Magnético/boss_magnetismo_pol_1.png"
+dest_files=["res://.godot/imported/boss_magnetismo_pol_1.png-0041c0569e9ccbf3e546664c93d3ceac.ctex"]
 
 [params]
 
