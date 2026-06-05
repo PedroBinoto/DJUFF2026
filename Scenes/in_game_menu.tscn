@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://bbu3h1ybllvq8"]
+
+[ext_resource type="Script" uid="uid://blk7wgyrpyvyh" path="res://Scripts/pause_menu.gd" id="1_c42cd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5crhr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0mag"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2rnyg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_01cmc"]
+bg_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_c42cd"]
+keycode = 4194306
+
+[sub_resource type="Shortcut" id="Shortcut_5crhr"]
+events = [SubResource("InputEventKey_c42cd")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f1ur8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bn643"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ucpqp"]
+bg_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1812854460]
+script = ExtResource("1_c42cd")
+
+[node name="PauseMenu" type="Control" parent="." unique_id=61598918]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1549136543]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.47058824)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1571040873]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=949744344]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1198520766]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_5crhr")
+text = "JOGO PAUSADO"
+
+[node name="Resume" type="Button" parent="CenterContainer/VBoxContainer" unique_id=41383760]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_n0mag")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2rnyg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_01cmc")
+shortcut = SubResource("Shortcut_5crhr")
+text = "Voltar"
+
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1406486480]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_f1ur8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bn643")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ucpqp")
+text = "Tela Inicial"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
