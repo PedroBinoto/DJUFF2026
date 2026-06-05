@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c5f2ivxewltq2"]
+
+[ext_resource type="Texture2D" uid="uid://c4t1fiq11f8lx" path="res://Graphics/Sprites/Tile.png" id="1_xgc7c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7b68n"]
+albedo_texture = ExtResource("1_xgc7c")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b0g2u"]
+material = SubResource("StandardMaterial3D_7b68n")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xgc7c"]
+size = Vector3(2, 0.5, 2)
+
+[node name="mesh_library" type="Node3D" unique_id=329379490]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=429671620]
+mesh = SubResource("PlaneMesh_b0g2u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=317691504]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=214104296]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_xgc7c")
