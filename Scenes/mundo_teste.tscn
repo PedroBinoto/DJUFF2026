@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://hcvcj2ye8egq"]
 
 [ext_resource type="PackedScene" uid="uid://y4wj6ivt28dc" path="res://Scenes/player.tscn" id="1_ebs18"]
+[ext_resource type="Script" uid="uid://4vcl3xgugl7c" path="res://Scripts/mundo_teste.gd" id="1_o0lqk"]
+[ext_resource type="PackedScene" uid="uid://bbu3h1ybllvq8" path="res://Scenes/in_game_menu.tscn" id="2_bmojv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebs18"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -25,6 +27,10 @@ size = Vector3(10, 40, 10)
 [sub_resource type="BoxMesh" id="BoxMesh_o0lqk"]
 
 [node name="MundoTeste" type="Node3D" unique_id=69006548]
+script = ExtResource("1_o0lqk")
+
+[node name="Menu" parent="." unique_id=1812854460 instance=ExtResource("2_bmojv")]
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1064319974]
 environment = SubResource("Environment_ebs18")
