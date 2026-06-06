@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ip8sl"]
 render_priority = 0
 shader = ExtResource("1_e138m")
-shader_parameter/MainTexSpeed = Vector2(0.4, 0)
+shader_parameter/MainTexSpeed = Vector2(0.3, 0.3)
 shader_parameter/MainTex = ExtResource("2_d76vc")
 shader_parameter/MainTexPower = 1.0
 

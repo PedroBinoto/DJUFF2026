@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjs4q1ue26wct"
-path.s3tc="res://.godot/imported/Treadnew.png-7a5e8a71695cdcaa2e615bcca4bcd66e.s3tc.ctex"
+uid="uid://dgl2uffsdfxjs"
+path.s3tc="res://.godot/imported/Esteira_Treadnew.png-b1dd6be7ea7b55dc705d4b8bc330d82d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "81157fee852fc3acf84361258b1e55e8"
+}
 
 [deps]
 
-source_file="res://Graphics/Meshes/textures/Treadnew.png"
-dest_files=["res://.godot/imported/Treadnew.png-7a5e8a71695cdcaa2e615bcca4bcd66e.s3tc.ctex"]
+source_file="res://Graphics/Meshes/textures/Esteira_Treadnew.png"
+dest_files=["res://.godot/imported/Esteira_Treadnew.png-b1dd6be7ea7b55dc705d4b8bc330d82d.s3tc.ctex"]
 
 [params]
 

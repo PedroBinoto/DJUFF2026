@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cai47x8vc1tx0"]
+
+[ext_resource type="Shader" uid="uid://h2cbhp355wwc" path="res://Graphics/Meshes/textures/pan_treadmill.tres" id="1_olip6"]
+[ext_resource type="Texture2D" uid="uid://doqcbeqj6oapl" path="res://Graphics/Meshes/Esteira_Treadnew.png" id="2_74ayo"]
+[ext_resource type="ArrayMesh" uid="uid://cbptsqv2vrvj5" path="res://Graphics/Meshes/Treadmill.tres" id="3_x2jjx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ltq30"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lk2kq"]
+render_priority = 0
+shader = ExtResource("1_olip6")
+shader_parameter/Speed = Vector2(0.2, 0)
+shader_parameter/MainTex = ExtResource("2_74ayo")
+
+[node name="Node3D" type="Node3D" unique_id=489545506]
+
+[node name="Treadmill" type="MeshInstance3D" parent="." unique_id=620842530]
+material_override = SubResource("ShaderMaterial_ltq30")
+material_overlay = SubResource("ShaderMaterial_lk2kq")
+mesh = ExtResource("3_x2jjx")
