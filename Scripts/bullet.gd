@@ -1,7 +1,7 @@
 class_name Bullet
 extends CharacterBody3D
 
-var moveDirection: Vector2i = Vector2i.ZERO
+var moveDirection: Vector2 = Vector2.ZERO
 @export var bulletSpeed: float = 500
 
 var definedSpeed: Vector3 = Vector3.ZERO

@@ -27,8 +27,6 @@ var canMove: bool = true
 func _physics_process(delta: float) -> void:
 	_handle_movement(delta)
 
-var lastDirection: Array[Vector2] = []
-
 func _handle_movement(delta: float) -> void:
 	var direction: Vector2 = Input.get_vector("move_down", "move_up", "move_left", "move_right")
 	# direction = direction.rotated(-PI / 4)
@@ -40,7 +38,7 @@ func _handle_movement(delta: float) -> void:
 		currentState = playerStates.IDLE
 	else:
 		currentState = playerStates.WALK
-		attack_pivot.rotation = Vector3(0, -Vector2.LEFT.angle_to(lastDirection[-1]), 0)
+		attack_pivot.rotation = Vector3(0, -Vector2.LEFT.angle_to(direction), 0)
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
@@ -50,24 +48,6 @@ func _input(event: InputEvent) -> void:
 				_handle_attack(true)
 			if event.is_action_pressed("attack_b"):
 				_handle_attack(false)
-		
-		if canMove:
-			if event.is_action_pressed("move_up"):
-				lastDirection.append(Vector2.RIGHT)
-			elif event.is_action_released("move_up"):
-				lastDirection.erase(Vector2.RIGHT)
-			if event.is_action_pressed("move_down"):
-				lastDirection.append(Vector2.LEFT)
-			elif event.is_action_released("move_down"):
-				lastDirection.erase(Vector2.LEFT)
-			if event.is_action_pressed("move_left"):
-				lastDirection.append(Vector2.UP)
-			elif event.is_action_released("move_left"):
-				lastDirection.erase(Vector2.UP)
-			if event.is_action_pressed("move_right"):
-				lastDirection.append(Vector2.DOWN)
-			elif event.is_action_released("move_right"):
-				lastDirection.erase(Vector2.DOWN)
 
 func _handle_attack(attackType: bool) -> void:
 	canAttack = false
@@ -80,12 +60,9 @@ func _handle_attack(attackType: bool) -> void:
 		physical_attack_area.monitoring = false
 	else:			 # Is ranged attack
 		var bullet = bulletScene.instantiate()
-		if lastDirection.is_empty():
-			var moveDir3D = global_position - ranged_spawn_location.global_position
-			var moveDir = Vector2(moveDir3D.x, moveDir3D.z).normalized()
-			bullet.moveDirection = -Vector2i(moveDir.normalized())
-		else:
-			bullet.moveDirection = Vector2i(lastDirection[-1])
+		var moveDir3D = global_position - ranged_spawn_location.global_position
+		bullet.moveDirection = -Vector2(moveDir3D.x, moveDir3D.z).normalized()
+		print(bullet.moveDirection)
 		get_tree().root.add_child(bullet)
 		bullet.global_position = ranged_spawn_location.global_position
 	
