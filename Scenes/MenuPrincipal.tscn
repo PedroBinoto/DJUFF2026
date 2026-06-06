@@ -1,29 +1,84 @@
 [gd_scene format=3 uid="uid://djbymk1ojtqrp"]
 
 [ext_resource type="Script" uid="uid://karg6uaj4cad" path="res://Scripts/menu_principal.gd" id="1_3k1ur"]
+[ext_resource type="Texture2D" uid="uid://bud8e4r66g0lj" path="res://file.jpg" id="2_bt1tr"]
+[ext_resource type="FontFile" uid="uid://c68ob7wtloq5y" path="res://RetroGaming.ttf" id="3_l10t8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3k1ur"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l10t8"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8kh3b"]
 bg_color = Color(0.39308554, 0.39308554, 0.39308533, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtrnu"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvohi"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtrnu"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hbekh"]
 bg_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3v4os"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0g5tp"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_umult"]
+bg_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bt1tr"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkrck"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qovuk"]
 bg_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [node name="MenuPrincipal" type="MarginContainer" unique_id=126151835]
 anchors_preset = 15
@@ -44,9 +99,9 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Imagem" type="Label" parent="HBoxContainer/CenterContainer" unique_id=1363848024]
+[node name="Imagem" type="TextureRect" parent="HBoxContainer/CenterContainer" unique_id=330066523]
 layout_mode = 2
-text = "IMAGEM"
+texture = ExtResource("2_bt1tr")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=103561014]
 layout_mode = 2
@@ -54,13 +109,17 @@ alignment = 1
 
 [node name="Logo" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1140306060]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_l10t8")
 theme_override_font_sizes/font_size = 50
 text = "JOGO FODA!"
 
 [node name="Opções" type="VBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=2023405193]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 6
+size_flags_vertical = 2
+size_flags_stretch_ratio = 2.0
 theme_override_constants/separation = 30
 
 [node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/Opções" unique_id=2134517034]
@@ -70,7 +129,6 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_3k1ur")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_l10t8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8kh3b")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_vtrnu")
 text = "Jogar"
 
 [node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer/Opções" unique_id=2019676918]
@@ -86,9 +144,9 @@ text = "  Controles  "
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_bt1tr")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pkrck")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qovuk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3v4os")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0g5tp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_umult")
 text = "Créditos"
 
 [node name="Button4" type="Button" parent="HBoxContainer/VBoxContainer/Opções" unique_id=1801743543]

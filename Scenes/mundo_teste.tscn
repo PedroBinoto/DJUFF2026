@@ -44,7 +44,6 @@ orientation = 1
 script = ExtResource("1_o0lqk")
 
 [node name="Menu" parent="." unique_id=1812854460 instance=ExtResource("2_bmojv")]
-visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1064319974]
 environment = SubResource("Environment_ebs18")

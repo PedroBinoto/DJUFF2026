@@ -23,6 +23,10 @@ folder_colors={
 "res://Scripts/": "blue"
 }
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 move_up={

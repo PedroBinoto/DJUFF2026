@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://kjxbonkchuje"]
+
+[ext_resource type="Script" uid="uid://bdtm0yuyctgld" path="res://Scripts/creditos.gd" id="1_eml6v"]
+[ext_resource type="FontFile" uid="uid://c68ob7wtloq5y" path="res://RetroGaming.ttf" id="2_ykkye"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykkye"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ompal"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpe7s"]
+bg_color = Color(0.39308554, 0.39308554, 0.39308533, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="Creditos" type="ScrollContainer" unique_id=1138806182]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eml6v")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=309705657]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=1469765345]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_ykkye")
+theme_override_fonts/bold_font = ExtResource("2_ykkye")
+theme_override_fonts/bold_italics_font = ExtResource("2_ykkye")
+theme_override_fonts/italics_font = ExtResource("2_ykkye")
+theme_override_fonts/mono_font = ExtResource("2_ykkye")
+theme_override_font_sizes/normal_font_size = 35
+theme_override_font_sizes/bold_font_size = 35
+theme_override_font_sizes/bold_italics_font_size = 35
+theme_override_font_sizes/italics_font_size = 35
+theme_override_font_sizes/mono_font_size = 35
+bbcode_enabled = true
+text = "[center][font_size=40][b]CRÉDITOS[/b][/font_size]
+
+[font_size=24][b]Arte[/b][/font_size]
+Renato Villard
+Taylor Horta
+
+[font_size=24][b]Trilha Sonora[/b][/font_size]
+Guilherme Brito
+Evandro Rhari
+
+[font_size=24][b]Programação[/b][/font_size]
+Pedro Binoto
+Thiago Lelles
+[/center]"
+
+[node name="Button" type="Button" parent="MarginContainer" unique_id=403164131]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_ykkye")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ompal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lpe7s")
+text = " Voltar "
+
+[connection signal="pressed" from="MarginContainer/Button" to="." method="_on_button_pressed"]
