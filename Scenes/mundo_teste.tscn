@@ -50,7 +50,7 @@ environment = SubResource("Environment_ebs18")
 
 [node name="Player" parent="." unique_id=1750106946 instance=ExtResource("1_ebs18")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0071653128, 0)
-collision_mask = 12
+collision_mask = 108
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2056829280]
 transform = Transform3D(-0.17456079, 0.9144808, -0.36503905, 0.4182915, 0.40448725, 0.81327885, 0.89138144, -0.010726176, -0.45312715, -3.1112142, 3.8421087, -5.0194416)
@@ -126,7 +126,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 2)
 mesh = SubResource("QuadMesh_u5lmb")
 
 [node name="Floor" type="StaticBody3D" parent="World" unique_id=943130965]
-collision_layer = 32
+collision_layer = 64
 collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Floor" unique_id=116233823]

@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dm5q0iog4k31t"]
+
+[ext_resource type="Script" uid="uid://b33300ut4afv5" path="res://Scripts/bullet_dual.gd" id="1_32sfv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rf0ko"]
+radius = 0.25
+
+[sub_resource type="SphereMesh" id="SphereMesh_32sfv"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rf0ko"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_o1t1p"]
+radius = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_838p6"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="Bullet_Dual" type="CharacterBody3D" unique_id=1262462104]
+script = ExtResource("1_32sfv")
+metadata/_custom_type_script = "uid://df3da5uuwhad4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=699616823]
+shape = SubResource("SphereShape3D_rf0ko")
+disabled = true
+
+[node name="BulletSpinners" type="Node3D" parent="." unique_id=641234322]
+unique_name_in_owner = true
+
+[node name="A" type="Node3D" parent="BulletSpinners" unique_id=212895737]
+unique_name_in_owner = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BulletSpinners/A" unique_id=39289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+mesh = SubResource("SphereMesh_32sfv")
+surface_material_override/0 = SubResource("StandardMaterial3D_rf0ko")
+
+[node name="Area3D" type="Area3D" parent="BulletSpinners/A" unique_id=1487238350]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+collision_layer = 16
+collision_mask = 44
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BulletSpinners/A/Area3D" unique_id=1367561221]
+shape = SubResource("SphereShape3D_o1t1p")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="BulletSpinners/A" unique_id=589631552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+light_color = Color(0, 0, 1, 1)
+light_energy = 2.0
+
+[node name="B" type="Node3D" parent="BulletSpinners" unique_id=534138870]
+unique_name_in_owner = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="BulletSpinners/B" unique_id=1909030486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+mesh = SubResource("SphereMesh_32sfv")
+surface_material_override/0 = SubResource("StandardMaterial3D_838p6")
+
+[node name="Area3D2" type="Area3D" parent="BulletSpinners/B" unique_id=177189423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+collision_layer = 16
+collision_mask = 44
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BulletSpinners/B/Area3D2" unique_id=2100616850]
+shape = SubResource("SphereShape3D_o1t1p")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="BulletSpinners/B" unique_id=1009006428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+light_color = Color(1, 0, 0, 1)
+light_energy = 2.0
+
+[connection signal="body_entered" from="BulletSpinners/A/Area3D" to="." method="_bulletA_hit"]
+[connection signal="body_entered" from="BulletSpinners/B/Area3D2" to="." method="_bulletB_hit"]
