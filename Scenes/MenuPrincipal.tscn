@@ -4,10 +4,11 @@
 [ext_resource type="AudioStream" uid="uid://boc1jwvko3se0" path="res://POLAR.mp3" id="2_8kh3b"]
 [ext_resource type="Texture2D" uid="uid://bud8e4r66g0lj" path="res://file.jpg" id="2_bt1tr"]
 [ext_resource type="FontFile" uid="uid://c68ob7wtloq5y" path="res://RetroGaming.ttf" id="3_l10t8"]
-[ext_resource type="Script" uid="uid://c21gbnieh4xoa" path="res://Scenes/audio_control.gd" id="5_vtrnu"]
-[ext_resource type="Script" uid="uid://b3x85xnci4j5d" path="res://Scenes/audio_control_2.gd" id="6_vtrnu"]
-[ext_resource type="Script" uid="uid://db3xvnclp7xm8" path="res://Scenes/check_button.gd" id="7_hbekh"]
-[ext_resource type="Script" uid="uid://dlncchswa3vm2" path="res://Scenes/option_button.gd" id="8_pkrck"]
+[ext_resource type="Script" uid="uid://jo04k5n5a4kq" path="res://Scripts/audio_control_3.gd" id="5_qovuk"]
+[ext_resource type="Script" uid="uid://c21gbnieh4xoa" path="res://Scripts/audio_control.gd" id="5_vtrnu"]
+[ext_resource type="Script" uid="uid://b3x85xnci4j5d" path="res://Scripts/audio_control_2.gd" id="6_vtrnu"]
+[ext_resource type="Script" uid="uid://db3xvnclp7xm8" path="res://Scripts/check_button.gd" id="7_hbekh"]
+[ext_resource type="Script" uid="uid://dlncchswa3vm2" path="res://Scripts/option_button.gd" id="8_pkrck"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edn03"]
 bg_color = Color(0, 0, 0, 1)
@@ -184,7 +185,6 @@ autoplay = true
 bus = &"Musica"
 
 [node name="Controles" type="Panel" parent="." unique_id=1591096661]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Controles" unique_id=221650249]
@@ -218,31 +218,69 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_pkrck")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qovuk")
 text = "Voltar"
 
+[node name="Musica2" type="Label" parent="Controles" unique_id=1573676907]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.38500002
+anchor_top = 0.22700001
+anchor_right = 0.38500002
+anchor_bottom = 0.22700001
+offset_left = 0.13497925
+offset_top = -0.28001404
+offset_right = 115.13498
+offset_bottom = 39.719986
+theme_override_fonts/font = ExtResource("3_l10t8")
+theme_override_font_sizes/font_size = 40
+text = "Música"
+
+[node name="AudioControl3" type="HSlider" parent="Controles" unique_id=850413272]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.555
+anchor_top = 0.15
+anchor_right = 0.555
+anchor_bottom = 0.15
+offset_left = -0.19500732
+offset_right = 304.805
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_bt1tr")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_l10t8")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_l10t8")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("5_qovuk")
+audio_bus_name = "Master"
+
 [node name="Musica" type="Label" parent="Controles" unique_id=1768535367]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.38500002
-anchor_top = 0.2
+anchor_top = 0.127
 anchor_right = 0.38500002
-anchor_bottom = 0.2
+anchor_bottom = 0.127
 offset_left = 0.13497925
+offset_top = -0.27999878
 offset_right = 115.13498
-offset_bottom = 40.0
+offset_bottom = 39.72
 theme_override_fonts/font = ExtResource("3_l10t8")
 theme_override_font_sizes/font_size = 40
-text = "Música"
+text = "Áudio"
+horizontal_alignment = 2
 
 [node name="AudioControl" type="HSlider" parent="Controles" unique_id=1060266707]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.55700004
-anchor_top = 0.20500001
+anchor_top = 0.231
 anchor_right = 0.55700004
-anchor_bottom = 0.20500001
-offset_left = -0.09301758
-offset_top = -0.2000122
-offset_right = 304.90698
-offset_bottom = 15.799988
+anchor_bottom = 0.231
+offset_left = 2.9069824
+offset_top = 12.160004
+offset_right = 307.90698
+offset_bottom = 28.160004
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/slider = SubResource("StyleBoxLine_bt1tr")
@@ -258,13 +296,13 @@ audio_bus_name = "Musica"
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.23400001
-anchor_top = 0.314
+anchor_top = 0.34100002
 anchor_right = 0.23400001
-anchor_bottom = 0.314
+anchor_bottom = 0.34100002
 offset_left = 0.43399048
-offset_top = 0.039993286
+offset_top = -0.24002075
 offset_right = 260.434
-offset_bottom = 40.039993
+offset_bottom = 39.75998
 theme_override_fonts/font = ExtResource("3_l10t8")
 theme_override_font_sizes/font_size = 40
 text = "Efeitos Sonoros"
@@ -273,13 +311,13 @@ text = "Efeitos Sonoros"
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.555
-anchor_top = 0.337
+anchor_top = 0.36400002
 anchor_right = 0.555
-anchor_bottom = 0.337
+anchor_bottom = 0.36400002
 offset_left = -0.19500732
-offset_top = 0.31999207
+offset_top = 0.039978027
 offset_right = 304.805
-offset_bottom = 16.319992
+offset_bottom = 16.039978
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/slider = SubResource("StyleBoxLine_bt1tr")
@@ -299,9 +337,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -335.0
-offset_top = -50.0
+offset_top = -33.0
 offset_right = 362.0
-offset_bottom = 14.0
+offset_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -314,13 +352,13 @@ script = ExtResource("7_hbekh")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.046000004
-anchor_top = 0.541
+anchor_top = 0.56700003
 anchor_right = 0.046000004
-anchor_bottom = 0.541
+anchor_bottom = 0.56700003
 offset_left = -0.15400314
-offset_top = -0.23999023
+offset_top = 0.11999512
 offset_right = 432.846
-offset_bottom = 39.76001
+offset_bottom = 40.119995
 theme_override_fonts/font = ExtResource("3_l10t8")
 theme_override_font_sizes/font_size = 40
 text = "Configuração de Controles"
@@ -329,13 +367,13 @@ text = "Configuração de Controles"
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.555
-anchor_top = 0.53000003
+anchor_top = 0.55600005
 anchor_right = 0.555
-anchor_bottom = 0.53000003
+anchor_bottom = 0.55600005
 offset_left = -0.19500732
-offset_top = -0.2000122
+offset_top = 0.15997314
 offset_right = 302.805
-offset_bottom = 54.799988
+offset_bottom = 55.159973
 script = ExtResource("8_pkrck")
 
 [node name="ComandosLabel" type="RichTextLabel" parent="Controles" unique_id=1760228468]
@@ -346,9 +384,9 @@ anchor_top = 0.63600004
 anchor_right = 0.56
 anchor_bottom = 0.63600004
 offset_left = 0.05999756
-offset_top = -0.040039063
+offset_top = 16.95996
 offset_right = 300.06
-offset_bottom = 103.95996
+offset_bottom = 120.95996
 theme_override_fonts/normal_font = ExtResource("3_l10t8")
 theme_override_fonts/bold_font = ExtResource("3_l10t8")
 theme_override_fonts/bold_italics_font = ExtResource("3_l10t8")
@@ -360,6 +398,7 @@ theme_override_fonts/mono_font = ExtResource("3_l10t8")
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Opções/Button3" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Opções/Button4" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Controles/Voltar" to="." method="_on_voltar_pressed"]
+[connection signal="value_changed" from="Controles/AudioControl3" to="Controles/AudioControl3" method="_on_value_changed"]
 [connection signal="value_changed" from="Controles/AudioControl" to="Controles/AudioControl" method="_on_value_changed"]
 [connection signal="value_changed" from="Controles/AudioControl2" to="Controles/AudioControl2" method="_on_value_changed"]
 [connection signal="toggled" from="Controles/CheckButton" to="Controles/CheckButton" method="_on_toggled"]
