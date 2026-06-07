@@ -1,4 +1,7 @@
 extends CanvasLayer
+@onready var menu_principal: MarginContainer = $"../MenuPrincipal"
+@onready var polar: AudioStreamPlayer = $"../MenuPrincipal/Polar"
+
 var paused = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,4 +30,16 @@ func _on_resume_pressed() -> void:
 
 
 func _on_quit_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/MenuPrincipal.tscn")
+	pauseMenu()
+	menu_principal.voltar_para_menu_principal()
+	polar.stream_paused = false
+
+
+func _on_button_2_pressed() -> void:
+	hide()
+
+	menu_principal.show()
+	menu_principal.opções.visible = false
+	menu_principal.controles.visible = true
+
+	menu_principal.veio_do_pause = true

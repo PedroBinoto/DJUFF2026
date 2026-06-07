@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://bdtm0yuyctgld" path="res://Scripts/creditos.gd" id="1_eml6v"]
 [ext_resource type="FontFile" uid="uid://c68ob7wtloq5y" path="res://RetroGaming.ttf" id="2_ykkye"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyntd"]
+bg_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykkye"]
 corner_radius_top_left = 15
 corner_radius_top_right = 15
@@ -29,6 +32,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eml6v")
+
+[node name="Panel" type="Panel" parent="." unique_id=2121004645]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yyntd")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=309705657]
 layout_mode = 2

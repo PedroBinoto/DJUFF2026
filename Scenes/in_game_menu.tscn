@@ -28,6 +28,25 @@ keycode = 4194306
 [sub_resource type="Shortcut" id="Shortcut_5crhr"]
 events = [SubResource("InputEventKey_c42cd")]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5crhr"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixq06"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dmst"]
+bg_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f1ur8"]
 corner_radius_top_left = 15
 corner_radius_top_right = 15
@@ -78,6 +97,7 @@ offset_right = 172.0
 offset_bottom = 83.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 25
 
 [node name="Resume" type="Button" parent="VBoxContainer" unique_id=41383760]
 layout_mode = 2
@@ -89,6 +109,15 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_01cmc")
 shortcut = SubResource("Shortcut_5crhr")
 text = "Voltar"
 icon_alignment = 1
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=1217035841]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_5crhr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ixq06")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4dmst")
+text = "   Opções   "
 
 [node name="Quit" type="Button" parent="VBoxContainer" unique_id=1406486480]
 layout_mode = 2
@@ -114,4 +143,5 @@ theme_override_font_sizes/font_size = 50
 text = " JOGO PAUSADO "
 
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -9,6 +9,9 @@
 [ext_resource type="Script" uid="uid://db3xvnclp7xm8" path="res://Scenes/check_button.gd" id="7_hbekh"]
 [ext_resource type="Script" uid="uid://dlncchswa3vm2" path="res://Scenes/option_button.gd" id="8_pkrck"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edn03"]
+bg_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3k1ur"]
 corner_radius_top_left = 15
 corner_radius_top_right = 15
@@ -105,6 +108,10 @@ theme_override_constants/margin_right = 110
 theme_override_constants/margin_bottom = 80
 script = ExtResource("1_3k1ur")
 
+[node name="Panel" type="Panel" parent="." unique_id=429706730]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_edn03")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1056968441]
 layout_mode = 2
 
@@ -177,6 +184,7 @@ autoplay = true
 bus = &"Musica"
 
 [node name="Controles" type="Panel" parent="." unique_id=1591096661]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Controles" unique_id=221650249]
