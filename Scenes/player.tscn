@@ -127,7 +127,7 @@ monitoring = false
 
 [node name="Sword" type="Sprite3D" parent="AttackPivot/PhysicalAttackArea" unique_id=867659220]
 unique_name_in_owner = true
-transform = Transform3D(1.7484564e-07, -6.9282036, 3.9999998, -3.0284139e-07, 3.9999998, 6.9282036, -8, -3.0284144e-07, -1.7484554e-07, 0.4594229, 0, -0.005215943)
+transform = Transform3D(1.7484564e-07, -6.9282036, 3.9999998, -3.0284139e-07, 3.9999998, 6.9282036, -8, -3.0284144e-07, -1.7484554e-07, 0.049411595, 0, -0.005215943)
 offset = Vector2(-0.6, 3.5)
 modulate = Color(1, 1, 1, 0)
 texture_filter = 0
@@ -137,8 +137,8 @@ texture = ExtResource("4_vgqql")
 shape = SubResource("BoxShape3D_6t5aa")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=86392034]
-transform = Transform3D(-3.496911e-07, -6.211762e-22, -8, 0.055431213, 7.999808, -2.4229754e-09, 7.999808, -0.055431213, -3.496827e-07, 0, 0, 0)
-offset = Vector2(0, 8)
+transform = Transform3D(-3.4969108e-07, 0, -8, 0, 7.9999995, 0, 7.9999995, 0, -3.496911e-07, 0, 0.25, 0)
+offset = Vector2(0, 4)
 billboard = 1
 shaded = true
 alpha_cut = 2

@@ -50,7 +50,7 @@ script = ExtResource("1_o0lqk")
 environment = SubResource("Environment_ebs18")
 
 [node name="MagnetBoss" parent="." unique_id=208974275 instance=ExtResource("4_puaij")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.621, 0, 0.067)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.621, -0.044001102, 0.067)
 
 [node name="Player" parent="." unique_id=1750106946 instance=ExtResource("1_ebs18")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0071653128, 0)
