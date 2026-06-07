@@ -1,8 +1,76 @@
 [gd_scene format=3 uid="uid://y4wj6ivt28dc"]
 
 [ext_resource type="Script" uid="uid://bim1gdayxa1nx" path="res://Scripts/player.gd" id="1_v0iea"]
-[ext_resource type="Texture2D" uid="uid://bsibe64fs5qq6" path="res://icon.svg" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://udoidcym6056" path="res://Graphics/Sprites/Player/mc.png" id="2_6t5aa"]
 [ext_resource type="Script" uid="uid://qj0g5jalgycx" path="res://Scripts/Components/healthComponent.gd" id="2_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://clf8wqr2flhum" path="res://Graphics/Sprites/Player/espada.png" id="4_vgqql"]
+
+[sub_resource type="Animation" id="Animation_vgqql"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackPivot/PhysicalAttackArea/Sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.0471976, 1.5707964, -7.571035e-08)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackPivot/PhysicalAttackArea/Sword:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fkybt"]
+resource_name = "physical_swing"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackPivot/PhysicalAttackArea/Sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.14994851),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.5707964, 3.1415927, 0), Vector3(-1.5707964, 2.0176697, 0), Vector3(-1.5707964, 1.6538123, 0), Vector3(-1.5707964, 1.5772384, 0), Vector3(-1.5707964, 1.5708227, 0), Vector3(-1.5707964, 1.5707965, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackPivot/PhysicalAttackArea/Sword:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.00014335357, 0.14981517, 0.14994851),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x3wgy"]
+_data = {
+&"RESET": SubResource("Animation_vgqql"),
+&"physical_swing": SubResource("Animation_fkybt")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v0iea"]
+size = Vector3(1.25, 1.5, 1.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6t5aa"]
+size = Vector3(0.5, 0.5, 1.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vgqql"]
 animations = [{
@@ -15,24 +83,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_v0iea"]
-size = Vector3(1.25, 1.5, 1.25)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6t5aa"]
-size = Vector3(0.5, 0.5, 1.5)
-
 [node name="Player" type="CharacterBody3D" unique_id=1750106946 node_paths=PackedStringArray("healthComponent")]
 collision_mask = 4
 script = ExtResource("1_v0iea")
 healthComponent = NodePath("Components/HealthComponent")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=86392034]
-transform = Transform3D(-4.371139e-08, 0, -1, -1.7763568e-15, 1, 0, 1, 0, -4.371139e-08, 0, 0.5, 0)
-billboard = 1
-shaded = true
-double_sided = false
-alpha_cut = 2
-sprite_frames = SubResource("SpriteFrames_vgqql")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1405249701]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_x3wgy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1697268372]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.75, 0)
@@ -41,6 +99,10 @@ shape = SubResource("BoxShape3D_v0iea")
 [node name="AttackCooldown" type="Timer" parent="." unique_id=348103525]
 unique_name_in_owner = true
 wait_time = 0.3
+
+[node name="DashCooldown" type="Timer" parent="." unique_id=1415010201]
+unique_name_in_owner = true
+wait_time = 0.75
 
 [node name="Components" type="Node" parent="." unique_id=1008916159]
 
@@ -54,7 +116,7 @@ unique_name_in_owner = true
 
 [node name="RangedSpawnLocation" type="Marker3D" parent="AttackPivot" unique_id=964174688]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.5, 0)
 
 [node name="PhysicalAttackArea" type="Area3D" parent="AttackPivot" unique_id=809978617]
 unique_name_in_owner = true
@@ -63,7 +125,24 @@ collision_layer = 2
 collision_mask = 8
 monitoring = false
 
+[node name="Sword" type="Sprite3D" parent="AttackPivot/PhysicalAttackArea" unique_id=867659220]
+unique_name_in_owner = true
+transform = Transform3D(1.7484564e-07, -6.9282036, 3.9999998, -3.0284139e-07, 3.9999998, 6.9282036, -8, -3.0284144e-07, -1.7484554e-07, 0.4594229, 0, -0.005215943)
+offset = Vector2(-0.6, 3.5)
+modulate = Color(1, 1, 1, 0)
+texture_filter = 0
+texture = ExtResource("4_vgqql")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackPivot/PhysicalAttackArea" unique_id=1007204661]
 shape = SubResource("BoxShape3D_6t5aa")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=86392034]
+transform = Transform3D(-3.496911e-07, -6.211762e-22, -8, 0.055431213, 7.999808, -2.4229754e-09, 7.999808, -0.055431213, -3.496827e-07, 0, 0, 0)
+offset = Vector2(0, 8)
+billboard = 1
+shaded = true
+alpha_cut = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_vgqql")
 
 [connection signal="body_entered" from="AttackPivot/PhysicalAttackArea" to="." method="_attack_body"]

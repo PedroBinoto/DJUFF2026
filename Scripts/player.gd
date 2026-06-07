@@ -1,20 +1,23 @@
 class_name Player
 extends CharacterBody3D
 
-# TODO 8 DIREÇÕES
-
 @export_group("Components")
 @export var healthComponent: HealthComponent = null
 
 @export_group("Settings")
 @export var playerSpeed: float = 300
+@export var playerDashSpeed: float = 600
+
+@onready var dash_cooldown: Timer = %DashCooldown
 
 @onready var attack_cooldown: Timer = %AttackCooldown
 @onready var ranged_spawn_location: Marker3D = %RangedSpawnLocation
 @onready var attack_pivot: Node3D = %AttackPivot
 @onready var physical_attack_area: Area3D = %PhysicalAttackArea
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var sword: Sprite3D = %Sword
 
-@onready var bulletScene = preload("uid://dm5q0iog4k31t") # preload("uid://dvow7fmekkx26")
+@onready var bulletScene = preload("uid://dvow7fmekkx26")
 
 enum playerStates {
 	IDLE, WALK, GRACE
@@ -23,9 +26,12 @@ var currentState: playerStates = playerStates.IDLE
 
 var canAttack: bool = true
 var canMove: bool = true
+var canDash: bool = true
+var isDashing: bool = false
 
 func _physics_process(delta: float) -> void:
-	_handle_movement(delta)
+	if canMove:
+		_handle_movement(delta)
 
 func _handle_movement(delta: float) -> void:
 	var direction: Vector2 = Input.get_vector("move_down", "move_up", "move_left", "move_right")
@@ -39,6 +45,10 @@ func _handle_movement(delta: float) -> void:
 	else:
 		currentState = playerStates.WALK
 		attack_pivot.rotation = Vector3(0, -Vector2.LEFT.angle_to(direction), 0)
+	
+	if isDashing:
+		var dashMovement = direction * playerDashSpeed * delta
+		velocity += Vector3(dashMovement.x, 0, dashMovement.y)
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
@@ -48,15 +58,22 @@ func _input(event: InputEvent) -> void:
 				_handle_attack(true)
 			if event.is_action_pressed("attack_b"):
 				_handle_attack(false)
+		if canDash:
+			if event.is_action_pressed("player_dash"):
+				_handle_dash()
 
 func _handle_attack(attackType: bool) -> void:
+	if isDashing:
+		return
+	
 	canAttack = false
-	attack_cooldown.start()
+	canMove = false
 	
 	if attackType: 	# Is physical attack
 		print("Attack Physical!")
 		physical_attack_area.monitoring = true
-		await get_tree().create_timer(0.15).timeout
+		animation_player.play("physical_swing")
+		await animation_player.animation_finished
 		physical_attack_area.monitoring = false
 	else:			 # Is ranged attack
 		var bullet = bulletScene.instantiate()
@@ -64,14 +81,25 @@ func _handle_attack(attackType: bool) -> void:
 		bullet.moveDirection = -Vector2(moveDir3D.x, moveDir3D.z).normalized()
 		get_tree().root.add_child(bullet)
 		bullet.global_position = ranged_spawn_location.global_position
+		await get_tree().create_timer(0.2).timeout
 	
-	
+	canMove = true
+	attack_cooldown.start()
 	await attack_cooldown.timeout
 	canAttack = true
 
 func die() -> void:
 	print("Health Depleted!")
 
+func _handle_dash() -> void:
+	canDash = false
+	isDashing = true
+	print("Dashed!")
+	await get_tree().create_timer(0.2).timeout
+	isDashing = false
+	dash_cooldown.start()
+	await dash_cooldown.timeout
+	canDash = true
 
 func _attack_body(body: Node3D) -> void:
 	print("Entity Detected Within Range!")

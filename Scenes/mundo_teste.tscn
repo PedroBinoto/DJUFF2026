@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://y4wj6ivt28dc" path="res://Scenes/player.tscn" id="1_ebs18"]
 [ext_resource type="Script" uid="uid://4vcl3xgugl7c" path="res://Scripts/mundo_teste.gd" id="1_o0lqk"]
 [ext_resource type="PackedScene" uid="uid://bbu3h1ybllvq8" path="res://Scenes/in_game_menu.tscn" id="2_bmojv"]
+[ext_resource type="PackedScene" uid="uid://hymci7y26od1" path="res://Scenes/Boss/magnet_boss.tscn" id="4_puaij"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebs18"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -48,18 +49,22 @@ script = ExtResource("1_o0lqk")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1064319974]
 environment = SubResource("Environment_ebs18")
 
+[node name="MagnetBoss" parent="." unique_id=208974275 instance=ExtResource("4_puaij")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.621, 0, 0.067)
+
 [node name="Player" parent="." unique_id=1750106946 instance=ExtResource("1_ebs18")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0071653128, 0)
 collision_mask = 108
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2056829280]
 transform = Transform3D(-0.17456079, 0.9144808, -0.36503905, 0.4182915, 0.40448725, 0.81327885, 0.89138144, -0.010726176, -0.45312715, -3.1112142, 3.8421087, -5.0194416)
+light_energy = 0.418
 shadow_enabled = true
 shadow_opacity = 0.9
 directional_shadow_pancake_size = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=678953287]
-transform = Transform3D(0, 0.86602545, -0.49999997, 0, 0.49999997, 0.86602545, 1, 0, 0, -6.0064344, 13.542027, 0.03346443)
+transform = Transform3D(0, 0.86602545, -0.49999997, 0, 0.49999997, 0.86602545, 1, 0, 0, -5.083437, 13.542027, 0.03346443)
 projection = 1
 fov = 20.0
 size = 30.0
