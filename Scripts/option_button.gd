@@ -5,6 +5,13 @@ func _ready() -> void:
 	add_item("Configuração 1")
 	add_item("Configuração 2")
 	add_item("Configuração 3")
+	var index = 0
+	match index:
+		0:
+			comandos_label.text = """Mover: WASD
+Ataque Espada: K
+Ataque Arma: L
+"""
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
