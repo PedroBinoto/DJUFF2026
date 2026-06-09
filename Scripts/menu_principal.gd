@@ -4,22 +4,23 @@ extends MarginContainer
 
 @onready var controles: Panel = $Controles
 @onready var polar: AudioStreamPlayer = $Polar
+@onready var audio_control_2: HSlider = %AudioControl2
+@onready var audio_control: HSlider = %AudioControl
+@onready var audio_control_3: HSlider = %AudioControl3
 
 var veio_do_pause = false
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
+	get_tree().paused = false
 	opções.visible = true
 	controles.visible = false
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+	audio_control.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Musica")))
+	audio_control_2.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
+	audio_control_3.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
+	polar.play()
 
 func _on_start_pressed() -> void:
-	hide()
-	polar.stream_paused = true
+	get_tree().change_scene_to_file("uid://hcvcj2ye8egq")
 
 
 func _on_controls_pressed() -> void:

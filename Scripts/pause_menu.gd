@@ -1,45 +1,43 @@
 extends CanvasLayer
-@onready var menu_principal: MarginContainer = $"../MenuPrincipal"
 @onready var polar: AudioStreamPlayer = $"../MenuPrincipal/Polar"
 
+@onready var controles: Panel = $Controles
+@onready var pause_menu: Control = %PauseMenu
+
+@onready var audio_control_3: HSlider = %AudioControl3 # Geral
+@onready var audio_control: HSlider = %AudioControl # Musica
+@onready var audio_control_2: HSlider = %AudioControl2 # Efeitos
+
 var paused = false
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	hide()
-
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	audio_control.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Musica")))
+	audio_control_2.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
+	audio_control_3.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
 
 func pauseMenu():
-
 	if paused:
 		hide()
-		Engine.time_scale = 1
+		get_tree().paused = false
 	else:
 		show()
-		Engine.time_scale = 0
-
 	paused = !paused
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.is_action_pressed("pause"):
+			pauseMenu()
 
 func _on_resume_pressed() -> void:
 	pauseMenu()
 
-
 func _on_quit_pressed() -> void:
-	pauseMenu()
-	menu_principal.voltar_para_menu_principal()
-	polar.stream_paused = false
-
+	get_tree().change_scene_to_file("uid://djbymk1ojtqrp")
 
 func _on_button_2_pressed() -> void:
-	hide()
+	pause_menu.visible = false
+	controles.visible = true
 
-	menu_principal.show()
-	menu_principal.opções.visible = false
-	menu_principal.controles.visible = true
-
-	menu_principal.veio_do_pause = true
+func _on_voltar_pressed() -> void:
+	pause_menu.visible = true
+	controles.visible = false

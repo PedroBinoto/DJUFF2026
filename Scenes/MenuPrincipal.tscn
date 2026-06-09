@@ -230,6 +230,7 @@ theme_override_font_sizes/font_size = 40
 text = "Música"
 
 [node name="AudioControl3" type="HSlider" parent="Controles" unique_id=850413272]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.555
@@ -267,6 +268,7 @@ text = "Áudio"
 horizontal_alignment = 2
 
 [node name="AudioControl" type="HSlider" parent="Controles" unique_id=1060266707]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.55700004
@@ -304,6 +306,7 @@ theme_override_font_sizes/font_size = 40
 text = "Efeitos Sonoros"
 
 [node name="AudioControl2" type="HSlider" parent="Controles" unique_id=1274716027]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.555

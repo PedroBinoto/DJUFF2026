@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://y4wj6ivt28dc" path="res://Scenes/player.tscn" id="1_ebs18"]
 [ext_resource type="Script" uid="uid://4vcl3xgugl7c" path="res://Scripts/mundo_teste.gd" id="1_o0lqk"]
 [ext_resource type="PackedScene" uid="uid://bbu3h1ybllvq8" path="res://Scenes/in_game_menu.tscn" id="2_bmojv"]
-[ext_resource type="PackedScene" uid="uid://djbymk1ojtqrp" path="res://Scenes/MenuPrincipal.tscn" id="2_u5lmb"]
 [ext_resource type="PackedScene" uid="uid://hymci7y26od1" path="res://Scenes/Boss/magnet_boss.tscn" id="4_puaij"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebs18"]
@@ -45,13 +44,7 @@ orientation = 1
 [node name="MundoTeste" type="Node3D" unique_id=69006548]
 script = ExtResource("1_o0lqk")
 
-[node name="MenuPrincipal" parent="." unique_id=126151835 instance=ExtResource("2_u5lmb")]
-offset_left = -8.5
-offset_top = -76.0
-offset_right = 8.5
-offset_bottom = 76.0
-
-[node name="Menu" parent="." unique_id=1812854460 instance=ExtResource("2_bmojv")]
+[node name="Pause" parent="." unique_id=1812854460 instance=ExtResource("2_bmojv")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1064319974]
 environment = SubResource("Environment_ebs18")

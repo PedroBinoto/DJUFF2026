@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://blk7wgyrpyvyh" path="res://Scripts/pause_menu.gd" id="1_c42cd"]
 [ext_resource type="FontFile" uid="uid://c68ob7wtloq5y" path="res://RetroGaming.ttf" id="2_5crhr"]
+[ext_resource type="Script" uid="uid://jo04k5n5a4kq" path="res://Scripts/audio_control_3.gd" id="3_bn643"]
+[ext_resource type="Script" uid="uid://c21gbnieh4xoa" path="res://Scripts/audio_control.gd" id="4_ucpqp"]
+[ext_resource type="Script" uid="uid://b3x85xnci4j5d" path="res://Scripts/audio_control_2.gd" id="5_ixq06"]
+[ext_resource type="Script" uid="uid://db3xvnclp7xm8" path="res://Scripts/check_button.gd" id="6_4dmst"]
+[ext_resource type="Script" uid="uid://dlncchswa3vm2" path="res://Scripts/option_button.gd" id="7_x3jqx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0mag"]
 corner_radius_top_left = 15
@@ -66,16 +71,37 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1812854460]
-script = ExtResource("1_c42cd")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu121"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
-[node name="PauseMenu" type="Control" parent="." unique_id=61598918]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgl56"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eswgq"]
+bg_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_i7elw"]
+color = Color(1, 1, 1, 1)
+thickness = 8
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_6g0x0"]
+color = Color(0.08560128, 0.29778728, 0.9999295, 1)
+thickness = 8
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1812854460]
+process_mode = 2
+visible = false
+script = ExtResource("1_c42cd")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1549136543]
 anchors_preset = 15
@@ -85,21 +111,31 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.47058824)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=949744344]
+[node name="PauseMenu" type="Control" parent="." unique_id=61598918]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Options" type="VBoxContainer" parent="PauseMenu" unique_id=949744344]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -172.0
-offset_top = -83.0
+offset_top = -107.5
 offset_right = 172.0
-offset_bottom = 83.0
+offset_bottom = 107.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 25
 
-[node name="Resume" type="Button" parent="VBoxContainer" unique_id=41383760]
+[node name="Resume" type="Button" parent="PauseMenu/Options" unique_id=41383760]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
@@ -110,7 +146,7 @@ shortcut = SubResource("Shortcut_5crhr")
 text = "Voltar"
 icon_alignment = 1
 
-[node name="Button2" type="Button" parent="VBoxContainer" unique_id=1217035841]
+[node name="Button2" type="Button" parent="PauseMenu/Options" unique_id=1217035841]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
@@ -119,7 +155,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ixq06")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4dmst")
 text = "   Opções   "
 
-[node name="Quit" type="Button" parent="VBoxContainer" unique_id=1406486480]
+[node name="Quit" type="Button" parent="PauseMenu/Options" unique_id=1406486480]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
@@ -128,20 +164,244 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_bn643")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ucpqp")
 text = "Tela Inicial"
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1571040873]
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu" unique_id=1571040873]
+layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_right = 1.0
 offset_bottom = 241.0
 grow_horizontal = 2
 
-[node name="Label" type="Label" parent="CenterContainer" unique_id=1198520766]
+[node name="Label" type="Label" parent="PauseMenu/CenterContainer" unique_id=1198520766]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_5crhr")
 theme_override_font_sizes/font_size = 50
 text = " JOGO PAUSADO "
 
-[connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="Controles" type="Panel" parent="." unique_id=1345615338]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Controles" unique_id=159310295]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_5crhr")
+theme_override_font_sizes/font_size = 60
+text = "Opções"
+horizontal_alignment = 1
+
+[node name="Voltar" type="Button" parent="Controles" unique_id=1006621201]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.411
+anchor_top = 0.748
+anchor_right = 0.411
+anchor_bottom = 0.748
+offset_left = 0.5279846
+offset_top = 0.29599
+offset_right = 204.52798
+offset_bottom = 55.29599
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_fu121")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lgl56")
+theme_override_styles/hover = SubResource("StyleBoxFlat_eswgq")
+text = "Voltar"
+
+[node name="Musica2" type="Label" parent="Controles" unique_id=1734963351]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.38500002
+anchor_top = 0.22700001
+anchor_right = 0.38500002
+anchor_bottom = 0.22700001
+offset_left = 0.13497925
+offset_top = -0.28001404
+offset_right = 115.13498
+offset_bottom = 39.719986
+theme_override_fonts/font = ExtResource("2_5crhr")
+theme_override_font_sizes/font_size = 40
+text = "Música"
+
+[node name="AudioControl3" type="HSlider" parent="Controles" unique_id=1625461086]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.555
+anchor_top = 0.15
+anchor_right = 0.555
+anchor_bottom = 0.15
+offset_left = -0.19500732
+offset_right = 304.805
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_i7elw")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_6g0x0")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_6g0x0")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("3_bn643")
+audio_bus_name = "Master"
+
+[node name="Musica" type="Label" parent="Controles" unique_id=1137848797]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.38500002
+anchor_top = 0.127
+anchor_right = 0.38500002
+anchor_bottom = 0.127
+offset_left = 0.13497925
+offset_top = -0.27999878
+offset_right = 115.13498
+offset_bottom = 39.72
+theme_override_fonts/font = ExtResource("2_5crhr")
+theme_override_font_sizes/font_size = 40
+text = "Áudio"
+horizontal_alignment = 2
+
+[node name="AudioControl" type="HSlider" parent="Controles" unique_id=174747377]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.55700004
+anchor_top = 0.231
+anchor_right = 0.55700004
+anchor_bottom = 0.231
+offset_left = 2.9069824
+offset_top = 12.160004
+offset_right = 307.90698
+offset_bottom = 28.160004
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_i7elw")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_6g0x0")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_6g0x0")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("4_ucpqp")
+audio_bus_name = "Musica"
+
+[node name="SFX" type="Label" parent="Controles" unique_id=1279058806]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.23400001
+anchor_top = 0.34100002
+anchor_right = 0.23400001
+anchor_bottom = 0.34100002
+offset_left = 0.43399048
+offset_top = -0.24002075
+offset_right = 260.434
+offset_bottom = 39.75998
+theme_override_fonts/font = ExtResource("2_5crhr")
+theme_override_font_sizes/font_size = 40
+text = "Efeitos Sonoros"
+
+[node name="AudioControl2" type="HSlider" parent="Controles" unique_id=109621344]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.555
+anchor_top = 0.36400002
+anchor_right = 0.555
+anchor_bottom = 0.36400002
+offset_left = -0.19500732
+offset_top = 0.039978027
+offset_right = 304.805
+offset_bottom = 16.039978
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_i7elw")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_6g0x0")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_6g0x0")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("5_ixq06")
+audio_bus_name = "SFX"
+
+[node name="CheckButton" type="CheckButton" parent="Controles" unique_id=499702523]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -335.0
+offset_top = -33.0
+offset_right = 362.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_5crhr")
+theme_override_font_sizes/font_size = 40
+text = "             Fullscreen"
+script = ExtResource("6_4dmst")
+
+[node name="ControlConfig" type="Label" parent="Controles" unique_id=445983093]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.046000004
+anchor_top = 0.56700003
+anchor_right = 0.046000004
+anchor_bottom = 0.56700003
+offset_left = -0.15400314
+offset_top = 0.11999512
+offset_right = 432.846
+offset_bottom = 40.119995
+theme_override_fonts/font = ExtResource("2_5crhr")
+theme_override_font_sizes/font_size = 40
+text = "Configuração de Controles"
+
+[node name="OptionButton" type="OptionButton" parent="Controles" unique_id=866677424]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.555
+anchor_top = 0.55600005
+anchor_right = 0.555
+anchor_bottom = 0.55600005
+offset_left = -0.19500732
+offset_top = 0.15997314
+offset_right = 302.805
+offset_bottom = 55.159973
+script = ExtResource("7_x3jqx")
+
+[node name="ComandosLabel" type="RichTextLabel" parent="Controles" unique_id=1901208135]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.56
+anchor_top = 0.63600004
+anchor_right = 0.56
+anchor_bottom = 0.63600004
+offset_left = 0.05999756
+offset_top = 16.95996
+offset_right = 300.06
+offset_bottom = 120.95996
+theme_override_fonts/normal_font = ExtResource("2_5crhr")
+theme_override_fonts/bold_font = ExtResource("2_5crhr")
+theme_override_fonts/bold_italics_font = ExtResource("2_5crhr")
+theme_override_fonts/italics_font = ExtResource("2_5crhr")
+theme_override_fonts/mono_font = ExtResource("2_5crhr")
+
+[connection signal="pressed" from="PauseMenu/Options/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/Options/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="PauseMenu/Options/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Controles/Voltar" to="." method="_on_voltar_pressed"]
+[connection signal="value_changed" from="Controles/AudioControl3" to="Controles/AudioControl3" method="_on_value_changed"]
+[connection signal="value_changed" from="Controles/AudioControl" to="Controles/AudioControl" method="_on_value_changed"]
+[connection signal="value_changed" from="Controles/AudioControl2" to="Controles/AudioControl2" method="_on_value_changed"]
+[connection signal="toggled" from="Controles/CheckButton" to="Controles/CheckButton" method="_on_toggled"]
+[connection signal="item_selected" from="Controles/OptionButton" to="Controles/OptionButton" method="_on_item_selected"]

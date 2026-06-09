@@ -33,6 +33,8 @@ func _physics_process(delta: float) -> void:
 	if canMove:
 		_handle_movement(delta)
 
+var dashDirection: Vector2 = Vector2.ZERO
+
 func _handle_movement(delta: float) -> void:
 	var direction: Vector2 = Input.get_vector("move_down", "move_up", "move_left", "move_right")
 	# direction = direction.rotated(-PI / 4)
@@ -47,8 +49,12 @@ func _handle_movement(delta: float) -> void:
 		attack_pivot.rotation = Vector3(0, -Vector2.LEFT.angle_to(direction), 0)
 	
 	if isDashing:
-		var dashMovement = direction * playerDashSpeed * delta
+		if dashDirection == Vector2.ZERO:
+			dashDirection = direction
+		var dashMovement = dashDirection * playerDashSpeed * delta
 		velocity += Vector3(dashMovement.x, 0, dashMovement.y)
+	else:
+		dashDirection = Vector2.ZERO
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
@@ -61,6 +67,8 @@ func _input(event: InputEvent) -> void:
 		if canDash:
 			if event.is_action_pressed("player_dash"):
 				_handle_dash()
+		if event.is_action_pressed("pause"):
+			get_tree().paused = true
 
 func _handle_attack(attackType: bool) -> void:
 	if $"../MenuPrincipal".visible == false && $"../Menu".visible == false:
