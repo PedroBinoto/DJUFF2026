@@ -14,6 +14,8 @@ extends CharacterBody3D
 var shootTimer = 0
 var moveSpeed = 1
 
+var isSeeingPlayer = false
+
 
 func _ready():
 	moveSpeed = player.playerSpeed*movePercent
@@ -53,3 +55,11 @@ func _process(delta: float) -> void:
 	if(shootTimer >= shootTimeLimit):
 		shoot()
 		shootTimer = 0
+
+func seePlayer(state:bool) -> void:
+	isSeeingPlayer = state
+	if isSeeingPlayer:
+		movePercent = 0.6
+	else:
+		movePercent = 0.4
+	moveSpeed = player.playerSpeed*movePercent
