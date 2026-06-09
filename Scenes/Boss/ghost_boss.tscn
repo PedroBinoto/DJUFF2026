@@ -1,0 +1,218 @@
+[gd_scene format=3 uid="uid://da4cqasbhr7ne"]
+
+[ext_resource type="Script" uid="uid://d68hlfsmpf8i" path="res://Scripts/Boss/ghost_boss.gd" id="1_huldx"]
+[ext_resource type="Texture2D" uid="uid://c7x3hcbksbtu6" path="res://Graphics/Sprites/Bosses/Magnético/cabeca_azul.png" id="2_gh1bl"]
+[ext_resource type="Texture2D" uid="uid://dgciyq1mhqs4r" path="res://Graphics/Sprites/Bosses/Magnético/cabeca_vermelha.png" id="3_y6ibw"]
+[ext_resource type="Texture2D" uid="uid://btm4gjn65eg8a" path="res://Graphics/Sprites/Bosses/Magnético/torso_azul.png" id="4_sd13n"]
+[ext_resource type="Texture2D" uid="uid://bqgfw7pvoefso" path="res://Graphics/Sprites/Bosses/Magnético/torso_vermelho.png" id="5_07jlm"]
+[ext_resource type="Texture2D" uid="uid://btbkyqyepq8rc" path="res://Graphics/Sprites/Bosses/Magnético/mao_esquerda_azul.png" id="6_alo80"]
+[ext_resource type="Texture2D" uid="uid://cqopad7vsopm2" path="res://Graphics/Sprites/Bosses/Magnético/mao_esquerda_vermelho.png" id="7_sx0cl"]
+[ext_resource type="Texture2D" uid="uid://daounwgbvwypc" path="res://Graphics/Sprites/Bosses/Magnético/mao_direita_azul.png" id="8_ij8vy"]
+[ext_resource type="Texture2D" uid="uid://dcfa4ryww2mg3" path="res://Graphics/Sprites/Bosses/Magnético/mao_direita_vermelha.png" id="9_pycug"]
+[ext_resource type="Script" uid="uid://qj0g5jalgycx" path="res://Scripts/Components/healthComponent.gd" id="10_cjn4e"]
+
+[sub_resource type="Animation" id="Animation_8gamq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_00scm"]
+resource_name = "idle"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2, 0.23333333, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.4, 0.43333334, 0.46666667, 0.5, 0.53333336, 0.56666666, 0.6, 0.6333333, 0.6666667, 0.7, 0.73333335, 0.76666665, 0.8, 0.8333333, 0.8666667, 0.9, 0.93333334, 0.96666664, 1, 1.0333333, 1.0666667, 1.1, 1.1333333, 1.1666666, 1.2, 1.2333333, 1.2666667, 1.3, 1.3333334, 1.3666667, 1.4, 1.4333333, 1.4666667, 1.5, 1.5333333, 1.5666667, 1.6, 1.6333333, 1.6666666, 1.7, 1.7333333, 1.7666667, 1.8, 1.8333334, 1.8666667, 1.9, 1.9333333, 1.9666667, 2, 2.0333333, 2.0666666, 2.1, 2.1333334, 2.1666667, 2.2, 2.2333333, 2.2666667, 2.3, 2.3333333, 2.3666666, 2.4, 2.4333334, 2.4666667, 2.5, 2.5333333, 2.5666666, 2.6, 2.6333334, 2.6666667, 2.7, 2.7333333, 2.7666667, 2.8, 2.8333333, 2.8666666, 2.9, 2.9333334, 2.9666667, 3, 3.0333333, 3.0666666, 3.1, 3.1333334, 3.1666667, 3.2, 3.2333333, 3.2666667, 3.3, 3.3333333, 3.3666666, 3.4, 3.4333334, 3.4666667, 3.5, 3.5333333, 3.5666666, 3.6, 3.6333334, 3.6666667, 3.7, 3.7333333, 3.7666667, 3.8, 3.8333333, 3.8666666, 3.9, 3.9333334, 3.9666667, 4, 4.0333333, 4.0666666, 4.1, 4.133333, 4.1666665, 4.2, 4.233333, 4.266667, 4.3, 4.3333335, 4.366667, 4.4, 4.4333334, 4.4666667, 4.5, 4.5333333, 4.5666666, 4.6, 4.633333, 4.6666665, 4.7, 4.733333, 4.766667, 4.8, 4.8333335, 4.866667, 4.9, 4.9333334, 4.9666667, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.000438585, 0), Vector3(0, 0.0017535705, 0), Vector3(0, 0.0039426493, 0), Vector3(0, 0.007001982, 0), Vector3(0, 0.0109262, 0), Vector3(0, 0.01570842, 0), Vector3(0, 0.021340251, 0), Vector3(0, 0.027811818, 0), Vector3(0, 0.03511176, 0), Vector3(0, 0.043227274, 0), Vector3(0, 0.05214412, 0), Vector3(0, 0.061846662, 0), Vector3(0, 0.07231787, 0), Vector3(0, 0.08353938, 0), Vector3(0, 0.095491506, 0), Vector3(0, 0.10815328, 0), Vector3(0, 0.121502474, 0), Vector3(0, 0.13551569, 0), Vector3(0, 0.15016833, 0), Vector3(0, 0.1654347, 0), Vector3(0, 0.181288, 0), Vector3(0, 0.19770046, 0), Vector3(0, 0.21464321, 0), Vector3(0, 0.23208661, 0), Vector3(0, 0.24999999, 0), Vector3(0, 0.26835197, 0), Vector3(0, 0.28711033, 0), Vector3(0, 0.3062422, 0), Vector3(0, 0.32571396, 0), Vector3(0, 0.3454915, 0), Vector3(0, 0.36554006, 0), Vector3(0, 0.3858246, 0), Vector3(0, 0.40630937, 0), Vector3(0, 0.42695847, 0), Vector3(0, 0.44773576, 0), Vector3(0, 0.46860477, 0), Vector3(0, 0.4895288, 0), Vector3(0, 0.5104712, 0), Vector3(0, 0.53139526, 0), Vector3(0, 0.5522643, 0), Vector3(0, 0.5730415, 0), Vector3(0, 0.59369063, 0), Vector3(0, 0.6141754, 0), Vector3(0, 0.6344599, 0), Vector3(0, 0.6545085, 0), Vector3(0, 0.674286, 0), Vector3(0, 0.69375783, 0), Vector3(0, 0.7128897, 0), Vector3(0, 0.731648, 0), Vector3(0, 0.75, 0), Vector3(0, 0.7679134, 0), Vector3(0, 0.7853568, 0), Vector3(0, 0.80229956, 0), Vector3(0, 0.818712, 0), Vector3(0, 0.83456534, 0), Vector3(0, 0.8498317, 0), Vector3(0, 0.8644843, 0), Vector3(0, 0.8784975, 0), Vector3(0, 0.8918467, 0), Vector3(0, 0.9045085, 0), Vector3(0, 0.91646063, 0), Vector3(0, 0.9276821, 0), Vector3(0, 0.9381533, 0), Vector3(0, 0.9478559, 0), Vector3(0, 0.95677274, 0), Vector3(0, 0.9648883, 0), Vector3(0, 0.9721882, 0), Vector3(0, 0.97865975, 0), Vector3(0, 0.98429155, 0), Vector3(0, 0.9890738, 0), Vector3(0, 0.992998, 0), Vector3(0, 0.99605733, 0), Vector3(0, 0.99824643, 0), Vector3(0, 0.9995614, 0), Vector3(0, 1, 0), Vector3(0, 0.9995614, 0), Vector3(0, 0.99824643, 0), Vector3(0, 0.99605733, 0), Vector3(0, 0.992998, 0), Vector3(0, 0.9890738, 0), Vector3(0, 0.98429155, 0), Vector3(0, 0.97865975, 0), Vector3(0, 0.9721882, 0), Vector3(0, 0.9648882, 0), Vector3(0, 0.95677274, 0), Vector3(0, 0.9478559, 0), Vector3(0, 0.9381533, 0), Vector3(0, 0.92768216, 0), Vector3(0, 0.91646063, 0), Vector3(0, 0.9045085, 0), Vector3(0, 0.8918467, 0), Vector3(0, 0.87849754, 0), Vector3(0, 0.8644843, 0), Vector3(0, 0.8498317, 0), Vector3(0, 0.8345653, 0), Vector3(0, 0.818712, 0), Vector3(0, 0.80229956, 0), Vector3(0, 0.78535676, 0), Vector3(0, 0.7679134, 0), Vector3(0, 0.75, 0), Vector3(0, 0.731648, 0), Vector3(0, 0.7128897, 0), Vector3(0, 0.6937578, 0), Vector3(0, 0.674286, 0), Vector3(0, 0.6545085, 0), Vector3(0, 0.63446, 0), Vector3(0, 0.61417544, 0), Vector3(0, 0.59369063, 0), Vector3(0, 0.57304156, 0), Vector3(0, 0.5522642, 0), Vector3(0, 0.5313952, 0), Vector3(0, 0.5104712, 0), Vector3(0, 0.48952878, 0), Vector3(0, 0.46860474, 0), Vector3(0, 0.44773573, 0), Vector3(0, 0.4269585, 0), Vector3(0, 0.40630937, 0), Vector3(0, 0.38582462, 0), Vector3(0, 0.3655401, 0), Vector3(0, 0.34549153, 0), Vector3(0, 0.325714, 0), Vector3(0, 0.30624217, 0), Vector3(0, 0.28711033, 0), Vector3(0, 0.26835197, 0), Vector3(0, 0.25, 0), Vector3(0, 0.2320866, 0), Vector3(0, 0.21464318, 0), Vector3(0, 0.19770044, 0), Vector3(0, 0.181288, 0), Vector3(0, 0.16543466, 0), Vector3(0, 0.1501683, 0), Vector3(0, 0.13551569, 0), Vector3(0, 0.12150252, 0), Vector3(0, 0.10815328, 0), Vector3(0, 0.09549153, 0), Vector3(0, 0.08353937, 0), Vector3(0, 0.0723179, 0), Vector3(0, 0.061846673, 0), Vector3(0, 0.05214411, 0), Vector3(0, 0.043227255, 0), Vector3(0, 0.035111725, 0), Vector3(0, 0.027811825, 0), Vector3(0, 0.021340251, 0), Vector3(0, 0.015708447, 0), Vector3(0, 0.010926187, 0), Vector3(0, 0.007001996, 0), Vector3(0, 0.0039426684, 0), Vector3(0, 0.0017535686, 0), Vector3(0, 0.00043857098, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fdddd"]
+_data = {
+&"RESET": SubResource("Animation_8gamq"),
+&"idle": SubResource("Animation_00scm")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u2ii0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gh1bl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y6ibw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7lnnt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_sd13n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_07jlm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_whqey"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_alo80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_sx0cl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2i2wb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ij8vy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pycug")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xby22"]
+size = Vector3(1.2511444, 3.0111084, 2.6239624)
+
+[node name="GhostBoss" type="CharacterBody3D" unique_id=208974275]
+collision_layer = 8
+collision_mask = 97
+script = ExtResource("1_huldx")
+bulletSpawnRingRadius = 3.095
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2138815803]
+libraries/ = SubResource("AnimationLibrary_fdddd")
+autoplay = &"idle"
+
+[node name="Body" type="Node3D" parent="." unique_id=909693205]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+
+[node name="Head" type="Node3D" parent="Body" unique_id=1161142242]
+
+[node name="Head" type="AnimatedSprite3D" parent="Body/Head" unique_id=818861847]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -0.2, 5.675, 0)
+offset = Vector2(0, 8)
+billboard = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_u2ii0")
+
+[node name="HeadShadow" type="AnimatedSprite3D" parent="Body/Head" unique_id=1125060916]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 2.75, 0.575, 0)
+offset = Vector2(0, 8)
+billboard = 1
+alpha_cut = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_u2ii0")
+
+[node name="Torso" type="Node3D" parent="Body" unique_id=176405271]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 1.25, 0, 0)
+
+[node name="Torso" type="AnimatedSprite3D" parent="Body/Torso" unique_id=1011443195]
+transform = Transform3D(1.7484564e-07, 6.9282036, -3.9999998, 3.0284139e-07, 3.9999998, 6.9282036, 8, -3.0284144e-07, -1.7484554e-07, -1.25, -1.75, 0)
+offset = Vector2(0, 21)
+billboard = 1
+alpha_cut = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_7lnnt")
+
+[node name="Hand_L" type="Node3D" parent="Body" unique_id=222405930]
+
+[node name="Hand_Left" type="AnimatedSprite3D" parent="Body/Hand_L" unique_id=663376429]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0.5, -0.5, -2.5)
+billboard = 1
+alpha_cut = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_whqey")
+
+[node name="Hand_R" type="Node3D" parent="Body" unique_id=901009483]
+
+[node name="Hand_Right" type="AnimatedSprite3D" parent="Body/Hand_R" unique_id=439092540]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0.5, -0.5, 2.5)
+billboard = 1
+alpha_cut = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_2i2wb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=509901069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33, 1.506, -0.014)
+shape = SubResource("BoxShape3D_xby22")
+
+[node name="Components" type="Node" parent="." unique_id=60521193]
+
+[node name="HealthComponent" type="Node" parent="Components" unique_id=1341032175 node_paths=PackedStringArray("component_owner")]
+script = ExtResource("10_cjn4e")
+component_owner = NodePath("../..")
+metadata/_custom_type_script = "uid://qj0g5jalgycx"
+
+[node name="BulletSpawnRing" type="Node3D" parent="." unique_id=1252561270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2436795, 0)
+
+[node name="bulletSpawn1" type="Marker3D" parent="BulletSpawnRing" unique_id=247418193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="bulletSpawn2" type="Marker3D" parent="BulletSpawnRing" unique_id=1535765664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="bulletSpawn3" type="Marker3D" parent="BulletSpawnRing" unique_id=252133322]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="bulletSpawn4" type="Marker3D" parent="BulletSpawnRing" unique_id=514153218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="bulletSpawn5" type="Marker3D" parent="BulletSpawnRing" unique_id=1384239350]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="bulletSpawn6" type="Marker3D" parent="BulletSpawnRing" unique_id=699767720]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="bulletSpawn7" type="Marker3D" parent="BulletSpawnRing" unique_id=1406433505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="bulletSpawn8" type="Marker3D" parent="BulletSpawnRing" unique_id=1868700557]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="bulletSpawn9" type="Marker3D" parent="BulletSpawnRing" unique_id=2015208417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="bulletSpawn10" type="Marker3D" parent="BulletSpawnRing" unique_id=312984947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="bulletSpawn11" type="Marker3D" parent="BulletSpawnRing" unique_id=448873701]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="bulletSpawn12" type="Marker3D" parent="BulletSpawnRing" unique_id=140266365]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)

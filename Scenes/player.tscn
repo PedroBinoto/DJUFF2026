@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bim1gdayxa1nx" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="Texture2D" uid="uid://udoidcym6056" path="res://Graphics/Sprites/Player/mc.png" id="2_6t5aa"]
 [ext_resource type="Script" uid="uid://qj0g5jalgycx" path="res://Scripts/Components/healthComponent.gd" id="2_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://clf8wqr2flhum" path="res://Graphics/Sprites/Player/espada.png" id="4_vgqql"]
 
 [sub_resource type="Animation" id="Animation_vgqql"]
 length = 0.001
@@ -131,7 +130,6 @@ transform = Transform3D(1.7484564e-07, -6.9282036, 3.9999998, -3.0284139e-07, 3.
 offset = Vector2(-0.6, 3.5)
 modulate = Color(1, 1, 1, 0)
 texture_filter = 0
-texture = ExtResource("4_vgqql")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackPivot/PhysicalAttackArea" unique_id=1007204661]
 shape = SubResource("BoxShape3D_6t5aa")
