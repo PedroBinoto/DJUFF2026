@@ -6,6 +6,8 @@
 radius = 0.25
 height = 0.5
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_euwk6"]
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_xjght"]
 radius = 0.25
 
@@ -17,6 +19,7 @@ script = ExtResource("1_msjrx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1998854043]
 mesh = SubResource("SphereMesh_4mw4s")
+surface_material_override/0 = SubResource("StandardMaterial3D_euwk6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1909237146]
 shape = SubResource("SphereShape3D_xjght")

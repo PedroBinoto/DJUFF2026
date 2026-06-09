@@ -3,15 +3,20 @@ extends CharacterBody3D
 
 @export var healthComponent: HealthComponent = null
 @export var bulletSpawnRingRadius: float = 1
+@export var shootTimeLimit = 5
+@export var movePercent = 0.5
 
 @onready var bulletScene = preload("uid://b83onsyjngaor")
 @onready var bullet_spawn_ring: Node3D = $BulletSpawnRing
-@export var shootTimeLimit = 1
+@onready var player: Player = $"../Player"
+
 
 var shootTimer = 0
+var moveSpeed = 1
 
 
 func _ready():
+	moveSpeed = player.playerSpeed*movePercent
 	setupBulletSpawnRing()
 
 
@@ -25,6 +30,7 @@ func setupBulletSpawnRing():
 
 
 func _physics_process(delta: float) -> void:
+	velocity = (player.global_position - global_position).normalized()*moveSpeed*delta
 	if !is_on_floor():
 		velocity.y -= 50 * delta
 	move_and_slide()
