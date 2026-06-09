@@ -170,6 +170,14 @@ sprite_frames = SubResource("SpriteFrames_2i2wb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33, 1.506, -0.014)
 shape = SubResource("BoxShape3D_xby22")
 
+[node name="BulletSpawn" type="Node3D" parent="." unique_id=496049368]
+
+[node name="ProjectileSpawn" type="Marker3D" parent="BulletSpawn" unique_id=1878783980]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.4, 2.6)
+
+[node name="ProjectileSpawn2" type="Marker3D" parent="BulletSpawn" unique_id=1891092677]
+transform = Transform3D(0.9168999, -0.39911717, 0, 0.39911717, 0.9168999, 0, 0, 0, 1, 0.5, 0.4, -2.6)
+
 [node name="Components" type="Node" parent="." unique_id=60521193]
 
 [node name="HealthComponent" type="Node" parent="Components" unique_id=1341032175 node_paths=PackedStringArray("component_owner")]

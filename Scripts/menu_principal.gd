@@ -1,9 +1,9 @@
 extends MarginContainer
 @onready var opções: HBoxContainer = $HBoxContainer
-@onready var creditos: ScrollContainer = $"../Creditos"
+@onready var creditos: ScrollContainer = $Creditos
 
 @onready var controles: Panel = $Controles
-@onready var polar: AudioStreamPlayer = $Polar
+@onready var aura: AudioStreamPlayer = $Aura
 @onready var audio_control_2: HSlider = %AudioControl2
 @onready var audio_control: HSlider = %AudioControl
 @onready var audio_control_3: HSlider = %AudioControl3
@@ -17,7 +17,7 @@ func _ready() -> void:
 	audio_control.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Musica")))
 	audio_control_2.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
 	audio_control_3.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
-	polar.play()
+	aura.play()
 
 func _on_start_pressed() -> void:
 	get_tree().change_scene_to_file("uid://hcvcj2ye8egq")
@@ -29,8 +29,7 @@ func _on_controls_pressed() -> void:
 
 
 func _on_credits_pressed() -> void:
-	hide()
-	creditos.show()
+	get_tree().change_scene_to_file("res://Scenes/creditos.tscn")
 
 
 func _on_quit_pressed() -> void:

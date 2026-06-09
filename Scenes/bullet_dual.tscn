@@ -40,7 +40,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rf0ko")
 [node name="Area3D" type="Area3D" parent="BulletSpinners/A" unique_id=1487238350]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 collision_layer = 16
-collision_mask = 36
+collision_mask = 37
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BulletSpinners/A/Area3D" unique_id=1367561221]
 shape = SubResource("SphereShape3D_o1t1p")
@@ -61,7 +61,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_838p6")
 [node name="Area3D2" type="Area3D" parent="BulletSpinners/B" unique_id=177189423]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
 collision_layer = 16
-collision_mask = 36
+collision_mask = 37
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BulletSpinners/B/Area3D2" unique_id=2100616850]
 shape = SubResource("SphereShape3D_o1t1p")

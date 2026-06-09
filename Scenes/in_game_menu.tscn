@@ -100,7 +100,6 @@ thickness = 8
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1812854460]
 process_mode = 2
-visible = false
 script = ExtResource("1_c42cd")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1549136543]

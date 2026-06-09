@@ -10,6 +10,7 @@ extends CanvasLayer
 var paused = false
 
 func _ready() -> void:
+	hide()
 	audio_control.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Musica")))
 	audio_control_2.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
 	audio_control_3.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
