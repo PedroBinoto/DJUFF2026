@@ -36,10 +36,10 @@ func shoot():
 	for i in range(1,amountOfShots+1):
 		for spawn in bullet_spawn_ring.get_children():
 			var bullet = bulletScene.instantiate()
-			bullet.bulletSpeed = 400 + i*50
+			bullet.bulletSpeed = 300 + i*50
 			bullet.spawn(spawn.global_position, self)
 		bullet_spawn_ring.rotate(Vector3(0,1,0), deltaAngle)
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(float(1)/float(amountOfShots)).timeout
 
 
 func _process(delta: float) -> void:
