@@ -17,7 +17,7 @@ extends CharacterBody3D
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var sword: Sprite3D = %Sword
 
-@onready var bulletScene = preload("uid://dvow7fmekkx26")
+@onready var bulletScene = preload("uid://qgqordv3giya")
 
 enum playerStates {
 	IDLE, WALK, GRACE
@@ -85,11 +85,7 @@ func _handle_attack(attackType: bool) -> void:
 		physical_attack_area.monitoring = false
 	else:			 # Is ranged attack
 		var bullet = bulletScene.instantiate()
-		var moveDir3D = global_position - ranged_spawn_location.global_position
-		bullet.moveDirection = -Vector2(moveDir3D.x, moveDir3D.z).normalized()
-		get_tree().root.add_child(bullet)
-		bullet.global_position = ranged_spawn_location.global_position
-		await get_tree().create_timer(0.2).timeout
+		bullet.spawn(ranged_spawn_location.global_position, self)
 	
 	canMove = true
 	attack_cooldown.start()

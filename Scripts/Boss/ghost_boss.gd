@@ -6,9 +6,9 @@ extends CharacterBody3D
 
 @onready var bulletScene = preload("uid://b83onsyjngaor")
 @onready var bullet_spawn_ring: Node3D = $BulletSpawnRing
+@export var shootTimeLimit = 1
 
 var shootTimer = 0
-var shootTimeLimit = 1
 
 
 func _ready():
@@ -34,11 +34,7 @@ func shoot():
 	for spawn in bullet_spawn_ring.get_children():
 		# copypaste from Lelito's code
 		var bullet = bulletScene.instantiate()
-		var moveDir3D = global_position - spawn.global_position
-		bullet.moveDirection = -Vector2(moveDir3D.x, moveDir3D.z).normalized()
-		get_tree().root.add_child(bullet)
-		bullet.global_position = spawn.global_position
-		print(spawn.global_position)
+		bullet.spawn(spawn.global_position, self)
 
 
 func _process(delta: float) -> void:
