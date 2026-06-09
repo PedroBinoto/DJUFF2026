@@ -24,7 +24,7 @@ disabled = true
 
 [node name="Area3D" type="Area3D" parent="." unique_id=919150982]
 collision_layer = 16
-collision_mask = 44
+collision_mask = 172
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=258684477]
 shape = SubResource("SphereShape3D_oduel")
