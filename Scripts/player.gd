@@ -71,31 +71,30 @@ func _input(event: InputEvent) -> void:
 			get_tree().paused = true
 
 func _handle_attack(attackType: bool) -> void:
-	if $"../MenuPrincipal".visible == false && $"../Menu".visible == false:
-		if isDashing:
-			return
-		
-		canAttack = false
-		canMove = false
-		
-		if attackType: 	# Is physical attack
-			print("Attack Physical!")
-			physical_attack_area.monitoring = true
-			animation_player.play("physical_swing")
-			await animation_player.animation_finished
-			physical_attack_area.monitoring = false
-		else:			 # Is ranged attack
-			var bullet = bulletScene.instantiate()
-			var moveDir3D = global_position - ranged_spawn_location.global_position
-			bullet.moveDirection = -Vector2(moveDir3D.x, moveDir3D.z).normalized()
-			get_tree().root.add_child(bullet)
-			bullet.global_position = ranged_spawn_location.global_position
-			await get_tree().create_timer(0.2).timeout
-		
-		canMove = true
-		attack_cooldown.start()
-		await attack_cooldown.timeout
-		canAttack = true
+	if isDashing:
+		return
+	
+	canAttack = false
+	canMove = false
+	
+	if attackType: 	# Is physical attack
+		print("Attack Physical!")
+		physical_attack_area.monitoring = true
+		animation_player.play("physical_swing")
+		await animation_player.animation_finished
+		physical_attack_area.monitoring = false
+	else:			 # Is ranged attack
+		var bullet = bulletScene.instantiate()
+		var moveDir3D = global_position - ranged_spawn_location.global_position
+		bullet.moveDirection = -Vector2(moveDir3D.x, moveDir3D.z).normalized()
+		get_tree().root.add_child(bullet)
+		bullet.global_position = ranged_spawn_location.global_position
+		await get_tree().create_timer(0.2).timeout
+	
+	canMove = true
+	attack_cooldown.start()
+	await attack_cooldown.timeout
+	canAttack = true
 
 func die() -> void:
 	print("Health Depleted!")

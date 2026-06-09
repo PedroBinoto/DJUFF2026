@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmpywsm5ffk05"
-path="res://.godot/imported/arma.png-e3bc4cc6ab05dbf61f61ee1edce4d67b.ctex"
+uid="uid://ce5qhal52geqx"
+path="res://.godot/imported/mc_idle_costa.png-45cb7dc513cbf4a656f4ec4d3d8df1a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Sprites/Player/arma.png"
-dest_files=["res://.godot/imported/arma.png-e3bc4cc6ab05dbf61f61ee1edce4d67b.ctex"]
+source_file="res://Graphics/Sprites/Player/mc_idle_costa.png"
+dest_files=["res://.godot/imported/mc_idle_costa.png-45cb7dc513cbf4a656f4ec4d3d8df1a5.ctex"]
 
 [params]
 
