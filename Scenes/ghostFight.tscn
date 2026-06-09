@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bbu3h1ybllvq8" path="res://Scenes/in_game_menu.tscn" id="2_bxuwn"]
 [ext_resource type="PackedScene" uid="uid://y4wj6ivt28dc" path="res://Scenes/player.tscn" id="4_aeqmw"]
 [ext_resource type="PackedScene" uid="uid://da4cqasbhr7ne" path="res://Scenes/Boss/ghost_boss.tscn" id="4_wb0a8"]
-[ext_resource type="PackedScene" uid="uid://cs06lrpr5uy8t" path="res://Scenes/light_area.tscn" id="5_bxuwn"]
+[ext_resource type="PackedScene" uid="uid://dbn3rlsvclrqg" path="res://Scenes/light_area.tscn" id="5_bxuwn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebs18"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -13,14 +13,12 @@ ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 [sub_resource type="Sky" id="Sky_o0lqk"]
 sky_material = SubResource("ProceduralSkyMaterial_ebs18")
 
-[sub_resource type="Environment" id="Environment_ebs18"]
+[sub_resource type="Environment" id="Environment_bxuwn"]
 background_mode = 1
 sky = SubResource("Sky_o0lqk")
 tonemap_mode = 2
 glow_enabled = true
-volumetric_fog_density = 0.3
-volumetric_fog_albedo = Color(0.5294118, 0, 0, 1)
-volumetric_fog_anisotropy = 0.4
+volumetric_fog_density = 0.1
 volumetric_fog_length = 5.0
 volumetric_fog_sky_affect = 0.3
 
@@ -48,7 +46,7 @@ script = ExtResource("1_wb0a8")
 [node name="Pause" parent="." unique_id=1812854460 instance=ExtResource("2_bxuwn")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1064319974]
-environment = SubResource("Environment_ebs18")
+environment = SubResource("Environment_bxuwn")
 
 [node name="Player" parent="." unique_id=1750106946 instance=ExtResource("4_aeqmw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.676111, 0.0071653128, 0)
@@ -60,7 +58,7 @@ bulletSpawnRingRadius = 0.24
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2056829280]
 transform = Transform3D(-0.17456079, 0.9144808, -0.36503905, 0.4182915, 0.40448725, 0.81327885, 0.89138144, -0.010726176, -0.45312715, -3.1112142, 3.8421087, -5.0194416)
-light_energy = 0.418
+light_energy = 0.25
 shadow_enabled = true
 shadow_opacity = 0.9
 directional_shadow_pancake_size = 0.0
@@ -143,7 +141,7 @@ shape = SubResource("WorldBoundaryShape3D_ebs18")
 mesh = SubResource("QuadMesh_bmojv")
 
 [node name="Light_Area_Left" parent="World" unique_id=618606862 instance=ExtResource("5_bxuwn")]
-transform = Transform3D(6.205, 0, 0, 0, 6.205, 0, 0, 0, 6.205, 0, 0.7397549, -10.6933)
+transform = Transform3D(-6.205, 0, 5.4245834e-07, 0, 6.205, 0, -5.4245834e-07, 0, -6.205, 0, 0.7397549, -10.6933)
 
 [node name="Light_Area_Rigth" parent="World" unique_id=1402012039 instance=ExtResource("5_bxuwn")]
-transform = Transform3D(6.205, 0, 0, 0, 6.205, 0, 0, 0, 6.205, 0, 0.73504233, 10.900089)
+transform = Transform3D(6.205, 0, 2.842171e-14, 0, 6.205, 0, -2.842171e-14, 0, 6.205, 0, 0.73504233, 10.900089)

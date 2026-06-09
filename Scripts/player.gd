@@ -39,6 +39,9 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if canMove:
 		_handle_movement(delta)
+	if canAttack:
+		if Input.is_action_pressed("attack_b"):
+			_handle_attack(false)
 
 var dashDirection: Vector2 = Vector2.ZERO
 
@@ -79,8 +82,6 @@ func _input(event: InputEvent) -> void:
 		if canAttack:
 			if event.is_action_pressed("attack_a"):
 				_handle_attack(true)
-			if event.is_action_pressed("attack_b"):
-				_handle_attack(false)
 		if canDash:
 			if event.is_action_pressed("player_dash"):
 				_handle_dash()
@@ -94,6 +95,7 @@ func _handle_attack(attackType: bool) -> void:
 	canAttack = false
 	canMove = false
 	
+	attack_cooldown.start()
 	if attackType: 	# Is physical attack
 		print("Attack Physical!")
 		physical_attack_area.monitoring = true
@@ -106,7 +108,6 @@ func _handle_attack(attackType: bool) -> void:
 		bullet.spawn(ranged_spawn_location.global_position, self)
 	
 	canMove = true
-	attack_cooldown.start()
 	await attack_cooldown.timeout
 	canAttack = true
 
@@ -135,6 +136,7 @@ func _handle_dash() -> void:
 	dash_cooldown.start()
 	await dash_cooldown.timeout
 	canDash = true
+
 
 func _attack_body(body: Node3D) -> void:
 	print("Entity Detected Within Range!")

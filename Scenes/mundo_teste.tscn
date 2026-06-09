@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://4vcl3xgugl7c" path="res://Scripts/mundo_teste.gd" id="1_o0lqk"]
 [ext_resource type="PackedScene" uid="uid://bbu3h1ybllvq8" path="res://Scenes/in_game_menu.tscn" id="2_bmojv"]
 [ext_resource type="PackedScene" uid="uid://hymci7y26od1" path="res://Scenes/Boss/magnet_boss.tscn" id="4_puaij"]
+[ext_resource type="PackedScene" uid="uid://c3uqqg6glh3wy" path="res://Scenes/game_hud.tscn" id="4_u5lmb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebs18"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -43,8 +44,6 @@ orientation = 1
 
 [node name="MundoTeste" type="Node3D" unique_id=69006548]
 script = ExtResource("1_o0lqk")
-
-[node name="Pause" parent="." unique_id=1812854460 instance=ExtResource("2_bmojv")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1064319974]
 environment = SubResource("Environment_ebs18")
@@ -139,3 +138,9 @@ shape = SubResource("WorldBoundaryShape3D_ebs18")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Floor" unique_id=2140429861]
 mesh = SubResource("QuadMesh_bmojv")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=2096579555]
+
+[node name="GameHUD" parent="HUD" unique_id=1756257545 instance=ExtResource("4_u5lmb")]
+
+[node name="Pause" parent="." unique_id=1812854460 instance=ExtResource("2_bmojv")]

@@ -1,16 +1,34 @@
-[gd_scene format=3 uid="uid://cs06lrpr5uy8t"]
+[gd_scene format=3 uid="uid://dbn3rlsvclrqg"]
 
-[ext_resource type="Script" uid="uid://04nvpphy1qru" path="res://Scripts/light_area.gd" id="1_85kml"]
+[ext_resource type="Script" path="res://Scripts/light_area.gd" id="1_85kml"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wb0a8"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_bxuwn"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_85kml"]
+top_radius = 0.0
+bottom_radius = 0.45
+height = 2.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v46jx"]
-transparency = 1
+[sub_resource type="Gradient" id="Gradient_r3kg8"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.71428573)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_djbbt"]
+gradient = SubResource("Gradient_r3kg8")
+fill_from = Vector2(0.5, 0.16666667)
+fill_to = Vector2(0.5, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8osqs"]
+transparency = 4
+blend_mode = 1
+cull_mode = 1
 shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 0, 0.16078432)
+albedo_texture = SubResource("GradientTexture2D_djbbt")
+uv1_offset = Vector3(0, 0.01, 0)
+stencil_flags = 2
 
 [node name="Light_Area_Left" type="Area3D" unique_id=618606862]
 transform = Transform3D(6.205, 0, 0, 0, 6.205, 0, 0, 0, 6.205, 0, 0, 0)
@@ -22,15 +40,20 @@ script = ExtResource("1_85kml")
 transform = Transform3D(0.955, 0, 0, 0, 0.955, 0, 0, 0, 0.955, 0, 0, 0)
 shape = SubResource("CylinderShape3D_wb0a8")
 
-[node name="cylinder" type="MeshInstance3D" parent="." unique_id=1573566974]
-transform = Transform3D(1, 0, 0, 0, 3.255, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CylinderMesh_bxuwn")
-surface_material_override/0 = SubResource("StandardMaterial3D_v46jx")
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=119734219]
+transform = Transform3D(1, 0, 0, 0, 0.22032292, 0.975427, 0, -0.975427, 0.22032292, 0, 1.8450229, 0.39406785)
+light_color = Color(1, 1, 0, 1)
+light_energy = 5.0
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+spot_range = 16.513163
+spot_angle = 15.0
 
-[node name="circle" type="MeshInstance3D" parent="." unique_id=2007831672]
-transform = Transform3D(1, 0, 0, 0, 0.059000004, 0, 0, 0, 1, 0, -0.12104917, 0)
-mesh = SubResource("CylinderMesh_bxuwn")
-surface_material_override/0 = SubResource("StandardMaterial3D_v46jx")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=837042688]
+transform = Transform3D(1, 0, 0, 0, 0.9602451, -0.27915868, 0, 0.27915868, 0.9602451, 0, 0.9189947, 0.30344248)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_85kml")
+surface_material_override/0 = SubResource("StandardMaterial3D_8osqs")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

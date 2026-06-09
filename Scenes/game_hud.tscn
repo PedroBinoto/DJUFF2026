@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c3uqqg6glh3wy"]
+
+[ext_resource type="Script" uid="uid://b7h5dugdiq8mh" path="res://Scripts/game_hud.gd" id="1_qecdm"]
+[ext_resource type="FontFile" uid="uid://c68ob7wtloq5y" path="res://RetroGaming.ttf" id="1_qmln0"]
+
+[node name="GameHUD" type="Control" unique_id=1756257545]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qecdm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=461412633]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="BossTitle" type="Label" parent="VBoxContainer" unique_id=1364826458]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_qmln0")
+theme_override_font_sizes/font_size = 48
+text = "Magneto"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BossHealth" type="ProgressBar" parent="VBoxContainer" unique_id=651872537]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+show_percentage = false
