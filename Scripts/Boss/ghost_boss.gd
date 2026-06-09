@@ -31,10 +31,15 @@ func _physics_process(delta: float) -> void:
 
 
 func shoot():
-	for spawn in bullet_spawn_ring.get_children():
-		# copypaste from Lelito's code
-		var bullet = bulletScene.instantiate()
-		bullet.spawn(spawn.global_position, self)
+	var amountOfShots = 3
+	var deltaAngle = 2*PI/bullet_spawn_ring.get_child_count()/amountOfShots
+	for i in range(1,amountOfShots+1):
+		for spawn in bullet_spawn_ring.get_children():
+			var bullet = bulletScene.instantiate()
+			bullet.bulletSpeed = 400 + i*50
+			bullet.spawn(spawn.global_position, self)
+		bullet_spawn_ring.rotate(Vector3(0,1,0), deltaAngle)
+		await get_tree().create_timer(0.1).timeout
 
 
 func _process(delta: float) -> void:
