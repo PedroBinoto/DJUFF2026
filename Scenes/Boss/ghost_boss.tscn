@@ -110,7 +110,7 @@ size = Vector3(1.2511444, 3.0111084, 2.6239624)
 
 [node name="GhostBoss" type="CharacterBody3D" unique_id=208974275]
 collision_layer = 8
-collision_mask = 97
+collision_mask = 225
 script = ExtResource("1_huldx")
 bulletSpawnRingRadius = 3.095
 

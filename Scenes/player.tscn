@@ -251,7 +251,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody3D" unique_id=1750106946 node_paths=PackedStringArray("healthComponent")]
-collision_mask = 4
+collision_mask = 132
 script = ExtResource("1_v0iea")
 healthComponent = NodePath("Components/HealthComponent")
 
