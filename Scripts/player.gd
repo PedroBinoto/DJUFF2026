@@ -16,6 +16,10 @@ extends CharacterBody3D
 @onready var physical_attack_area: Area3D = %PhysicalAttackArea
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var sword: Sprite3D = %Sword
+@onready var animated_sprite_3d: AnimatedSprite3D = %AnimatedSprite3D
+@onready var gun: Sprite3D = %Gun
+@onready var spawn_dash_ghost: Timer = %SpawnDashGhost
+@onready var ghosts: Node3D = %Ghosts
 
 @onready var bulletScene = preload("uid://qgqordv3giya")
 
@@ -29,6 +33,9 @@ var canMove: bool = true
 var canDash: bool = true
 var isDashing: bool = false
 
+func _process(delta: float) -> void:
+	gun.flip_v = gun.global_position.z < global_position.z
+
 func _physics_process(delta: float) -> void:
 	if canMove:
 		_handle_movement(delta)
@@ -40,13 +47,23 @@ func _handle_movement(delta: float) -> void:
 	# direction = direction.rotated(-PI / 4)
 	
 	var movement = direction * playerSpeed * delta
+	var lastVelocity = velocity
 	velocity = Vector3(movement.x, 0, movement.y)
 	
 	if velocity == Vector3.ZERO:
+		if currentState != playerStates.IDLE:
+			if lastVelocity.x > 0:
+				animated_sprite_3d.play("idle_back")
+			else:
+				animated_sprite_3d.play("idle_front")
 		currentState = playerStates.IDLE
 	else:
 		currentState = playerStates.WALK
 		attack_pivot.rotation = Vector3(0, -Vector2.LEFT.angle_to(direction), 0)
+		if direction.x > 0:
+			animated_sprite_3d.play("walk_back")
+		else:
+			animated_sprite_3d.play("walk_front")
 	
 	if isDashing:
 		if dashDirection == Vector2.ZERO:
@@ -85,6 +102,7 @@ func _handle_attack(attackType: bool) -> void:
 		physical_attack_area.monitoring = false
 	else:			 # Is ranged attack
 		var bullet = bulletScene.instantiate()
+		animation_player.play("gun_shot")
 		bullet.spawn(ranged_spawn_location.global_position, self)
 	
 	canMove = true
@@ -95,12 +113,25 @@ func _handle_attack(attackType: bool) -> void:
 func die() -> void:
 	print("Health Depleted!")
 
+func spawn_dash_ghost_timeout() -> void:
+	var ghost = PlayerDashEffect.new()
+	var currentAnimation = animated_sprite_3d.animation
+	var currentFrame = animated_sprite_3d.frame
+	var currentFrameTexture = animated_sprite_3d.sprite_frames.get_frame_texture(currentAnimation, currentFrame)
+	
+	ghost.texture = currentFrameTexture
+	ghosts.add_child(ghost)
+	ghost.global_position = global_position
+	ghost.scale = Vector3.ONE * 8
+
 func _handle_dash() -> void:
 	canDash = false
+	spawn_dash_ghost.start()
 	isDashing = true
 	print("Dashed!")
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.25).timeout
 	isDashing = false
+	spawn_dash_ghost.stop()
 	dash_cooldown.start()
 	await dash_cooldown.timeout
 	canDash = true

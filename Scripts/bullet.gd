@@ -18,7 +18,11 @@ func _on_bullet_collide(body: Node3D) -> void:
 		queue_free()
 
 func spawn(position:Vector3, spawner):
+	scale = Vector3.ZERO
 	var moveDir3D = spawner.global_position - position
 	moveDirection = -Vector2(moveDir3D.x, moveDir3D.z).normalized()
 	spawner.get_tree().root.add_child(self)
 	global_position = position
+	
+	var growTween = get_tree().create_tween()
+	growTween.tween_property(self, "scale", Vector3.ONE, 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)

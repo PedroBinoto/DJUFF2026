@@ -1,5 +1,4 @@
 extends CanvasLayer
-@onready var polar: AudioStreamPlayer = $"../MenuPrincipal/Polar"
 
 @onready var controles: Panel = $Controles
 @onready var pause_menu: Control = %PauseMenu

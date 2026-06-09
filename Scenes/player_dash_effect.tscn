@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dpd6u4mh3c5b5"]
+
+[ext_resource type="Texture2D" uid="uid://udoidcym6056" path="res://Graphics/Sprites/Player/mc.png" id="1_a1183"]
+[ext_resource type="Script" uid="uid://b85pe75v3qkw3" path="res://Scripts/player_dash_effect.gd" id="1_ixq81"]
+
+[node name="PlayerDashEffect" type="Sprite3D" unique_id=587824507]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
+modulate = Color(0.47058824, 1, 1, 0.43137255)
+billboard = 1
+texture_filter = 0
+render_priority = -1
+texture = ExtResource("1_a1183")
+script = ExtResource("1_ixq81")
