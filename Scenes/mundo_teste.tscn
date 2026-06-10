@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://hymci7y26od1" path="res://Scenes/Boss/magnet_boss.tscn" id="4_puaij"]
 [ext_resource type="PackedScene" uid="uid://c3uqqg6glh3wy" path="res://Scenes/game_hud.tscn" id="4_u5lmb"]
 [ext_resource type="PackedScene" uid="uid://lkrjq7sy8y4y" path="res://Scenes/engrenagem.tscn" id="5_u5lmb"]
+[ext_resource type="PackedScene" uid="uid://cai47x8vc1tx0" path="res://Scenes/esteira.tscn" id="7_rmxy5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebs18"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -148,3 +149,6 @@ mesh = SubResource("QuadMesh_bmojv")
 
 [node name="Engrenagem" parent="." unique_id=696910798 instance=ExtResource("5_u5lmb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.233876, 0.13569659, -5.655615)
+
+[node name="esteira" parent="." unique_id=1344009382 instance=ExtResource("7_rmxy5")]
+transform = Transform3D(0.64931536, 0, 0.76051927, 0, 1, 0, -0.76051927, 0, 0.64931536, -0.78713274, -0.22008342, -6.419346)

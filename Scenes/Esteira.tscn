@@ -1,20 +1,22 @@
 [gd_scene format=3 uid="uid://cai47x8vc1tx0"]
 
-[ext_resource type="Shader" uid="uid://h2cbhp355wwc" path="res://Graphics/Meshes/textures/pan_treadmill.tres" id="1_olip6"]
-[ext_resource type="Texture2D" uid="uid://doqcbeqj6oapl" path="res://Graphics/Meshes/Esteira_Treadnew.png" id="2_74ayo"]
-[ext_resource type="ArrayMesh" uid="uid://cbptsqv2vrvj5" path="res://Graphics/Meshes/Treadmill.tres" id="3_x2jjx"]
+[ext_resource type="Script" uid="uid://dbmtulu3105ah" path="res://Scripts/esteira.gd" id="1_74ayo"]
+[ext_resource type="ArrayMesh" uid="uid://dfscq0novnvcr" path="res://Graphics/Meshes/Treadmill.tres" id="3_x2jjx"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ltq30"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_olip6"]
+size = Vector3(5.198105, 1.3840332, 1.5922241)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lk2kq"]
-render_priority = 0
-shader = ExtResource("1_olip6")
-shader_parameter/Speed = Vector2(0, 0)
-shader_parameter/MainTex = ExtResource("2_74ayo")
+[node name="Esteira" type="Area3D" unique_id=1344009382]
+collision_layer = 32
+script = ExtResource("1_74ayo")
+linear_velocity = Vector3(-3.142, 0, 0)
 
-[node name="Node3D" type="Node3D" unique_id=489545506]
-
-[node name="Treadmill" type="MeshInstance3D" parent="." unique_id=620842530]
-material_override = SubResource("ShaderMaterial_ltq30")
-material_overlay = SubResource("ShaderMaterial_lk2kq")
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=620842530]
 mesh = ExtResource("3_x2jjx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=786167303]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0039138794, 0.40441895, -0.005706787)
+shape = SubResource("BoxShape3D_olip6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

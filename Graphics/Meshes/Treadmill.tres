@@ -1,6 +1,13 @@
 [gd_resource type="ArrayMesh" format=4 uid="uid://dfscq0novnvcr"]
 
-[ext_resource type="Material" uid="uid://cphjsy8nflxvn" path="res://Graphics/Meshes/Treadmill.material" id="1_0xh5q"]
+[ext_resource type="Shader" uid="uid://h2cbhp355wwc" path="res://Graphics/Meshes/textures/pan_treadmill.tres" id="1_gfrcm"]
+[ext_resource type="Texture2D" uid="uid://doqcbeqj6oapl" path="res://Graphics/Meshes/Esteira_Treadnew.png" id="2_x8vud"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lk2kq"]
+render_priority = 0
+shader = ExtResource("1_gfrcm")
+shader_parameter/Speed = 0.2
+shader_parameter/MainTex = ExtResource("2_x8vud")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gfrcm"]
 _surfaces = [{
@@ -24,7 +31,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 144,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABQAEAAIABAAGAAAABQAHAAQABgAIAAAABwAFAAgABgAJAAgABwAIAAkACAAFAAoACAAKAAsADAANAA4ADAAPAA0AEAARABIAEAATABEAEAASABQAFAASABUAFAAVABYAEAAUABcAGAAXABQAGAAUABkAEwAYABkAEwAZABEAGQAaABEAGQAbABoAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOAA7ADkAPAA9AD4APAA/AD0AQABBAEIAQABDAEEARABFAEYARABHAEUA"),
-"material": ExtResource("1_0xh5q"),
+"material": SubResource("ShaderMaterial_lk2kq"),
 "name": "Treadmill",
 "primitive": 3,
 "uv_scale": Vector4(2, 1.5769233, 0, 0),
