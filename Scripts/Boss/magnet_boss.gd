@@ -8,6 +8,7 @@ extends CharacterBody3D
 @onready var bulletScene = preload("res://Scenes/bullet_dual.tscn")
 @onready var left_hand: Node3D = $Body/Hand_L
 @onready var right_hand: Node3D = $Body/Hand_R
+@onready var boxes: Node3D = $"../Boxes"
 
 
 var shootTimer = 0
@@ -34,6 +35,9 @@ func _process(delta: float) -> void:
 
 	if shootTimer >= shootTimeLimit:
 		shootTimer = 0
+		_box_attack(delta)
+		_switchPolo()
+		print("polo: ", currentPolo)
 		_hand_attack()
 		_shoot()
 		_move_player()
@@ -80,7 +84,9 @@ func _hand_attack():
 	else:
 		hand = right_hand
 		offset.z = -2.5
-	hand.target_position = player.global_position + offset
+		
+	var predicted_position = player.global_position + player.velocity.normalized() * 3
+	hand.target_position = predicted_position + offset
 	hand.target_position.y = hand_origin[i].y
 	hand.attacking = true
 	while hand.global_position.distance_to(hand.target_position) > 0.5:
@@ -99,3 +105,18 @@ func _hand_attack():
 func die() -> void:
 	print("Uogh")
 	pass
+
+
+func _box_attack(delta):
+	var chosen_boxes = boxes.get_children()
+	chosen_boxes.shuffle()
+	chosen_boxes = chosen_boxes.slice(0, 3)
+	for caixa in chosen_boxes:
+		var target_position
+		if currentPolo == polo.POSITIVO:
+			target_position = global_position
+		else:
+			target_position = player.global_position
+		while caixa.global_position.distance_to(target_position) > 0.5:
+			caixa.global_position = caixa.global_position.move_toward(target_position,20 * get_process_delta_time())
+			await get_tree().process_frame
