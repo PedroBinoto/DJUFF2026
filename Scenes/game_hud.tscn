@@ -3,6 +3,22 @@
 [ext_resource type="Script" uid="uid://b7h5dugdiq8mh" path="res://Scripts/game_hud.gd" id="1_qecdm"]
 [ext_resource type="FontFile" uid="uid://c68ob7wtloq5y" path="res://RetroGaming.ttf" id="1_qmln0"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qecdm"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_bottom_right = 8
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pef4c"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_bottom_right = 8
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_hsjaf"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_qecdm")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_pef4c")
+
 [node name="GameHUD" type="Control" unique_id=1756257545]
 layout_mode = 3
 anchors_preset = 15
@@ -12,28 +28,39 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qecdm")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=461412633]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="BossTitle" type="Label" parent="VBoxContainer" unique_id=1364826458]
+[node name="BossTitle" type="Label" parent="." unique_id=1364826458]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.48100004
+anchor_right = 0.5
+anchor_bottom = 0.48100004
+offset_left = -576.0
+offset_top = -24.688019
+offset_right = 576.0
+offset_bottom = 24.311981
+pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("1_qmln0")
 theme_override_font_sizes/font_size = 48
 text = "Magneto"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BossHealth" type="ProgressBar" parent="VBoxContainer" unique_id=651872537]
+[node name="BossHealth" type="ProgressBar" parent="." unique_id=651872537]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 20)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.54
+anchor_right = 0.5
+anchor_bottom = 0.54
+offset_left = -250.0
+offset_top = -9.920013
+offset_right = 250.0
+offset_bottom = 10.079987
+pivot_offset_ratio = Vector2(0.5, 0.5)
 size_flags_horizontal = 4
-size_flags_vertical = 4
+theme = SubResource("Theme_hsjaf")
 show_percentage = false

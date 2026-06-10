@@ -40,8 +40,10 @@ orientation = 1
 size = Vector2(28, 32)
 orientation = 1
 
-[node name="MundoTeste" type="Node3D" unique_id=69006548]
+[node name="MundoTeste" type="Node3D" unique_id=69006548 node_paths=PackedStringArray("bossNode")]
 script = ExtResource("1_wb0a8")
+bossName = "Ghoulst"
+bossNode = NodePath("GhostBoss")
 
 [node name="Pause" parent="." unique_id=1812854460 instance=ExtResource("2_bxuwn")]
 
