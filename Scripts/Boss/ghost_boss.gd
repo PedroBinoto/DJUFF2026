@@ -1,6 +1,13 @@
 class_name GhostBoss
 extends CharacterBody3D
 
+
+enum bodyStates {
+	IDLE, WALK, GRACE
+}
+var currentState: bodyStates = bodyStates.IDLE
+
+
 @export var healthComponent: HealthComponent = null
 @export var bulletSpawnRingRadius: float = 1
 @export var soulShootTimeLimit = 3
@@ -11,6 +18,7 @@ extends CharacterBody3D
 @onready var bodyBullet = preload("uid://qgqordv3giya")
 @onready var bullet_spawn_ring: Node3D = $BulletSpawnRing
 @onready var body_attack_pivot: Node3D = $BodyAttackPivot
+@onready var body_sprite: AnimatedSprite3D = %AnimatedSprite3D
 @onready var player: Player = $"../Player"
 
 var bodyTimer = 0
@@ -32,15 +40,6 @@ func setupBulletSpawnRing():
 		var angle = 2*PI/numberOfSpawns * index
 		spawn.set_position(Vector3(cos(angle), 0, sin(angle)) * bulletSpawnRingRadius)
 		index+=1
-
-
-func _physics_process(delta: float) -> void:
-	velocity = (player.global_position - global_position).normalized()*moveSpeed*delta
-	move_and_slide()
-	
-	var direction = velocity.normalized()
-	direction = Vector3(round(direction.x),0,round(direction.z))
-	body_attack_pivot.rotation = Vector3(0, sign(velocity.z)*Vector3.LEFT.angle_to(direction), 0)
 
 
 func soul_shoot():
@@ -67,6 +66,32 @@ func seePlayer(state:bool) -> void:
 	else:
 		movePercent = 0.4
 	moveSpeed = player.playerSpeed*movePercent
+
+
+func _physics_process(delta: float) -> void:
+	var lastVelocity = velocity
+	velocity = (player.global_position - global_position).normalized()*moveSpeed*delta
+	move_and_slide()
+	
+	var direction = velocity.normalized()
+	direction = Vector3(round(direction.x),0,round(direction.z))
+	body_attack_pivot.rotation = Vector3(0, sign(velocity.z)*Vector3.LEFT.angle_to(direction), 0)
+	
+	#copypaste from Lelito's code
+	if direction == Vector3.ZERO:
+		if currentState != bodyStates.IDLE:
+			if lastVelocity.x > 0:
+				body_sprite.play("idle_back")
+			else:
+				body_sprite.play("idle_front")
+		currentState = bodyStates.IDLE
+	else:
+		currentState = bodyStates.WALK
+		if direction.x > 0:
+			body_sprite.play("walk_back")
+		else:
+			body_sprite.play("walk_front")
+
 
 
 func _process(delta: float) -> void:

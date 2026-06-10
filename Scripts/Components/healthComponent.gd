@@ -14,5 +14,8 @@ func damage(val: float) -> void:
 	if health <= 0:
 		die()
 
+func health_percent():
+	return health/maxHealth
+
 func die() -> void:
 	component_owner.die()

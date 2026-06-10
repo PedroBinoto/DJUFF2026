@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgciyq1mhqs4r"
-path.s3tc="res://.godot/imported/cabeca_vermelha.png-b28fcc465b4bc60565e53382a1d0fc01.s3tc.ctex"
+uid="uid://cr17kf7gu2wl8"
+path.s3tc="res://.godot/imported/ghost.png-12f2b8052d9d13567f60faf2d127f49f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Graphics/Sprites/Bosses/Magnético/cabeca_vermelha.png"
-dest_files=["res://.godot/imported/cabeca_vermelha.png-b28fcc465b4bc60565e53382a1d0fc01.s3tc.ctex"]
+source_file="res://Graphics/Sprites/Bosses/Fantasma/sheets/ghost.png"
+dest_files=["res://.godot/imported/ghost.png-12f2b8052d9d13567f60faf2d127f49f.s3tc.ctex"]
 
 [params]
 
