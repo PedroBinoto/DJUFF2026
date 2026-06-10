@@ -7,6 +7,10 @@ extends Control
 # TODO: Animação de Título/Barra de vida funcional
 func _ready() -> void:
 	SignalBus.updateBossStats.connect(updateBossStats)
+	SignalBus.updateBossbar.connect(updateBossHealth)
+
+func updateBossHealth(health: float) -> void:
+	pass
 
 func updateBossStats(name: String, maxHealth: float) -> void:
 	boss_title.text = name
