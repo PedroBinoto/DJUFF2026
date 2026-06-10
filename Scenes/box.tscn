@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://dthre5o1bg1ag"]
+[gd_scene format=3 uid="uid://bistbwq8ojeym"]
 
 [ext_resource type="ArrayMesh" uid="uid://ympb1mm8sg1g" path="res://Graphics/Meshes/Caixa.tres" id="1_xkb4e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ebs18"]
 size = Vector3(3.2, 1.6, 1.6)
 
-[node name="StaticBody3D2" type="StaticBody3D" unique_id=395401012]
+[node name="Box" type="StaticBody3D" unique_id=395401012]
 collision_layer = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1786171192]
