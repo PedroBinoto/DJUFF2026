@@ -7,8 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bqgfw7pvoefso" path="res://Graphics/Sprites/Bosses/Magnético/torso_vermelho.png" id="4_00scm"]
 [ext_resource type="Texture2D" uid="uid://btbkyqyepq8rc" path="res://Graphics/Sprites/Bosses/Magnético/mao_esquerda_azul.png" id="5_fdddd"]
 [ext_resource type="Texture2D" uid="uid://cqopad7vsopm2" path="res://Graphics/Sprites/Bosses/Magnético/mao_esquerda_vermelho.png" id="6_1mcog"]
+[ext_resource type="Script" uid="uid://5703uhns6drt" path="res://Scripts/left_hand.gd" id="6_fdddd"]
 [ext_resource type="Texture2D" uid="uid://daounwgbvwypc" path="res://Graphics/Sprites/Bosses/Magnético/mao_direita_azul.png" id="7_n0vj7"]
 [ext_resource type="Texture2D" uid="uid://dcfa4ryww2mg3" path="res://Graphics/Sprites/Bosses/Magnético/mao_direita_vermelha.png" id="8_vh4ij"]
+[ext_resource type="Script" uid="uid://dsrympj0p3g7v" path="res://Scripts/right_hand.gd" id="9_1mcog"]
 [ext_resource type="Script" uid="uid://qj0g5jalgycx" path="res://Scripts/Components/healthComponent.gd" id="10_00scm"]
 
 [sub_resource type="Animation" id="Animation_8gamq"]
@@ -91,6 +93,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1mcog"]
+size = Vector3(1, 2.4284363, 1)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_2i2wb"]
 animations = [{
 "frames": [{
@@ -104,6 +109,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fdddd"]
+size = Vector3(0.99557495, 2.3239746, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xby22"]
 size = Vector3(1.2511444, 3.0111084, 2.6239624)
@@ -149,6 +157,7 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_7lnnt")
 
 [node name="Hand_L" type="Node3D" parent="Body" unique_id=222405930]
+script = ExtResource("6_fdddd")
 
 [node name="Hand_Left" type="AnimatedSprite3D" parent="Body/Hand_L" unique_id=663376429]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0.5, -0.5, -2.5)
@@ -157,7 +166,17 @@ alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_whqey")
 
+[node name="Area3D" type="Area3D" parent="Body/Hand_L" unique_id=1012902594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -2.5)
+collision_layer = 8
+collision_mask = 37
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Hand_L/Area3D" unique_id=729053723]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7813568, 0)
+shape = SubResource("BoxShape3D_1mcog")
+
 [node name="Hand_R" type="Node3D" parent="Body" unique_id=901009483]
+script = ExtResource("9_1mcog")
 
 [node name="Hand_Right" type="AnimatedSprite3D" parent="Body/Hand_R" unique_id=439092540]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0.5, -0.5, 2.5)
@@ -165,6 +184,15 @@ billboard = 1
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_2i2wb")
+
+[node name="Area3D2" type="Area3D" parent="Body/Hand_R" unique_id=438617798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 2.5)
+collision_layer = 8
+collision_mask = 37
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Hand_R/Area3D2" unique_id=1961464479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0022125244, -0.83654785, 0)
+shape = SubResource("BoxShape3D_fdddd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=509901069]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33, 1.506, -0.014)
@@ -184,3 +212,6 @@ transform = Transform3D(0.9168999, -0.39911717, 0, 0.39911717, 0.9168999, 0, 0, 
 script = ExtResource("10_00scm")
 component_owner = NodePath("../..")
 metadata/_custom_type_script = "uid://qj0g5jalgycx"
+
+[connection signal="body_entered" from="Body/Hand_L/Area3D" to="Body/Hand_R" method="_on_right_hand_entered"]
+[connection signal="body_entered" from="Body/Hand_R/Area3D2" to="Body/Hand_L" method="_on_left_hand_entered"]

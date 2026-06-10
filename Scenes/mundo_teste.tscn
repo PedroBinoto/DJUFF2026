@@ -144,6 +144,7 @@ mesh = SubResource("QuadMesh_bmojv")
 [node name="HUD" type="CanvasLayer" parent="." unique_id=2096579555]
 
 [node name="GameHUD" parent="HUD" unique_id=1756257545 instance=ExtResource("4_u5lmb")]
+visible = false
 
 [node name="Pause" parent="." unique_id=1812854460 instance=ExtResource("2_bmojv")]
 
