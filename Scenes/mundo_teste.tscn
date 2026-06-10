@@ -4,10 +4,11 @@
 [ext_resource type="Script" uid="uid://4vcl3xgugl7c" path="res://Scripts/mundo_teste.gd" id="1_o0lqk"]
 [ext_resource type="PackedScene" uid="uid://bbu3h1ybllvq8" path="res://Scenes/in_game_menu.tscn" id="2_bmojv"]
 [ext_resource type="PackedScene" uid="uid://hymci7y26od1" path="res://Scenes/Boss/magnet_boss.tscn" id="4_puaij"]
-[ext_resource type="PackedScene" uid="uid://dthre5o1bg1ag" path="res://Scenes/box.tscn" id="4_tcipn"]
+[ext_resource type="PackedScene" uid="uid://bistbwq8ojeym" path="res://Scenes/box.tscn" id="4_tcipn"]
 [ext_resource type="PackedScene" uid="uid://c3uqqg6glh3wy" path="res://Scenes/game_hud.tscn" id="4_u5lmb"]
 [ext_resource type="PackedScene" uid="uid://lkrjq7sy8y4y" path="res://Scenes/engrenagem.tscn" id="5_u5lmb"]
 [ext_resource type="PackedScene" uid="uid://cai47x8vc1tx0" path="res://Scenes/Esteira.tscn" id="7_rmxy5"]
+[ext_resource type="ArrayMesh" uid="uid://dlhs6goyfh62l" path="res://Graphics/Meshes/Arena_Magnetismo.tres" id="9_0tywp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebs18"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -20,7 +21,6 @@ sky_material = SubResource("ProceduralSkyMaterial_ebs18")
 background_mode = 1
 sky = SubResource("Sky_o0lqk")
 tonemap_mode = 2
-glow_enabled = true
 volumetric_fog_density = 0.3
 volumetric_fog_albedo = Color(0.5294118, 0, 0, 1)
 volumetric_fog_anisotropy = 0.4
@@ -31,14 +31,6 @@ volumetric_fog_sky_affect = 0.3
 
 [sub_resource type="QuadMesh" id="QuadMesh_puaij"]
 size = Vector2(10, 32)
-orientation = 1
-
-[sub_resource type="QuadMesh" id="QuadMesh_u5lmb"]
-size = Vector2(10, 28)
-orientation = 1
-
-[sub_resource type="QuadMesh" id="QuadMesh_bmojv"]
-size = Vector2(28, 32)
 orientation = 1
 
 [node name="MundoTeste2" type="Node3D" unique_id=69006548 node_paths=PackedStringArray("bossNode")]
@@ -56,19 +48,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.621, -0.044001102, 0.067)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0071653128, 0)
 collision_mask = 108
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2056829280]
-transform = Transform3D(-0.17456079, 0.9144808, -0.36503905, 0.4182915, 0.40448725, 0.81327885, 0.89138144, -0.010726176, -0.45312715, -3.1112142, 3.8421087, -5.0194416)
-light_energy = 0.418
-shadow_enabled = true
-shadow_opacity = 0.9
-directional_shadow_pancake_size = 0.0
-
 [node name="Camera3D" type="Camera3D" parent="." unique_id=678953287]
 transform = Transform3D(0, 0.86602545, -0.49999997, 0, 0.49999997, 0.86602545, 1, 0, 0, -5.0915213, 13.54058, 0.075208664)
 projection = 1
 fov = 20.0
 size = 30.0
 far = 40.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2056829280]
+transform = Transform3D(-0.17456079, 0.9144808, -0.36503905, 0.4182915, 0.40448725, 0.81327885, 0.89138144, -0.010726176, -0.45312715, -3.1112142, 3.8421087, -5.0194416)
+light_energy = 0.418
+shadow_enabled = true
+shadow_opacity = 0.9
+directional_shadow_pancake_size = 0.0
 
 [node name="Boxes" type="Node3D" parent="." unique_id=2137355389]
 
@@ -130,10 +122,6 @@ collision_mask = 17
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall_Left" unique_id=104359218]
 shape = SubResource("WorldBoundaryShape3D_ebs18")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Wall_Left" unique_id=143080573]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 2)
-mesh = SubResource("QuadMesh_u5lmb")
-
 [node name="Wall_Right" type="StaticBody3D" parent="World" unique_id=2106777256]
 transform = Transform3D(-5.7320566e-15, -1.3113416e-07, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, 1.3113416e-07, 2, 14, 16)
 collision_layer = 32
@@ -142,20 +130,13 @@ collision_mask = 17
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall_Right" unique_id=410385654]
 shape = SubResource("WorldBoundaryShape3D_ebs18")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Wall_Right" unique_id=459847471]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 2)
-mesh = SubResource("QuadMesh_u5lmb")
-
 [node name="Floor" type="StaticBody3D" parent="World" unique_id=943130965]
+visible = false
 collision_layer = 64
 collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Floor" unique_id=116233823]
 shape = SubResource("WorldBoundaryShape3D_ebs18")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Floor" unique_id=2140429861]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.006501198, 0, -0.027610779)
-mesh = SubResource("QuadMesh_bmojv")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=2096579555]
 
@@ -168,3 +149,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.233876, 0.13569659, -5.655
 
 [node name="esteira" parent="." unique_id=1344009382 instance=ExtResource("7_rmxy5")]
 transform = Transform3D(0.64931536, 0, 0.76051927, 0, 1, 0, -0.76051927, 0, 0.64931536, -0.78713274, -0.22008342, -6.419346)
+
+[node name="ArenaMagnetismo" type="MeshInstance3D" parent="." unique_id=890726414]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 5, 0)
+mesh = ExtResource("9_0tywp")

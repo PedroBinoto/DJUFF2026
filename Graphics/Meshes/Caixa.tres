@@ -6,7 +6,7 @@ load_path = "res://.godot/imported/Caixa_Cog.png-5e364a48dbfcd0b67f7396c28406da6
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qu405"]
 resource_name = "Cog"
 albedo_texture = SubResource("CompressedTexture2D_7bjbo")
-roughness = 0.5
+metallic_specular = 0.0
 texture_filter = 2
 texture_repeat = false
 

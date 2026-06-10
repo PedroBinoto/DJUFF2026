@@ -13,3 +13,20 @@ shape = SubResource("BoxShape3D_ebs18")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=986840883]
 mesh = ExtResource("1_xkb4e")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=328913239]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.94633996, 0, 0)
+visible = false
+light_color = Color(0, 0.59607846, 0.85882354, 1)
+light_energy = 16.0
+spot_angle = 72.1
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2010002793]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.66, 0, 0)
+light_color = Color(0, 0.59607846, 0.85882354, 1)
+light_energy = 3.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1319175996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66, 0, 0)
+light_color = Color(0, 0.59607846, 0.85882354, 1)
+light_energy = 3.0
