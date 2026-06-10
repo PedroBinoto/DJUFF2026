@@ -93,7 +93,6 @@ func _physics_process(delta: float) -> void:
 			body_sprite.play("walk_front")
 
 
-
 func _process(delta: float) -> void:
 	soulTimer += delta
 	if(soulTimer >= soulShootTimeLimit):

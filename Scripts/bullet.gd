@@ -18,7 +18,6 @@ func _on_bullet_collide(body: Node3D) -> void:
 	if body is StaticBody3D:
 		queue_free()
 	if "healthComponent" in body:
-		print("damage!")
 		body.healthComponent.damage(damage)
 		print(body.healthComponent.health)
 		queue_free()

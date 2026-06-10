@@ -44,7 +44,7 @@ orientation = 1
 size = Vector2(28, 32)
 orientation = 1
 
-[node name="MundoTeste" type="Node3D" unique_id=69006548 node_paths=PackedStringArray("bossNode")]
+[node name="MundoTeste2" type="Node3D" unique_id=69006548 node_paths=PackedStringArray("bossNode")]
 script = ExtResource("1_o0lqk")
 bossName = "Magneto"
 bossNode = NodePath("MagnetBoss")
