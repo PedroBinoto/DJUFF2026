@@ -13,6 +13,8 @@ func damage(val: float) -> void:
 	health = clamp(health - val, 0.0, maxHealth)
 	if component_owner is GhostBoss or component_owner is MagnetBoss:	
 		SignalBus.updateBossbar.emit(health)
+	if component_owner is Player:
+		SignalBus.updatePlayerbar.emit(health)
 	if health <= 0:
 		die()
 

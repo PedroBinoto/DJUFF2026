@@ -3,17 +3,29 @@ extends Control
 
 @onready var boss_title: Label = %BossTitle
 @onready var boss_health: ProgressBar = %BossHealth
+@onready var player_health: ProgressBar = $PlayerHealth
 
 
 # TODO: Animação de Título/Barra de vida funcional
 func _ready() -> void:
 	SignalBus.updateBossStats.connect(updateBossStats)
 	SignalBus.updateBossbar.connect(updateBossHealth)
+	SignalBus.updatePlayerbar.connect(updatePlayerBar)
+
+	var healthFillTween = create_tween()
+	healthFillTween.tween_property(player_health, "value", player_health.max_value, 3.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+
 
 
 func updateBossHealth(health: float) -> void:
 	var healUpdateTween = create_tween()
 	healUpdateTween.tween_property(boss_health, "value", health, (boss_health.max_value-health)/100).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
+	pass
+
+
+func updatePlayerBar(health:float):
+	var healUpdateTween = create_tween()
+	healUpdateTween.tween_property(player_health, "value", health, (player_health.max_value-health)/100).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
 	pass
 
 
