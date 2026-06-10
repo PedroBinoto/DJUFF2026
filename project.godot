@@ -28,6 +28,7 @@ window/stretch/mode="canvas_items"
 folder_colors={
 "res://Graphics/": "red",
 "res://Music/": "purple",
+"res://SFX/": "pink",
 "res://Scenes/": "green",
 "res://Scripts/": "blue"
 }

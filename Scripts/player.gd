@@ -20,6 +20,8 @@ extends CharacterBody3D
 @onready var gun: Sprite3D = %Gun
 @onready var spawn_dash_ghost: Timer = %SpawnDashGhost
 @onready var ghosts: Node3D = %Ghosts
+@onready var sword_sfx: AudioStreamPlayer = $AttackPivot/PhysicalAttackArea/Sword2
+@onready var shoot_sfx: AudioStreamPlayer = $AttackPivot/CharShoot
 
 @onready var bulletScene = preload("uid://qgqordv3giya")
 
@@ -32,6 +34,7 @@ var canAttack: bool = true
 var canMove: bool = true
 var canDash: bool = true
 var isDashing: bool = false
+var velocity_modifier: Vector3 = Vector3.ZERO
 
 func _process(delta: float) -> void:
 	gun.flip_v = gun.global_position.z < global_position.z
@@ -51,7 +54,8 @@ func _handle_movement(delta: float) -> void:
 	
 	var movement = direction * playerSpeed * delta
 	var lastVelocity = velocity
-	velocity = Vector3(movement.x, 0, movement.y)
+	velocity = Vector3(movement.x, 0, movement.y) + velocity_modifier
+	velocity_modifier = velocity_modifier.lerp(Vector3.ZERO, 5 * delta)
 	
 	if velocity == Vector3.ZERO:
 		if currentState != playerStates.IDLE:
@@ -100,11 +104,13 @@ func _handle_attack(attackType: bool) -> void:
 		print("Attack Physical!")
 		physical_attack_area.monitoring = true
 		animation_player.play("physical_swing")
+		sword_sfx.play()
 		await animation_player.animation_finished
 		physical_attack_area.monitoring = false
 	else:			 # Is ranged attack
 		var bullet = bulletScene.instantiate()
 		animation_player.play("gun_shot")
+		shoot_sfx.play()
 		bullet.spawn(ranged_spawn_location.global_position, self)
 	
 	canMove = true

@@ -10,6 +10,10 @@ extends CharacterBody3D
 var shootTimer = 0
 var moveSpeed = 1
 
+enum polo{
+	POSITIVO, NEGATIVO
+}
+var currentPolo: polo = polo.POSITIVO
 
 func _ready() -> void:
 	moveSpeed = player.playerSpeed*movePercent
@@ -25,6 +29,7 @@ func _process(delta: float) -> void:
 	if shootTimer >= shootTimeLimit:
 		shootTimer = 0
 		_shoot()
+		_move_player()
 
 func _shoot() -> void:
 	if player == null:
@@ -36,3 +41,19 @@ func _shoot() -> void:
 		get_tree().current_scene.add_child(bullet)
 		bullet.global_position = spawn.global_position
 	
+func _move_player() -> void:
+	for i in range(60):
+		var dir
+		if currentPolo == polo.POSITIVO:
+			dir = 1
+		else:
+			dir = -1
+		var direction = (global_position - player.global_position).normalized()
+		player.velocity_modifier += dir * direction * 2
+		await get_tree().create_timer(0.05).timeout
+	
+func _switchPolo():
+	if currentPolo == polo.POSITIVO:
+		currentPolo = polo.NEGATIVO
+	else:
+		currentPolo = polo.POSITIVO
