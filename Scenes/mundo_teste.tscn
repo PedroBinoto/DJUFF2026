@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bbu3h1ybllvq8" path="res://Scenes/in_game_menu.tscn" id="2_bmojv"]
 [ext_resource type="PackedScene" uid="uid://hymci7y26od1" path="res://Scenes/Boss/magnet_boss.tscn" id="4_puaij"]
 [ext_resource type="PackedScene" uid="uid://c3uqqg6glh3wy" path="res://Scenes/game_hud.tscn" id="4_u5lmb"]
+[ext_resource type="PackedScene" uid="uid://lkrjq7sy8y4y" path="res://Scenes/engrenagem.tscn" id="5_u5lmb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebs18"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -144,3 +145,6 @@ mesh = SubResource("QuadMesh_bmojv")
 [node name="GameHUD" parent="HUD" unique_id=1756257545 instance=ExtResource("4_u5lmb")]
 
 [node name="Pause" parent="." unique_id=1812854460 instance=ExtResource("2_bmojv")]
+
+[node name="Engrenagem" parent="." unique_id=696910798 instance=ExtResource("5_u5lmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.233876, 0.13569659, -5.655615)

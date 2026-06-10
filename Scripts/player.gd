@@ -36,6 +36,8 @@ var canDash: bool = true
 var isDashing: bool = false
 var velocity_modifier: Vector3 = Vector3.ZERO
 
+var appliedForces: Dictionary[Node, Vector3]
+
 func _process(delta: float) -> void:
 	gun.flip_v = gun.global_position.z < global_position.z
 
@@ -79,6 +81,9 @@ func _handle_movement(delta: float) -> void:
 		velocity += Vector3(dashMovement.x, 0, dashMovement.y)
 	else:
 		dashDirection = Vector2.ZERO
+	
+	for index in appliedForces:
+		velocity += appliedForces[index]
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
@@ -146,3 +151,12 @@ func _handle_dash() -> void:
 
 func _attack_body(body: Node3D) -> void:
 	print("Entity Detected Within Range!")
+
+func create_force(index: Node, defaultValue: Vector3) -> void:
+	appliedForces[index] = defaultValue
+
+func update_force(index: Node, value: Vector3) -> void:
+	appliedForces[index] = value
+
+func delete_force(index: Node) -> void:
+	appliedForces.erase(index)

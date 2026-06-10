@@ -9,7 +9,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lk2kq"]
 render_priority = 0
 shader = ExtResource("1_olip6")
-shader_parameter/Speed = Vector2(0.2, 0)
+shader_parameter/Speed = Vector2(0, 0)
 shader_parameter/MainTex = ExtResource("2_74ayo")
 
 [node name="Node3D" type="Node3D" unique_id=489545506]
