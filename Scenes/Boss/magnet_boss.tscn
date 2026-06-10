@@ -132,14 +132,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 [node name="Head" type="Node3D" parent="Body" unique_id=1161142242]
 
 [node name="Head" type="AnimatedSprite3D" parent="Body/Head" unique_id=818861847]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -0.2, 5.675, 0)
-offset = Vector2(0, 8)
-billboard = 1
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_u2ii0")
-
-[node name="HeadShadow" type="AnimatedSprite3D" parent="Body/Head" unique_id=1125060916]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 2.75, 0.575, 0)
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 2, 0)
 offset = Vector2(0, 8)
 billboard = 1
 alpha_cut = 2
