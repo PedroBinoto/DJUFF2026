@@ -15,8 +15,7 @@ func _physics_process(delta: float) -> void:
 		bullet_spinners.rotation.y += 5 * delta
 
 func _bulletA_hit(body: Node3D) -> void:
-	if "healthComponent" in body:
-		print("damage!")
+	super._on_bullet_collide(body)
 	if bullet_spinners.get_children().size() == 1:
 		bullet_kill()
 	else:
@@ -24,8 +23,7 @@ func _bulletA_hit(body: Node3D) -> void:
 		isDualBullet = false
 
 func _bulletB_hit(body: Node3D) -> void:
-	if "healthComponent" in body:
-		print("damage!")
+	super._on_bullet_collide(body)
 	if bullet_spinners.get_children().size() == 1:
 		bullet_kill()
 	else:

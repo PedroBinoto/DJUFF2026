@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_bullet_collide(body: Node3D) -> void:
-	if body is StaticBody3D:
+	if body is StaticBody3D or body is RigidBody3D:
 		queue_free()
 	if "healthComponent" in body:
 		body.healthComponent.damage(damage)

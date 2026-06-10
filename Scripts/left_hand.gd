@@ -2,5 +2,4 @@ extends Node3D
 
 		
 func _on_left_hand_entered(body: Node3D) -> void:
-	if "healthComponent" in body:
-		print("damage!")
+	body.healthComponent.damage(10)

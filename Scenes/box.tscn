@@ -1,12 +1,18 @@
 [gd_scene format=3 uid="uid://bistbwq8ojeym"]
 
+[ext_resource type="Script" uid="uid://b14oo4460vxkw" path="res://Scripts/box.gd" id="1_ego7h"]
 [ext_resource type="ArrayMesh" uid="uid://ympb1mm8sg1g" path="res://Graphics/Meshes/Caixa.tres" id="1_xkb4e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ebs18"]
 size = Vector3(3.2, 1.6, 1.6)
 
-[node name="Box" type="StaticBody3D" unique_id=395401012]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ego7h"]
+size = Vector3(3.1944733, 1.6141663, 1.5890198)
+
+[node name="Box" type="RigidBody3D" unique_id=1854669678]
 collision_layer = 8
+collision_mask = 105
+script = ExtResource("1_ego7h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1786171192]
 shape = SubResource("BoxShape3D_ebs18")
@@ -30,3 +36,14 @@ light_energy = 3.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66, 0, 0)
 light_color = Color(0, 0.59607846, 0.85882354, 1)
 light_energy = 3.0
+
+[node name="Area3D" type="Area3D" parent="." unique_id=574541994]
+collision_layer = 4
+collision_mask = 109
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=378429252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0011367798, 0.0027618408, -0.0023040771)
+shape = SubResource("BoxShape3D_ego7h")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

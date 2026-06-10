@@ -16,6 +16,7 @@ var moveSpeed = 1
 var hand_origin = []
 var hand_attacking = false
 var magnet_active = false
+var box_locked = false
 
 enum Attacks{
 	SHOOT,
@@ -132,9 +133,12 @@ func _box_attack():
 			target_position = global_position
 		else:
 			target_position = player.global_position
-		while caixa.global_position.distance_to(target_position) > 0.5:
-			caixa.global_position = caixa.global_position.move_toward(target_position,20 * get_process_delta_time())
-			await get_tree().process_frame
+		target_position.y = caixa.global_position.y
+		var direction = (target_position - caixa.global_position).normalized()
+		
+		caixa.target_position = target_position
+		caixa.moving = true
+		caixa.linear_velocity = direction * 15.0
 
 
 func choose_attack() -> int:
@@ -142,6 +146,9 @@ func choose_attack() -> int:
 	
 	if magnet_active:
 		available.erase(Attacks.MAGNET)
+		
+	if box_locked:
+		available.erase(Attacks.BOX)
 	if attack_history.size() >= 2:
 		var last = attack_history[-1]
 		if attack_history[-2] == last or last == Attacks.SWITCH:
@@ -165,6 +172,8 @@ func use_attack():
 		Attacks.HAND:
 			_hand_attack()
 		Attacks.BOX:
+			box_locked = true
 			_box_attack()
 		Attacks.SWITCH:
+			box_locked = false
 			_switchPolo()		
