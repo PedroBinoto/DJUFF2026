@@ -21,6 +21,7 @@ SignalBus="*uid://bmvfo54qg2v03"
 
 [display]
 
+window/size/viewport_width=700
 window/stretch/mode="canvas_items"
 
 [file_customization]

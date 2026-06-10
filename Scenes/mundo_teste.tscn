@@ -46,7 +46,7 @@ orientation = 1
 
 [node name="MundoTeste" type="Node3D" unique_id=69006548 node_paths=PackedStringArray("bossNode")]
 script = ExtResource("1_o0lqk")
-bossName = "Magneto"
+bossName = "Magnetro"
 bossNode = NodePath("MagnetBoss")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1064319974]

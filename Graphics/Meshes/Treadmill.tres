@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://l3kwho1rm50k" path="res://Graphics/Shaders/esteira_rot.gdshader" id="1_gfrcm"]
 [ext_resource type="Texture2D" uid="uid://doqcbeqj6oapl" path="res://Graphics/Meshes/Esteira_Treadnew.png" id="2_x8vud"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7xvmf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gfrcm"]
 render_priority = 0
 shader = ExtResource("1_gfrcm")
 shader_parameter/Speed = 0.0
@@ -31,7 +31,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 144,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABQAEAAIABAAGAAAABQAHAAQABgAIAAAABwAFAAgABgAJAAgABwAIAAkACAAFAAoACAAKAAsADAANAA4ADAAPAA0AEAARABIAEAATABEAEAASABQAFAASABUAFAAVABYAEAAUABcAGAAXABQAGAAUABkAEwAYABkAEwAZABEAGQAaABEAGQAbABoAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOAA7ADkAPAA9AD4APAA/AD0AQABBAEIAQABDAEEARABFAEYARABHAEUA"),
-"material": SubResource("ShaderMaterial_7xvmf"),
+"material": SubResource("ShaderMaterial_gfrcm"),
 "name": "Treadmill",
 "primitive": 3,
 "uv_scale": Vector4(2, 1.5769233, 0, 0),

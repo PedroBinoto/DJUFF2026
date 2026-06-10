@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://de46maf6jl7fu"]
+
+[ext_resource type="Shader" uid="uid://l3kwho1rm50k" path="res://Graphics/Shaders/esteira_rot.gdshader" id="1_cabul"]
+[ext_resource type="Texture2D" uid="uid://doqcbeqj6oapl" path="res://Graphics/Meshes/Esteira_Treadnew.png" id="2_4v1gg"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_cabul")
+shader_parameter/Speed = 0.0
+shader_parameter/MainTex = ExtResource("2_4v1gg")
