@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://2f82gigc4r56" path="res://Graphics/Meshes/textures/Caixa_Fantasma.png" id="5_aeqmw"]
 [ext_resource type="PackedScene" uid="uid://cs06lrpr5uy8t" path="res://Scenes/light_area.tscn" id="5_bxuwn"]
 [ext_resource type="PackedScene" uid="uid://c3uqqg6glh3wy" path="res://Scenes/game_hud.tscn" id="6_v46jx"]
+[ext_resource type="ArrayMesh" uid="uid://cti3e737wg6um" path="res://Graphics/Meshes/Arena_fantasma.tres" id="8_qu405"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebs18"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -126,6 +127,7 @@ mesh = SubResource("ArrayMesh_mkh8b")
 
 [node name="Wall_Back" type="StaticBody3D" parent="World" unique_id=1732412098]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 14, 14, 0)
+visible = false
 collision_layer = 32
 collision_mask = 17
 
@@ -150,6 +152,7 @@ mesh = SubResource("QuadMesh_puaij")
 
 [node name="Wall_Left" type="StaticBody3D" parent="World" unique_id=2021796951]
 transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, -2, 14, -16)
+visible = false
 collision_layer = 32
 collision_mask = 17
 
@@ -162,6 +165,7 @@ mesh = SubResource("QuadMesh_u5lmb")
 
 [node name="Wall_Right" type="StaticBody3D" parent="World" unique_id=2106777256]
 transform = Transform3D(-5.7320566e-15, -1.3113416e-07, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, 1.3113416e-07, 2, 14, 16)
+visible = false
 collision_layer = 32
 collision_mask = 17
 
@@ -191,3 +195,7 @@ transform = Transform3D(6.205, 0, 2.842171e-14, 0, 6.205, 0, -2.842171e-14, 0, 6
 [node name="HUD" type="CanvasLayer" parent="." unique_id=900597551]
 
 [node name="GameHUD" parent="HUD" unique_id=1756257545 instance=ExtResource("6_v46jx")]
+
+[node name="ArenaFantasma" type="MeshInstance3D" parent="." unique_id=1241060484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.681, 0)
+mesh = ExtResource("8_qu405")
