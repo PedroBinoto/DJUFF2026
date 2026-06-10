@@ -87,6 +87,7 @@ bossName = "Ghoulst"
 bossNode = NodePath("GhostBoss")
 
 [node name="Pause" parent="." unique_id=1812854460 instance=ExtResource("2_bxuwn")]
+unique_name_in_owner = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1064319974]
 environment = SubResource("Environment_bxuwn")
