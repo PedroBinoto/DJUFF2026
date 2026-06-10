@@ -16,7 +16,6 @@ func _ready() -> void:
 	healthFillTween.tween_property(player_health, "value", player_health.max_value, 3.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 
-
 func updateBossHealth(health: float) -> void:
 	var healUpdateTween = create_tween()
 	healUpdateTween.tween_property(boss_health, "value", health, (boss_health.max_value-health)/100).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)

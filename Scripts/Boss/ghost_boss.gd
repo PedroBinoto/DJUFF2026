@@ -17,8 +17,11 @@ var currentState: bodyStates = bodyStates.IDLE
 @onready var soulBullet = preload("uid://b83onsyjngaor")
 @onready var bodyBullet = preload("uid://qgqordv3giya")
 @onready var bullet_spawn_ring: Node3D = $BulletSpawnRing
-@onready var body_attack_pivot: Node3D = $BodyAttackPivot
+@onready var body_attack_pivot: Node3D = $AttackPivot
+@onready var physical_attack_area: Area3D = %PhysicalAttackArea
+@onready var sword_range: Area3D = $SwordRange
 @onready var body_sprite: AnimatedSprite3D = %AnimatedSprite3D
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var player: Player = $"../Player"
 
 var bodyTimer = 0
@@ -26,6 +29,8 @@ var soulTimer = 0
 var moveSpeed = 1
 
 var isSeeingPlayer = false
+var isPlayerInRange = false
+var isUnderLight = false
 
 
 func _ready():
@@ -59,6 +64,23 @@ func body_shoot():
 	bullet.spawn(body_attack_pivot.get_child(0).global_position, self)
 
 
+func body_sword():
+		print("Attack Physical!")
+		physical_attack_area.monitoring = true
+		animation_player.play("physical_swing")
+		#sword_sfx.play()
+		await animation_player.animation_finished
+		physical_attack_area.monitoring = false
+
+
+func _attack_body(body: Node3D) -> void:
+	if body is GhostBoss:
+		return
+	if "healthComponent" in body:
+		body.healthComponent.damage(10)
+		print(body.healthComponent.health)
+
+
 func seePlayer(state:bool) -> void:
 	isSeeingPlayer = state
 	if isSeeingPlayer:
@@ -70,12 +92,13 @@ func seePlayer(state:bool) -> void:
 
 func _physics_process(delta: float) -> void:
 	var lastVelocity = velocity
-	velocity = (player.global_position - global_position).normalized()*moveSpeed*delta
+	var distance = player.global_position - global_position
+	velocity = (distance).normalized()*moveSpeed*delta
 	move_and_slide()
 	
-	var direction = velocity.normalized()
-	direction = Vector3(round(direction.x),0,round(direction.z))
-	body_attack_pivot.rotation = Vector3(0, sign(velocity.z)*Vector3.LEFT.angle_to(direction), 0)
+	var angle = round(distance.angle_to(Vector3.LEFT)/(PI/float(4)))*(PI/float(4))
+	body_attack_pivot.rotation = Vector3(0, sign(distance.z)*angle, 0)
+	var direction = Vector3(-cos(angle), 0 , sin(angle))
 	
 	#copypaste from Lelito's code
 	if direction == Vector3.ZERO:
@@ -95,15 +118,28 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	soulTimer += delta
-	if(soulTimer >= soulShootTimeLimit):
+	if(!isUnderLight and soulTimer >= soulShootTimeLimit):
 		soul_shoot()
 		soulTimer = 0
 	
 	if(isSeeingPlayer):
-		bodyTimer += delta 
-		if(bodyTimer >= bodyShootTimeLimit):
-			body_shoot()
+		bodyTimer += delta
+		if(bodyTimer >= bodyShootTimeLimit): 
+			if isPlayerInRange:
+				body_sword()
+			else:
+				body_shoot()
 			bodyTimer = 0
+
 
 func die() -> void:
 	print("Uogh")
+
+
+func _on_sword_range_body_entered(body: Node3D) -> void:
+	if body is Player:
+		isPlayerInRange = true
+
+func _on_sword_range_body_exited(body: Node3D) -> void:
+	if body is Player:
+		isPlayerInRange = false

@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://c7x3hcbksbtu6" path="res://Graphics/Sprites/Bosses/Magnético/cabeca_azul.png" id="7_r4mv3"]
 [ext_resource type="Texture2D" uid="uid://dgciyq1mhqs4r" path="res://Graphics/Sprites/Bosses/Magnético/cabeca_vermelha.png" id="8_huldx"]
 [ext_resource type="Script" uid="uid://qj0g5jalgycx" path="res://Scripts/Components/healthComponent.gd" id="10_cjn4e"]
+[ext_resource type="Texture2D" uid="uid://cklf6nfwf3gb" path="res://Graphics/Sprites/Player/espada-Sheet.png" id="10_gh1bl"]
+[ext_resource type="AudioStream" uid="uid://cxaga00xqusb2" path="res://SFX/sword.wav" id="11_y6ibw"]
+[ext_resource type="Texture2D" uid="uid://bgo01qn6uguhd" path="res://Graphics/Sprites/Player/arma-Sheet.png" id="12_y6ibw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y6ibw"]
 atlas = ExtResource("2_wiw7d")
@@ -276,6 +279,125 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_xby22"]
 size = Vector3(1.2511444, 3.0111084, 2.6239624)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_sd13n"]
+size = Vector3(1.2819824, 0.5, 1.5)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gh1bl"]
+
+[sub_resource type="Animation" id="Animation_vgqql"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackPivot/PhysicalAttackArea/Sword:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackPivot/PhysicalAttackArea/Sword:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AttackPivot/Gun:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackPivot/Gun:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_f1ek2"]
+resource_name = "gun_shot"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackPivot/Gun:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.2999, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackPivot/Gun:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333333, 0.16666666, 0.2, 0.23333333, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 1, 2, 2, 3, 3, 0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_fkybt"]
+resource_name = "physical_swing"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackPivot/PhysicalAttackArea/Sword:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.00014335357, 0.14981517, 0.14994851),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackPivot/PhysicalAttackArea/Sword:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y6ibw"]
+_data = {
+&"RESET": SubResource("Animation_vgqql"),
+&"gun_shot": SubResource("Animation_f1ek2"),
+&"physical_swing": SubResource("Animation_fkybt")
+}
+
 [node name="GhostBoss" type="CharacterBody3D" unique_id=208974275 node_paths=PackedStringArray("healthComponent")]
 collision_layer = 8
 collision_mask = 225
@@ -384,8 +506,57 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 [node name="bulletSpawn12" type="Marker3D" parent="BulletSpawnRing" unique_id=140266365]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
-[node name="BodyAttackPivot" type="Node3D" parent="." unique_id=402247946]
+[node name="AttackPivot" type="Node3D" parent="." unique_id=402247946]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5492151, 0)
 
-[node name="Marker3D" type="Marker3D" parent="BodyAttackPivot" unique_id=1731496172]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4310112, 0, 0)
+[node name="Marker3D" type="Marker3D" parent="AttackPivot" unique_id=1731496172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6906105, 0, 0)
+
+[node name="PhysicalAttackArea" type="Area3D" parent="AttackPivot" unique_id=1120770485]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 0)
+collision_layer = 2
+collision_mask = 8
+monitoring = false
+
+[node name="Sword" type="Sprite3D" parent="AttackPivot/PhysicalAttackArea" unique_id=1325746388]
+unique_name_in_owner = true
+transform = Transform3D(-10.341569, -7.8773065, -3.4432801e-07, 0, -5.68248e-07, 13, -7.8773065, 10.341569, 4.5204433e-07, -0.26043558, -0.10467529, -0.011482671)
+modulate = Color(1, 1, 1, 0)
+shaded = true
+alpha_cut = 2
+texture_filter = 0
+texture = ExtResource("10_gh1bl")
+hframes = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackPivot/PhysicalAttackArea" unique_id=919688401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3909912, 0, 0)
+shape = SubResource("BoxShape3D_sd13n")
+
+[node name="Sword2" type="AudioStreamPlayer" parent="AttackPivot/PhysicalAttackArea" unique_id=207152547]
+stream = ExtResource("11_y6ibw")
+bus = &"SFX"
+
+[node name="Gun" type="Sprite3D" parent="AttackPivot" unique_id=1865385737]
+unique_name_in_owner = true
+transform = Transform3D(-12, 1.8119497e-06, 7.920283e-14, 0, -5.2453663e-07, 12, 1.8119497e-06, 12, 5.2453663e-07, -0.7643863, 0.54473877, 0.15056215)
+modulate = Color(1, 1, 1, 0)
+shaded = true
+alpha_cut = 2
+texture_filter = 0
+texture = ExtResource("12_y6ibw")
+hframes = 4
+
+[node name="SwordRange" type="Area3D" parent="." unique_id=1690589740]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SwordRange" unique_id=580331235]
+transform = Transform3D(4.54, 0, 0, 0, 4.54, 0, 0, 0, 4.54, 0, -0.13391113, 0)
+shape = SubResource("CylinderShape3D_gh1bl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1270697915]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_y6ibw")
+
+[connection signal="body_entered" from="AttackPivot/PhysicalAttackArea" to="." method="_attack_body"]
+[connection signal="body_entered" from="SwordRange" to="." method="_on_sword_range_body_entered"]
+[connection signal="body_exited" from="SwordRange" to="." method="_on_sword_range_body_exited"]

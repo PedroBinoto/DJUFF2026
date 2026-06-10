@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://y4wj6ivt28dc" path="res://Scenes/player.tscn" id="4_aeqmw"]
 [ext_resource type="PackedScene" uid="uid://da4cqasbhr7ne" path="res://Scenes/Boss/ghost_boss.tscn" id="4_wb0a8"]
 [ext_resource type="Texture2D" uid="uid://2f82gigc4r56" path="res://Graphics/Meshes/textures/Caixa_Fantasma.png" id="5_aeqmw"]
-[ext_resource type="PackedScene" uid="uid://cs06lrpr5uy8t" path="res://Scenes/light_area.tscn" id="5_bxuwn"]
+[ext_resource type="PackedScene" uid="uid://dbn3rlsvclrqg" path="res://Scenes/light_area.tscn" id="5_bxuwn"]
 [ext_resource type="PackedScene" uid="uid://c3uqqg6glh3wy" path="res://Scenes/game_hud.tscn" id="6_v46jx"]
 [ext_resource type="ArrayMesh" uid="uid://cti3e737wg6um" path="res://Graphics/Meshes/Arena_fantasma.tres" id="8_qu405"]
 
