@@ -30,8 +30,5 @@ func _on_bullet_collide(body: Node3D) -> void:
 		return
 	if body is GhostBoss:
 		return
-	if "healthComponent" in body:
-		print("damage!")
-		queue_free()
 	super._on_bullet_collide(body)
 	pass

@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 var moveDirection: Vector2 = Vector2.ZERO
 @export var bulletSpeed: float = 500
+@export var damage:float = 10
 
 var definedSpeed: Vector3 = Vector3.ZERO
 
@@ -15,6 +16,11 @@ func _physics_process(delta: float) -> void:
 
 func _on_bullet_collide(body: Node3D) -> void:
 	if body is StaticBody3D:
+		queue_free()
+	if "healthComponent" in body:
+		print("damage!")
+		body.healthComponent.damage(damage)
+		print(body.healthComponent.health)
 		queue_free()
 
 func spawn(position:Vector3, spawner):

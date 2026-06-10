@@ -108,11 +108,11 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_xby22"]
 size = Vector3(1.2511444, 3.0111084, 2.6239624)
 
-[node name="GhostBoss" type="CharacterBody3D" unique_id=208974275]
+[node name="GhostBoss" type="CharacterBody3D" unique_id=208974275 node_paths=PackedStringArray("healthComponent")]
 collision_layer = 8
 collision_mask = 225
 script = ExtResource("1_huldx")
-bulletSpawnRingRadius = 3.095
+healthComponent = NodePath("Components/HealthComponent")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2138815803]
 libraries/ = SubResource("AnimationLibrary_fdddd")
@@ -176,6 +176,7 @@ shape = SubResource("BoxShape3D_xby22")
 [node name="HealthComponent" type="Node" parent="Components" unique_id=1341032175 node_paths=PackedStringArray("component_owner")]
 script = ExtResource("10_cjn4e")
 component_owner = NodePath("../..")
+maxHealth = 1000.0
 metadata/_custom_type_script = "uid://qj0g5jalgycx"
 
 [node name="BulletSpawnRing" type="Node3D" parent="." unique_id=1252561270]
