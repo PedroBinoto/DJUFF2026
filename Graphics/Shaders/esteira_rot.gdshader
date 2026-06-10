@@ -1,5 +1,4 @@
 shader_type spatial;
-render_mode unshaded;
 
 uniform float Speed;
 uniform sampler2D MainTex: filter_nearest, source_color;
@@ -15,4 +14,5 @@ void fragment() {
 	vec2 n_out7p0 = vec2(n_out5p0.xy) + UV;
 // Output:0
 	ALBEDO = texture(MainTex, n_out7p0).xyz;
+	SPECULAR = 0.0;
 }

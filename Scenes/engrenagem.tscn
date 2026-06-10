@@ -5,8 +5,9 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qc2pk"]
 resource_name = "Cog"
-shading_mode = 0
 albedo_texture = ExtResource("2_j3f2a")
+metallic_specular = 0.0
+refraction_scale = 1.0
 texture_filter = 2
 texture_repeat = false
 

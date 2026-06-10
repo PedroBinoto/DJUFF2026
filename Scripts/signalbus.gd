@@ -6,3 +6,4 @@ signal updateBossbar
 signal updateBossStats
 
 signal updatePlayerbar
+signal shakeCamera

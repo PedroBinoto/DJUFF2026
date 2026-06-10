@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://y4wj6ivt28dc" path="res://Scenes/player.tscn" id="1_ebs18"]
 [ext_resource type="Script" uid="uid://4vcl3xgugl7c" path="res://Scripts/mundo_teste.gd" id="1_o0lqk"]
 [ext_resource type="PackedScene" uid="uid://bbu3h1ybllvq8" path="res://Scenes/in_game_menu.tscn" id="2_bmojv"]
+[ext_resource type="Script" uid="uid://bnrkmagxipeqg" path="res://Scripts/camera_3d.gd" id="4_i6rbu"]
 [ext_resource type="PackedScene" uid="uid://hymci7y26od1" path="res://Scenes/Boss/magnet_boss.tscn" id="4_puaij"]
 [ext_resource type="PackedScene" uid="uid://bistbwq8ojeym" path="res://Scenes/box.tscn" id="4_tcipn"]
 [ext_resource type="PackedScene" uid="uid://c3uqqg6glh3wy" path="res://Scenes/game_hud.tscn" id="4_u5lmb"]
@@ -55,10 +56,14 @@ shadow_opacity = 0.9
 directional_shadow_pancake_size = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=935099992]
+unique_name_in_owner = true
 transform = Transform3D(-4.3297277e-08, 0.5327729, -0.8462583, 6.002602e-09, 0.8462583, 0.5327729, 1, 1.7987864e-08, -3.9838703e-08, -43.88382, 29.695732, 0)
 fov = 25.0
 near = 0.1
 far = 100.0
+script = ExtResource("4_i6rbu")
+period = 0.15
+magnitude = 0.2
 
 [node name="Boxes" type="Node3D" parent="." unique_id=2137355389]
 

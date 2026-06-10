@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dbn3rlsvclrqg" path="res://Scenes/light_area.tscn" id="5_bxuwn"]
 [ext_resource type="PackedScene" uid="uid://c3uqqg6glh3wy" path="res://Scenes/game_hud.tscn" id="6_v46jx"]
 [ext_resource type="ArrayMesh" uid="uid://cti3e737wg6um" path="res://Graphics/Meshes/Arena_fantasma.tres" id="8_qu405"]
+[ext_resource type="Script" uid="uid://bnrkmagxipeqg" path="res://Scripts/camera_3d.gd" id="9_rr2ko"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebs18"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -194,8 +195,12 @@ transform = Transform3D(6.205, 0, 2.842171e-14, 0, 6.205, 0, -2.842171e-14, 0, 6
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.681, 0)
 mesh = ExtResource("8_qu405")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1741107521]
-transform = Transform3D(-4.3297277e-08, 0.5327729, -0.8462583, 6.002602e-09, 0.8462583, 0.5327729, 1, 1.7987864e-08, -3.9838703e-08, -43.88382, 29.695732, 0)
+[node name="Camera3D" type="Camera3D" parent="." unique_id=375353091]
+unique_name_in_owner = true
+transform = Transform3D(-4.280071e-08, 0.58801115, -0.80885285, 8.876066e-09, 0.80885285, 0.58801115, 1, 1.7987862e-08, -3.9838703e-08, -41.867462, 29.695732, 0)
 fov = 25.0
 near = 0.1
 far = 100.0
+script = ExtResource("9_rr2ko")
+period = 0.15
+magnitude = 0.2
