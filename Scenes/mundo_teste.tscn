@@ -139,6 +139,7 @@ shape = SubResource("WorldBoundaryShape3D_ebs18")
 [node name="GameHUD" parent="HUD" unique_id=1756257545 instance=ExtResource("4_u5lmb")]
 
 [node name="Pause" parent="." unique_id=1812854460 instance=ExtResource("2_bmojv")]
+unique_name_in_owner = true
 
 [node name="Engrenagem" parent="." unique_id=696910798 instance=ExtResource("5_u5lmb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.233876, 0.13569659, -5.655615)
