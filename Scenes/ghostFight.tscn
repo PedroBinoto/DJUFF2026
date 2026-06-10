@@ -199,3 +199,9 @@ transform = Transform3D(6.205, 0, 2.842171e-14, 0, 6.205, 0, -2.842171e-14, 0, 6
 [node name="ArenaFantasma" type="MeshInstance3D" parent="." unique_id=1241060484]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.681, 0)
 mesh = ExtResource("8_qu405")
+
+[node name="Camera3D2" type="Camera3D" parent="." unique_id=1792100906]
+transform = Transform3D(-4.371139e-08, 0.41151434, -0.9114033, 0, 0.9114033, 0.41151434, 1, 1.7987864e-08, -3.9838703e-08, -46.993, 24.255, 0)
+fov = 22.895193
+near = 0.1
+far = 100.0
