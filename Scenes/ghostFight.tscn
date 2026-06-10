@@ -106,12 +106,11 @@ shadow_enabled = true
 shadow_opacity = 0.9
 directional_shadow_pancake_size = 0.0
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=678953287]
-transform = Transform3D(0, 0.86602545, -0.49999997, 0, 0.49999997, 0.86602545, 1, 0, 0, -5.083437, 13.542027, 0.03346443)
-projection = 1
-fov = 20.0
-size = 30.0
-far = 40.0
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1792100906]
+transform = Transform3D(-4.371139e-08, 0.41151434, -0.9114033, 0, 0.9114033, 0.41151434, 1, 1.7987864e-08, -3.9838703e-08, -46.993, 24.255, 0)
+fov = 22.895193
+near = 0.1
+far = 100.0
 
 [node name="Box" type="StaticBody3D" parent="." unique_id=395401012]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.773, 0.8, 0)
@@ -199,9 +198,3 @@ transform = Transform3D(6.205, 0, 2.842171e-14, 0, 6.205, 0, -2.842171e-14, 0, 6
 [node name="ArenaFantasma" type="MeshInstance3D" parent="." unique_id=1241060484]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.681, 0)
 mesh = ExtResource("8_qu405")
-
-[node name="Camera3D2" type="Camera3D" parent="." unique_id=1792100906]
-transform = Transform3D(-4.371139e-08, 0.41151434, -0.9114033, 0, 0.9114033, 0.41151434, 1, 1.7987864e-08, -3.9838703e-08, -46.993, 24.255, 0)
-fov = 22.895193
-near = 0.1
-far = 100.0
