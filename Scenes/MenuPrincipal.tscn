@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://karg6uaj4cad" path="res://Scripts/menu_principal.gd" id="1_3k1ur"]
 [ext_resource type="Texture2D" uid="uid://bud8e4r66g0lj" path="res://file.jpg" id="2_bt1tr"]
 [ext_resource type="FontFile" uid="uid://c68ob7wtloq5y" path="res://RetroGaming.ttf" id="3_l10t8"]
+[ext_resource type="PackedScene" uid="uid://kjxbonkchuje" path="res://Scenes/creditos.tscn" id="4_3v4os"]
 [ext_resource type="AudioStream" uid="uid://cry7iva18o33h" path="res://Music/aura.mp3" id="4_qovuk"]
 [ext_resource type="Script" uid="uid://jo04k5n5a4kq" path="res://Scripts/audio_control_3.gd" id="5_qovuk"]
 [ext_resource type="Script" uid="uid://c21gbnieh4xoa" path="res://Scripts/audio_control.gd" id="5_vtrnu"]
@@ -185,12 +186,8 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_pkrck")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qovuk")
 text = "Sair"
 
-[node name="Aura" type="AudioStreamPlayer" parent="." unique_id=1064384511]
-stream = ExtResource("4_qovuk")
-autoplay = true
-bus = &"Musica"
-
 [node name="Controles" type="Panel" parent="." unique_id=1591096661]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Controles" unique_id=301650891]
@@ -520,6 +517,15 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_bt1tr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pkrck")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qovuk")
 text = "Voltar"
+
+[node name="Creditos" parent="." unique_id=1138806182 instance=ExtResource("4_3v4os")]
+visible = false
+layout_mode = 2
+
+[node name="Aura" type="AudioStreamPlayer" parent="." unique_id=1064384511]
+stream = ExtResource("4_qovuk")
+autoplay = true
+bus = &"Musica"
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Opções/Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Opções/Button2" to="." method="_on_controls_pressed"]

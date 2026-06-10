@@ -33,20 +33,27 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eml6v")
 
-[node name="Panel" type="Panel" parent="." unique_id=2121004645]
+[node name="Container" type="Control" parent="." unique_id=1256196886]
 layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Container" unique_id=2121004645]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_yyntd")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=309705657]
-layout_mode = 2
+[node name="MarginContainer" type="MarginContainer" parent="Container" unique_id=309705657]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=1469765345]
+[node name="RichTextLabel" type="RichTextLabel" parent="Container/MarginContainer" unique_id=1469765345]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("2_ykkye")
 theme_override_fonts/bold_font = ExtResource("2_ykkye")
@@ -74,7 +81,7 @@ Pedro Binoto
 Thiago Lelles
 [/center]"
 
-[node name="Button" type="Button" parent="MarginContainer" unique_id=403164131]
+[node name="Button" type="Button" parent="Container/MarginContainer" unique_id=403164131]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 10
@@ -85,4 +92,4 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ompal")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lpe7s")
 text = " Voltar "
 
-[connection signal="pressed" from="MarginContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Container/MarginContainer/Button" to="." method="_on_button_pressed"]

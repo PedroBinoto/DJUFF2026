@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 @export var healthComponent: HealthComponent = null
 @onready var player: Player = $"../Player"
-@export var shootTimeLimit = 3
+@export var shootTimeLimit = 1.5
 @export var movePercent = 0.5
 @onready var bulletScene = preload("res://Scenes/bullet_dual.tscn")
 @onready var left_hand: Node3D = $Body/Hand_L
