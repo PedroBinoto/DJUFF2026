@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 @export var healthComponent: HealthComponent = null
 @onready var player: Player = $"../Player"
-@export var shootTimeLimit = 5
+@export var shootTimeLimit = 3
 @export var movePercent = 0.5
 @onready var bulletScene = preload("res://Scenes/bullet_dual.tscn")
 @onready var left_hand: Node3D = $Body/Hand_L
@@ -15,6 +15,17 @@ var shootTimer = 0
 var moveSpeed = 1
 var hand_origin = []
 var hand_attacking = false
+var magnet_active = false
+
+enum Attacks{
+	SHOOT,
+	MAGNET,
+	HAND,
+	BOX,
+	SWITCH
+}
+
+var attack_history = []
 
 enum polo{
 	POSITIVO, NEGATIVO
@@ -35,12 +46,7 @@ func _process(delta: float) -> void:
 
 	if shootTimer >= shootTimeLimit:
 		shootTimer = 0
-		_box_attack(delta)
-		_switchPolo()
-		print("polo: ", currentPolo)
-		_hand_attack()
-		_shoot()
-		_move_player()
+		use_attack()
 
 func _shoot() -> void:
 	if player == null:
@@ -53,7 +59,10 @@ func _shoot() -> void:
 		bullet.global_position = spawn.global_position
 	
 func _move_player() -> void:
-	for i in range(60):
+	if magnet_active:
+		return
+	magnet_active = true
+	for i in range(90):
 		var dir
 		if currentPolo == polo.POSITIVO:
 			dir = 1
@@ -62,13 +71,15 @@ func _move_player() -> void:
 		var direction = (global_position - player.global_position).normalized()
 		player.velocity_modifier += dir * direction * 2
 		await get_tree().create_timer(0.05).timeout
+	magnet_active = false
 	
 func _switchPolo():
 	if currentPolo == polo.POSITIVO:
 		currentPolo = polo.NEGATIVO
 	else:
 		currentPolo = polo.POSITIVO
-
+	print("polo trocado")
+	
 func _hand_attack():
 	if hand_attacking:
 		return
@@ -86,19 +97,23 @@ func _hand_attack():
 		offset.z = -2.5
 		
 	var predicted_position = player.global_position + player.velocity.normalized() * 3
-	hand.target_position = predicted_position + offset
-	hand.target_position.y = hand_origin[i].y
-	hand.attacking = true
-	while hand.global_position.distance_to(hand.target_position) > 0.5:
-		await get_tree().process_frame
+	var target = predicted_position + offset
+	target.y = hand_origin[i].y
+	
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	
+	tween.tween_property(hand, "global_position", target, 0.5)
+	await tween.finished
+	
+	tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
 
-	hand.target_position = hand_origin[i]
+	tween.tween_property(hand, "global_position", hand_origin[i], 0.5)
 
-	while hand.global_position.distance_to(hand_origin[i]) > 0.5:
-		await get_tree().process_frame
-
-	hand.global_position = hand_origin[i]
-	hand.attacking = false
+	await tween.finished
 
 	hand_attacking = false
 	
@@ -107,7 +122,7 @@ func die() -> void:
 	pass
 
 
-func _box_attack(delta):
+func _box_attack():
 	var chosen_boxes = boxes.get_children()
 	chosen_boxes.shuffle()
 	chosen_boxes = chosen_boxes.slice(0, 3)
@@ -120,3 +135,36 @@ func _box_attack(delta):
 		while caixa.global_position.distance_to(target_position) > 0.5:
 			caixa.global_position = caixa.global_position.move_toward(target_position,20 * get_process_delta_time())
 			await get_tree().process_frame
+
+
+func choose_attack() -> int:
+	var available = [Attacks.SHOOT, Attacks.MAGNET, Attacks.HAND, Attacks.BOX, Attacks.SWITCH]
+	
+	if magnet_active:
+		available.erase(Attacks.MAGNET)
+	if attack_history.size() >= 2:
+		var last = attack_history[-1]
+		if attack_history[-2] == last or last == Attacks.SWITCH:
+			available.erase(last)
+			
+	var attack = available.pick_random()
+	attack_history.append(attack)
+	
+	if attack_history.size() > 2:
+		attack_history.pop_front()
+		
+	return attack
+	
+	
+func use_attack():
+	match choose_attack():
+		Attacks.SHOOT:
+			_shoot()
+		Attacks.MAGNET:
+			_move_player()
+		Attacks.HAND:
+			_hand_attack()
+		Attacks.BOX:
+			_box_attack()
+		Attacks.SWITCH:
+			_switchPolo()		
