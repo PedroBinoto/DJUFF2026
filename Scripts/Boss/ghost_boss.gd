@@ -15,7 +15,7 @@ var currentState: bodyStates = bodyStates.IDLE
 @export var movePercent = 0.4
 
 @onready var soulBullet = preload("uid://b83onsyjngaor")
-@onready var bodyBullet = preload("uid://qgqordv3giya")
+@onready var bodyBullet = preload("uid://pbj02vkl5jks")
 @onready var bullet_spawn_ring: Node3D = $BulletSpawnRing
 @onready var body_attack_pivot: Node3D = $AttackPivot
 @onready var physical_attack_area: Area3D = %PhysicalAttackArea
@@ -62,10 +62,11 @@ func soul_shoot():
 func body_shoot():
 	var bullet = bodyBullet.instantiate()
 	bullet.spawn(body_attack_pivot.get_child(0).global_position, self)
+	animation_player.play("gun_shot")
+	#shoot_sfx.splay()
 
 
 func body_sword():
-		print("Attack Physical!")
 		physical_attack_area.monitoring = true
 		animation_player.play("physical_swing")
 		#sword_sfx.play()
@@ -74,9 +75,8 @@ func body_sword():
 
 
 func _attack_body(body: Node3D) -> void:
-	if body is GhostBoss:
-		return
-	if "healthComponent" in body:
+	if body is Player:
+		print("Attack body")
 		body.healthComponent.damage(10)
 		print(body.healthComponent.health)
 

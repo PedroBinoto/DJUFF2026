@@ -441,9 +441,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6906105, 0, 0)
 
 [node name="PhysicalAttackArea" type="Area3D" parent="AttackPivot" unique_id=1120770485]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2854145, 0.5, 0)
 collision_layer = 2
-collision_mask = 8
+collision_mask = 9
 monitoring = false
 
 [node name="Sword" type="Sprite3D" parent="AttackPivot/PhysicalAttackArea" unique_id=1325746388]
