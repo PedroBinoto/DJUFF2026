@@ -9,6 +9,7 @@ extends CharacterBody3D
 @onready var left_hand: Node3D = $Body/Hand_L
 @onready var right_hand: Node3D = $Body/Hand_R
 @onready var boxes: Node3D = $"../Boxes"
+@onready var body: Node3D = $Body
 
 
 var shootTimer = 0
@@ -17,6 +18,8 @@ var hand_origin = []
 var hand_attacking = false
 var magnet_active = false
 var box_locked = false
+
+var timer = 0;
 
 enum Attacks{
 	SHOOT,
@@ -27,6 +30,7 @@ enum Attacks{
 }
 
 var attack_history = []
+var body_origin
 
 enum polo{
 	POSITIVO, NEGATIVO
@@ -35,11 +39,15 @@ var currentPolo: polo = polo.POSITIVO
 
 func _ready() -> void:
 	moveSpeed = player.playerSpeed*movePercent
-	hand_origin = [left_hand.global_position, right_hand.global_position]
+	hand_origin = [left_hand.position, right_hand.position]
+	body_origin = body.position
 	
 func _physics_process(delta: float) -> void:
+	timer += delta
+	velocity = 4*Vector3(-2*sin(timer), 0, cos(timer)-2.3*cos(2.3*timer))
 	if !is_on_floor():
 		velocity.y -= 50 * delta
+		
 	move_and_slide()
 
 func _process(delta: float) -> void:
@@ -112,8 +120,7 @@ func _hand_attack():
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_ease(Tween.EASE_IN_OUT)
 
-	tween.tween_property(hand, "global_position", hand_origin[i], 0.5)
-
+	tween.tween_property(hand, "position", hand_origin[i], 0.5)
 	await tween.finished
 
 	hand_attacking = false
