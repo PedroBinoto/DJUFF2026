@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://y4wj6ivt28dc" path="res://Scenes/player.tscn" id="4_aeqmw"]
 [ext_resource type="PackedScene" uid="uid://da4cqasbhr7ne" path="res://Scenes/Boss/ghost_boss.tscn" id="4_wb0a8"]
 [ext_resource type="PackedScene" uid="uid://dbn3rlsvclrqg" path="res://Scenes/light_area.tscn" id="5_bxuwn"]
+[ext_resource type="PackedScene" uid="uid://c3uqqg6glh3wy" path="res://Scenes/game_hud.tscn" id="6_v46jx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebs18"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -147,3 +148,7 @@ transform = Transform3D(-6.205, 0, 5.4245834e-07, 0, 6.205, 0, -5.4245834e-07, 0
 
 [node name="Light_Area_Rigth" parent="World" unique_id=1402012039 instance=ExtResource("5_bxuwn")]
 transform = Transform3D(6.205, 0, 2.842171e-14, 0, 6.205, 0, -2.842171e-14, 0, 6.205, 0, 0.73504233, 10.900089)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=900597551]
+
+[node name="GameHUD" parent="HUD" unique_id=1756257545 instance=ExtResource("6_v46jx")]

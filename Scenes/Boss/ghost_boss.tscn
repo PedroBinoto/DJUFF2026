@@ -342,7 +342,7 @@ shape = SubResource("BoxShape3D_xby22")
 [node name="HealthComponent" type="Node" parent="Components" unique_id=1341032175 node_paths=PackedStringArray("component_owner")]
 script = ExtResource("10_cjn4e")
 component_owner = NodePath("../..")
-maxHealth = 1000.0
+maxHealth = 500.0
 metadata/_custom_type_script = "uid://qj0g5jalgycx"
 
 [node name="BulletSpawnRing" type="Node3D" parent="." unique_id=1252561270]
