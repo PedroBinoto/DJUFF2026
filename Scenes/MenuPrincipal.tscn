@@ -200,6 +200,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="Controles/VBoxContainer" unique_id=221650249]
 layout_mode = 2
@@ -207,6 +208,10 @@ theme_override_fonts/font = ExtResource("3_l10t8")
 theme_override_font_sizes/font_size = 60
 text = "Opções"
 horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Controles/VBoxContainer" unique_id=210466320]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Controles/VBoxContainer" unique_id=1826481899]
 layout_mode = 2
@@ -217,14 +222,21 @@ layout_mode = 2
 
 [node name="Audio" type="Label" parent="Controles/VBoxContainer/HBoxContainer" unique_id=1768535367]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_l10t8")
 theme_override_font_sizes/font_size = 40
 text = "Áudio"
 horizontal_alignment = 2
 
+[node name="MarginContainer3" type="MarginContainer" parent="Controles/VBoxContainer/HBoxContainer" unique_id=1270296806]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="AudioControl3" type="HSlider" parent="Controles/VBoxContainer/HBoxContainer" unique_id=850413272]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_styles/slider = SubResource("StyleBoxLine_bt1tr")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_l10t8")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_l10t8")
@@ -235,10 +247,11 @@ script = ExtResource("5_qovuk")
 audio_bus_name = "Master"
 
 [node name="MarginContainer" type="MarginContainer" parent="Controles/VBoxContainer/HBoxContainer" unique_id=73998672]
-custom_minimum_size = Vector2(32, 0)
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Controles/VBoxContainer/HBoxContainer" unique_id=2035808030]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -264,6 +277,7 @@ text = "Efeitos Sonoros"
 horizontal_alignment = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Controles/VBoxContainer/HBoxContainer" unique_id=1129692664]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -298,71 +312,214 @@ theme_override_fonts/font = ExtResource("3_l10t8")
 theme_override_font_sizes/font_size = 40
 script = ExtResource("7_hbekh")
 
-[node name="Voltar" type="Button" parent="Controles" unique_id=136605177]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.411
-anchor_top = 0.748
-anchor_right = 0.411
-anchor_bottom = 0.748
-offset_left = 0.5279846
-offset_top = 0.29599
-offset_right = 204.52798
-offset_bottom = 55.29599
-grow_horizontal = 2
-grow_vertical = 0
+[node name="HBoxContainer2" type="HBoxContainer" parent="Controles/VBoxContainer" unique_id=1915984516]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Controles/VBoxContainer/HBoxContainer2" unique_id=1212712718]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Musica2" type="Label" parent="Controles/VBoxContainer/HBoxContainer2" unique_id=68861317]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_l10t8")
+theme_override_font_sizes/font_size = 40
+text = "Música"
+horizontal_alignment = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="Controles/VBoxContainer/HBoxContainer2" unique_id=1886168891]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AudioControl" type="HSlider" parent="Controles/VBoxContainer/HBoxContainer2" unique_id=1479982191]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/slider = SubResource("StyleBoxLine_bt1tr")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_l10t8")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_l10t8")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("5_vtrnu")
+audio_bus_name = "Musica"
+
+[node name="MarginContainer" type="MarginContainer" parent="Controles/VBoxContainer/HBoxContainer2" unique_id=106967270]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controles/VBoxContainer/HBoxContainer2" unique_id=1482078367]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SFX" type="Label" parent="Controles/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=105057718]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_l10t8")
+theme_override_font_sizes/font_size = 40
+text = "Efeitos Sonoros"
+horizontal_alignment = 2
+
+[node name="Fullscreen" type="Label" parent="Controles/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1868297474]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_l10t8")
+theme_override_font_sizes/font_size = 40
+text = "Efeitos Sonoros"
+horizontal_alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Controles/VBoxContainer/HBoxContainer2" unique_id=687725294]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AudioControl2" type="HSlider" parent="Controles/VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=1680629726]
+layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_bt1tr")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_l10t8")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_l10t8")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("6_vtrnu")
+audio_bus_name = "SFX"
+
+[node name="CheckButton" type="CheckButton" parent="Controles/VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=65485903]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_l10t8")
+theme_override_font_sizes/font_size = 40
+script = ExtResource("7_hbekh")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Controles/VBoxContainer" unique_id=596866918]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Controles/VBoxContainer/HBoxContainer3" unique_id=1619495389]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="SFX" type="Label" parent="Controles/VBoxContainer/HBoxContainer3" unique_id=265594816]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_l10t8")
+theme_override_font_sizes/font_size = 40
+text = "Efeitos"
+horizontal_alignment = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="Controles/VBoxContainer/HBoxContainer3" unique_id=2102171303]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AudioControl2" type="HSlider" parent="Controles/VBoxContainer/HBoxContainer3" unique_id=183758010]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/slider = SubResource("StyleBoxLine_bt1tr")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_l10t8")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_l10t8")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("6_vtrnu")
+audio_bus_name = "SFX"
+
+[node name="MarginContainer" type="MarginContainer" parent="Controles/VBoxContainer/HBoxContainer3" unique_id=1597760028]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Controles/VBoxContainer" unique_id=129794547]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Controles/VBoxContainer/HBoxContainer4" unique_id=212652044]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Fullscreen" type="Label" parent="Controles/VBoxContainer/HBoxContainer4" unique_id=1091035732]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_l10t8")
+theme_override_font_sizes/font_size = 40
+text = "Tela Cheia"
+horizontal_alignment = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="Controles/VBoxContainer/HBoxContainer4" unique_id=1215671175]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheckButton" type="CheckButton" parent="Controles/VBoxContainer/HBoxContainer4" unique_id=1196482272]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_l10t8")
+theme_override_font_sizes/font_size = 40
+script = ExtResource("7_hbekh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Controles/VBoxContainer/HBoxContainer4" unique_id=1052532808]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Controles/VBoxContainer" unique_id=1299961777]
+layout_mode = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.5
+
+[node name="MarginContainer2" type="MarginContainer" parent="Controles/VBoxContainer/HBoxContainer5" unique_id=1626201640]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="ControlConfig" type="Label" parent="Controles/VBoxContainer/HBoxContainer5" unique_id=1958385028]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_l10t8")
+theme_override_font_sizes/font_size = 40
+text = "Controles"
+horizontal_alignment = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="Controles/VBoxContainer/HBoxContainer5" unique_id=442082972]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controles/VBoxContainer/HBoxContainer5" unique_id=1377717899]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="Controles/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=857179501]
+layout_mode = 2
+script = ExtResource("8_pkrck")
+
+[node name="ComandosLabel" type="RichTextLabel" parent="Controles/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1760228468]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_l10t8")
+theme_override_fonts/bold_font = ExtResource("3_l10t8")
+theme_override_fonts/bold_italics_font = ExtResource("3_l10t8")
+theme_override_fonts/italics_font = ExtResource("3_l10t8")
+theme_override_fonts/mono_font = ExtResource("3_l10t8")
+fit_content = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Controles/VBoxContainer/HBoxContainer5" unique_id=986421205]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="Controles/VBoxContainer" unique_id=44338885]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Controles/VBoxContainer" unique_id=1427487150]
+layout_mode = 2
+
+[node name="Voltar" type="Button" parent="Controles/VBoxContainer/CenterContainer" unique_id=136605177]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+size_flags_vertical = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_bt1tr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pkrck")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qovuk")
 text = "Voltar"
-
-[node name="ControlConfig" type="Label" parent="Controles" unique_id=1958385028]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.046000004
-anchor_top = 0.56700003
-anchor_right = 0.046000004
-anchor_bottom = 0.56700003
-offset_left = -0.15400314
-offset_top = 0.11999512
-offset_right = 432.846
-offset_bottom = 40.119995
-theme_override_fonts/font = ExtResource("3_l10t8")
-theme_override_font_sizes/font_size = 40
-text = "Controles"
-horizontal_alignment = 2
-
-[node name="OptionButton" type="OptionButton" parent="Controles" unique_id=857179501]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.555
-anchor_top = 0.55600005
-anchor_right = 0.555
-anchor_bottom = 0.55600005
-offset_left = -0.19500732
-offset_top = 0.15997314
-offset_right = 302.805
-offset_bottom = 55.159973
-script = ExtResource("8_pkrck")
-
-[node name="ComandosLabel" type="RichTextLabel" parent="Controles" unique_id=1760228468]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.56
-anchor_top = 0.63600004
-anchor_right = 0.56
-anchor_bottom = 0.63600004
-offset_left = 0.05999756
-offset_top = 16.95996
-offset_right = 300.06
-offset_bottom = 120.95996
-theme_override_fonts/normal_font = ExtResource("3_l10t8")
-theme_override_fonts/bold_font = ExtResource("3_l10t8")
-theme_override_fonts/bold_italics_font = ExtResource("3_l10t8")
-theme_override_fonts/italics_font = ExtResource("3_l10t8")
-theme_override_fonts/mono_font = ExtResource("3_l10t8")
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Opções/Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Opções/Button2" to="." method="_on_controls_pressed"]
@@ -372,5 +529,10 @@ theme_override_fonts/mono_font = ExtResource("3_l10t8")
 [connection signal="value_changed" from="Controles/VBoxContainer/HBoxContainer/VBoxContainer2/AudioControl" to="Controles/VBoxContainer/HBoxContainer/VBoxContainer2/AudioControl" method="_on_value_changed"]
 [connection signal="value_changed" from="Controles/VBoxContainer/HBoxContainer/VBoxContainer2/AudioControl2" to="Controles/VBoxContainer/HBoxContainer/VBoxContainer2/AudioControl2" method="_on_value_changed"]
 [connection signal="toggled" from="Controles/VBoxContainer/HBoxContainer/VBoxContainer2/CheckButton" to="Controles/VBoxContainer/HBoxContainer/VBoxContainer2/CheckButton" method="_on_toggled"]
-[connection signal="pressed" from="Controles/Voltar" to="." method="_on_voltar_pressed"]
-[connection signal="item_selected" from="Controles/OptionButton" to="Controles/OptionButton" method="_on_item_selected"]
+[connection signal="value_changed" from="Controles/VBoxContainer/HBoxContainer2/AudioControl" to="Controles/VBoxContainer/HBoxContainer2/AudioControl" method="_on_value_changed"]
+[connection signal="value_changed" from="Controles/VBoxContainer/HBoxContainer2/VBoxContainer2/AudioControl2" to="Controles/VBoxContainer/HBoxContainer2/VBoxContainer2/AudioControl2" method="_on_value_changed"]
+[connection signal="toggled" from="Controles/VBoxContainer/HBoxContainer2/VBoxContainer2/CheckButton" to="Controles/VBoxContainer/HBoxContainer2/VBoxContainer2/CheckButton" method="_on_toggled"]
+[connection signal="value_changed" from="Controles/VBoxContainer/HBoxContainer3/AudioControl2" to="Controles/VBoxContainer/HBoxContainer3/AudioControl2" method="_on_value_changed"]
+[connection signal="toggled" from="Controles/VBoxContainer/HBoxContainer4/CheckButton" to="Controles/VBoxContainer/HBoxContainer4/CheckButton" method="_on_toggled"]
+[connection signal="item_selected" from="Controles/VBoxContainer/HBoxContainer5/VBoxContainer/OptionButton" to="Controles/VBoxContainer/HBoxContainer5/VBoxContainer/OptionButton" method="_on_item_selected"]
+[connection signal="pressed" from="Controles/VBoxContainer/CenterContainer/Voltar" to="." method="_on_voltar_pressed"]

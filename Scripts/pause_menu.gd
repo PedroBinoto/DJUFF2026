@@ -18,10 +18,12 @@ func _ready() -> void:
 func pauseMenu():
 	if paused:
 		hide()
+		paused = !paused
 		get_tree().paused = false
 	else:
 		show()
-	paused = !paused
+		paused = !paused
+	
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
