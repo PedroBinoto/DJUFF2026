@@ -1,0 +1,46 @@
+[gd_resource type="VisualShader" format=3 uid="uid://csq2jd7urnh6i"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_8bd6q"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_qwlk7"]
+parameter_name = "Speed"
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_wb30p"]
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_bb2u7"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_7rbe8"]
+parameter_name = "MainTex"
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_k2c6a"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_r5nul"]
+output_port_for_preview = 0
+expanded_output_ports = [0]
+source = 5
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_8bd6q"]
+output_port_for_preview = 0
+
+[resource]
+preview_params/MainTex = "Resource(\"uid://doqcbeqj6oapl\", \"res://Graphics/Meshes/Esteira_Treadnew.png\")"
+nodes/fragment/0/position = Vector2(780, 380)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_8bd6q")
+nodes/fragment/2/position = Vector2(-720, 200)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatParameter_qwlk7")
+nodes/fragment/3/position = Vector2(-760, 380)
+nodes/fragment/4/node = SubResource("VisualShaderNodeVectorCompose_wb30p")
+nodes/fragment/4/position = Vector2(-440, 340)
+nodes/fragment/5/node = SubResource("VisualShaderNodeVectorOp_bb2u7")
+nodes/fragment/5/position = Vector2(-240, 120)
+nodes/fragment/6/node = SubResource("VisualShaderNodeTexture2DParameter_7rbe8")
+nodes/fragment/6/position = Vector2(-60, 420)
+nodes/fragment/7/node = SubResource("VisualShaderNodeUVFunc_k2c6a")
+nodes/fragment/7/position = Vector2(20, 180)
+nodes/fragment/8/node = SubResource("VisualShaderNodeTexture_r5nul")
+nodes/fragment/8/position = Vector2(280, 260)
+nodes/fragment/9/node = SubResource("VisualShaderNodeVectorCompose_8bd6q")
+nodes/fragment/9/position = Vector2(520, 80)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 2, 0, 5, 0, 4, 0, 5, 1, 5, 0, 7, 2, 7, 0, 8, 0, 6, 0, 8, 2, 8, 4, 0, 1, 8, 1, 9, 0, 8, 2, 9, 1, 8, 3, 9, 2, 9, 0, 0, 0)

@@ -2,9 +2,11 @@ extends Area3D
 
 @export var linear_velocity: Vector3 = Vector3.LEFT * PI
 var player: Node3D
+@onready var mesh: MeshInstance3D = %Mesh
+
 
 func _ready() -> void:
-	$Mesh.get_active_material(0).set_shader_parameter("Speed", sign(linear_velocity.x) * .4)
+	mesh.get_active_material(0).set_shader_parameter("Speed", sign(linear_velocity.x) * .4)
 
 func _on_body_entered(body: Node3D) -> void:
 	player = body

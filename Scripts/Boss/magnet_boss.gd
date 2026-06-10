@@ -96,3 +96,6 @@ func _hand_attack():
 
 	hand_attacking = false
 	
+func die() -> void:
+	print("Uogh")
+	pass

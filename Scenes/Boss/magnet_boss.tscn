@@ -116,10 +116,11 @@ size = Vector3(0.99557495, 2.3239746, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xby22"]
 size = Vector3(1.2511444, 3.0111084, 2.6239624)
 
-[node name="MagnetBoss" type="CharacterBody3D" unique_id=208974275]
+[node name="MagnetBoss" type="CharacterBody3D" unique_id=208974275 node_paths=PackedStringArray("healthComponent")]
 collision_layer = 8
 collision_mask = 97
 script = ExtResource("1_8gamq")
+healthComponent = NodePath("Components/HealthComponent")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2138815803]
 libraries/ = SubResource("AnimationLibrary_fdddd")
@@ -211,6 +212,7 @@ transform = Transform3D(0.9168999, -0.39911717, 0, 0.39911717, 0.9168999, 0, 0, 
 [node name="HealthComponent" type="Node" parent="Components" unique_id=1341032175 node_paths=PackedStringArray("component_owner")]
 script = ExtResource("10_00scm")
 component_owner = NodePath("../..")
+maxHealth = 500.0
 metadata/_custom_type_script = "uid://qj0g5jalgycx"
 
 [connection signal="body_entered" from="Body/Hand_L/Area3D" to="Body/Hand_R" method="_on_right_hand_entered"]

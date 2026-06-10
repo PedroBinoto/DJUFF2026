@@ -4,7 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dfscq0novnvcr" path="res://Graphics/Meshes/Treadmill.tres" id="3_x2jjx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_olip6"]
-size = Vector3(5.198105, 1.3840332, 1.5922241)
+size = Vector3(4, 1.384, 1.592)
 
 [node name="Esteira" type="Area3D" unique_id=1344009382]
 collision_layer = 32
@@ -12,10 +12,12 @@ script = ExtResource("1_74ayo")
 linear_velocity = Vector3(-3.142, 0, 0)
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=620842530]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021254897, 0.041009665, 0.034484744)
 mesh = ExtResource("3_x2jjx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=786167303]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0039138794, 0.40441895, -0.005706787)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00017356873, 0.40441895, -0.005706787)
 shape = SubResource("BoxShape3D_olip6")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

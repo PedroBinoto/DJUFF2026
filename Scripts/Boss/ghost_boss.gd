@@ -80,3 +80,6 @@ func _process(delta: float) -> void:
 		if(bodyTimer >= bodyShootTimeLimit):
 			body_shoot()
 			bodyTimer = 0
+
+func die() -> void:
+	print("Uogh")

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://hymci7y26od1" path="res://Scenes/Boss/magnet_boss.tscn" id="4_puaij"]
 [ext_resource type="PackedScene" uid="uid://c3uqqg6glh3wy" path="res://Scenes/game_hud.tscn" id="4_u5lmb"]
 [ext_resource type="PackedScene" uid="uid://lkrjq7sy8y4y" path="res://Scenes/engrenagem.tscn" id="5_u5lmb"]
-[ext_resource type="PackedScene" uid="uid://cai47x8vc1tx0" path="res://Scenes/esteira.tscn" id="7_rmxy5"]
+[ext_resource type="PackedScene" uid="uid://cai47x8vc1tx0" path="res://Scenes/Esteira.tscn" id="7_rmxy5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebs18"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)

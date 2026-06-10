@@ -151,6 +151,10 @@ func _handle_dash() -> void:
 
 func _attack_body(body: Node3D) -> void:
 	print("Entity Detected Within Range!")
+	if "healthComponent" in body:
+		print("damage!")
+		body.healthComponent.damage(25)
+		print(body.healthComponent.health)
 
 func create_force(index: Node, defaultValue: Vector3) -> void:
 	appliedForces[index] = defaultValue

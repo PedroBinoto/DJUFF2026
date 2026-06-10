@@ -14,7 +14,7 @@ func _process(_delta: float) -> void:
 	if (player):
 		var offset = Vector3((player.position.x - position.x), 0, (player.position.z - position.z))
 		var force = angular_velocity.cross(offset)
-		player.update_force(self, force)
+		player.update_force(self, force * 0.6333)
 
 func _on_body_exited(_body: Node3D) -> void:
 	player.delete_force(self)

@@ -24,7 +24,7 @@ func _on_bullet_collide(body: Node3D) -> void:
 		queue_free()
 
 func spawn(position:Vector3, spawner):
-	scale = Vector3.ZERO
+	scale = Vector3(0.001, 0.001, 0.001)
 	var moveDir3D = spawner.global_position - position
 	moveDirection = -Vector2(moveDir3D.x, moveDir3D.z).normalized()
 	spawner.get_tree().root.add_child(self)
