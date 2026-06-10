@@ -59,7 +59,7 @@ func _handle_movement(delta: float) -> void:
 	velocity = Vector3(movement.x, 0, movement.y) + velocity_modifier
 	velocity_modifier = velocity_modifier.lerp(Vector3.ZERO, 5 * delta)
 	
-	if velocity == Vector3.ZERO:
+	if direction == Vector2.ZERO:
 		if currentState != playerStates.IDLE:
 			if lastVelocity.x > 0:
 				animated_sprite_3d.play("idle_back")
