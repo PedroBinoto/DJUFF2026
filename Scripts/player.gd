@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("attack_b"):
 			_handle_attack(false)
 	if !is_on_floor():
-		velocity.y -= 10*delta
+		velocity.y -= 1000 * delta
 		move_and_slide()
 
 var dashDirection: Vector2 = Vector2.ZERO
@@ -98,8 +98,9 @@ func _input(event: InputEvent) -> void:
 			if event.is_action_pressed("player_dash"):
 				_handle_dash()
 		if event.is_action_pressed("pause"):
+			SignalBus.pauseGame.emit()
 			get_tree().paused = true
-
+			
 func _handle_attack(attackType: bool) -> void:
 	if isDashing:
 		return

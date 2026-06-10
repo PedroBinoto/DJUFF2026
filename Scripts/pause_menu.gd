@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var controles: Panel = $Controles
+@onready var controles: Panel = %Controles
 @onready var pause_menu: Control = %PauseMenu
 
 @onready var audio_control_3: HSlider = %AudioControl3 # Geral
