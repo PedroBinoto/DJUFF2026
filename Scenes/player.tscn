@@ -126,7 +126,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v0iea"]
-size = Vector3(1.25, 1.5, 1.25)
+size = Vector3(0.5003662, 0.80337894, 0.6196289)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6t5aa"]
 size = Vector3(1.2819824, 0.5, 1.5)
@@ -262,7 +262,7 @@ unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_x3wgy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1697268372]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.525066, 0.05493164)
 shape = SubResource("BoxShape3D_v0iea")
 
 [node name="AttackCooldown" type="Timer" parent="." unique_id=348103525]
@@ -286,6 +286,7 @@ maxHealth = 100.0
 
 [node name="AttackPivot" type="Node3D" parent="." unique_id=1486665941]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04100272, 0)
 
 [node name="RangedSpawnLocation" type="Marker3D" parent="AttackPivot" unique_id=964174688]
 unique_name_in_owner = true
@@ -332,7 +333,7 @@ bus = &"SFX"
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=86392034]
 unique_name_in_owner = true
-transform = Transform3D(-3.4969108e-07, 0, -8, 0, 7.9999995, 0, 7.9999995, 0, -3.496911e-07, 0, 0.25, 0)
+transform = Transform3D(-3.4969108e-07, 0, -8, 0, 7.9999995, 0, 7.9999995, 0, -3.496911e-07, 0, 0.29223728, 0)
 offset = Vector2(0, 4)
 billboard = 1
 shaded = true
