@@ -2,10 +2,42 @@
 
 [ext_resource type="Script" uid="uid://ca2metsmspqft" path="res://Scripts/bullet_player.gd" id="1_e0o6h"]
 [ext_resource type="AudioStream" uid="uid://bern5g5xdnwun" path="res://SFX/Hit28 (1).wav" id="2_10oju"]
+[ext_resource type="Shader" uid="uid://b4wo6th50wwax" path="res://Graphics/pan_shader.tres" id="2_s7kla"]
+[ext_resource type="Texture2D" uid="uid://desvidmlcu1br" path="res://Graphics/Meshes/textures/Voronoi.png" id="3_22oib"]
+[ext_resource type="Texture2D" uid="uid://c6ka53w5yu2dd" path="res://Graphics/Meshes/textures/Circle.png" id="4_q1ekt"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_4mw4s"]
-radius = 0.25
-height = 0.5
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s7kla"]
+render_priority = 0
+shader = ExtResource("2_s7kla")
+shader_parameter/MainTexSpeed = Vector2(0.3, 0.3)
+shader_parameter/MainTex = ExtResource("3_22oib")
+shader_parameter/MainTexPower = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_22oib"]
+gravity = Vector3(0, 0, 0)
+color = Color(0.4392157, 0.44705883, 0.4392157, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_q1ekt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6rt0"]
+transparency = 1
+blend_mode = 4
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_q1ekt")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xsiod"]
+gravity = Vector3(0, 0, 0)
+scale_min = 1.4
+scale_max = 1.4
+color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_j4p15"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xjght"]
 radius = 0.25
@@ -17,8 +49,25 @@ radius = 0.25
 script = ExtResource("1_e0o6h")
 bulletSpeed = 750.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1998854043]
-mesh = SubResource("SphereMesh_4mw4s")
+[node name="Projetil" type="Node3D" parent="." unique_id=1393788251]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Esfera" type="GPUParticles3D" parent="Projetil" unique_id=2026183889]
+material_override = SubResource("ShaderMaterial_s7kla")
+amount = 1
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_22oib")
+draw_pass_1 = SubResource("SphereMesh_q1ekt")
+
+[node name="Flare" type="GPUParticles3D" parent="Projetil" unique_id=1935792602]
+sorting_offset = -1.0
+material_override = SubResource("StandardMaterial3D_g6rt0")
+amount = 1
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_xsiod")
+draw_pass_1 = SubResource("QuadMesh_j4p15")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1909237146]
 shape = SubResource("SphereShape3D_xjght")

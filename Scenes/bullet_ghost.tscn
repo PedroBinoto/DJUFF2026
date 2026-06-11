@@ -38,6 +38,39 @@ color = Color(0.7764706, 0.7176471, 0.4627451, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_pacpc"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_axmc0"]
+render_priority = 0
+shader = ExtResource("2_axmc0")
+shader_parameter/MainTexSpeed = Vector2(0.3, 0.3)
+shader_parameter/MainTex = ExtResource("3_8yqhh")
+shader_parameter/MainTexPower = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8yqhh"]
+gravity = Vector3(0, 0, 0)
+color = Color(0.7058824, 0.7019608, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_hv5bx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lm2ne"]
+transparency = 1
+blend_mode = 4
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_hv5bx")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rihy7"]
+gravity = Vector3(0, 0, 0)
+scale_min = 1.4
+scale_max = 1.4
+color = Color(0.3764706, 0.39215687, 1, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_wyglc"]
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_xjght"]
 radius = 0.25
 
@@ -48,6 +81,7 @@ radius = 0.25
 script = ExtResource("1_euwk6")
 
 [node name="Projetil" type="Node3D" parent="." unique_id=1406690424]
+unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Esfera" type="GPUParticles3D" parent="Projetil" unique_id=361899452]
@@ -66,6 +100,28 @@ fixed_fps = 60
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_awlv1")
 draw_pass_1 = SubResource("QuadMesh_pacpc")
+
+[node name="Projetil2" type="Node3D" parent="." unique_id=1382942170]
+unique_name_in_owner = true
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
+
+[node name="Esfera" type="GPUParticles3D" parent="Projetil2" unique_id=864504768]
+material_override = SubResource("ShaderMaterial_axmc0")
+amount = 1
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_8yqhh")
+draw_pass_1 = SubResource("SphereMesh_hv5bx")
+
+[node name="Flare" type="GPUParticles3D" parent="Projetil2" unique_id=964124716]
+sorting_offset = -1.0
+material_override = SubResource("StandardMaterial3D_lm2ne")
+amount = 1
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_rihy7")
+draw_pass_1 = SubResource("QuadMesh_wyglc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1909237146]
 shape = SubResource("SphereShape3D_xjght")
