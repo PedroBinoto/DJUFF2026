@@ -523,6 +523,7 @@ layout_mode = 2
 
 [node name="Aura" type="AudioStreamPlayer" parent="." unique_id=1064384511]
 stream = ExtResource("4_qovuk")
+volume_db = 2.0
 autoplay = true
 bus = &"Musica"
 
