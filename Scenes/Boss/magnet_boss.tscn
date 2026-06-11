@@ -139,6 +139,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 2, 0)
 offset = Vector2(0, 8)
 billboard = 1
+shaded = true
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_u2ii0")
@@ -152,6 +153,7 @@ transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 1.25, 0, 0)
 transform = Transform3D(1.7484564e-07, 6.9282036, -3.9999998, 3.0284139e-07, 3.9999998, 6.9282036, 8, -3.0284144e-07, -1.7484554e-07, -1.25, -1.75, 0)
 offset = Vector2(0, 21)
 billboard = 1
+shaded = true
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_7lnnt")
@@ -164,6 +166,7 @@ script = ExtResource("6_fdddd")
 [node name="Hand_Left" type="AnimatedSprite3D" parent="Body/Hand_L" unique_id=663376429]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0.5, -0.5, -2.5)
 billboard = 1
+shaded = true
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_whqey")
@@ -183,6 +186,7 @@ script = ExtResource("9_1mcog")
 [node name="Hand_Right" type="AnimatedSprite3D" parent="Body/Hand_R" unique_id=439092540]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0.5, -0.5, 2.5)
 billboard = 1
+shaded = true
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_2i2wb")
@@ -220,21 +224,23 @@ metadata/_custom_type_script = "uid://qj0g5jalgycx"
 
 [node name="crySFX" type="AudioStreamPlayer" parent="SFX" unique_id=221746662]
 stream = ExtResource("13_1mcog")
+volume_db = -10.0
 autoplay = true
 bus = &"SFX"
 
 [node name="dualShotSFX" type="AudioStreamPlayer" parent="SFX" unique_id=492744948]
 stream = ExtResource("14_n0vj7")
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="magnetimsSFX" type="AudioStreamPlayer" parent="SFX" unique_id=1369170878]
 stream = ExtResource("15_vh4ij")
-volume_db = 4.704
+volume_db = -10.0
 bus = &"SFX"
 
 [node name="collisionSFX" type="AudioStreamPlayer" parent="SFX" unique_id=739621023]
 stream = ExtResource("16_u2ii0")
-volume_db = 15.156
+volume_db = 10.0
 bus = &"SFX"
 
 [connection signal="body_entered" from="Body/Hand_L/Area3D" to="Body/Hand_R" method="_on_right_hand_entered"]

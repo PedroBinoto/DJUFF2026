@@ -34,9 +34,6 @@ volumetric_fog_sky_affect = 0.0
 size = Vector2(10, 32)
 orientation = 1
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_i6rbu"]
-size = Vector2(20, 40)
-
 [node name="MundoTeste2" type="Node3D" unique_id=69006548 node_paths=PackedStringArray("bossNode")]
 script = ExtResource("1_o0lqk")
 bossName = "Magnetro"
@@ -53,8 +50,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.686607, 0.0071653128, 0)
 collision_mask = 108
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2056829280]
-transform = Transform3D(-0.17456079, 0.9144808, -0.36503905, 0.4182915, 0.40448725, 0.81327885, 0.89138144, -0.010726176, -0.45312715, -3.1112142, 3.8421087, -5.0194416)
-light_energy = 0.418
+transform = Transform3D(0.41932622, 0.7082562, -0.56792486, 0.41829157, 0.40448725, 0.81327873, 0.80572814, -0.5785873, -0.12664542, -3.1112142, 3.8421087, -5.0194416)
+light_energy = 0.308
+light_angular_distance = 9.2
+light_specular = 0.0
 shadow_enabled = true
 shadow_opacity = 0.9
 directional_shadow_pancake_size = 0.0
@@ -103,6 +102,7 @@ collision_layer = 32
 collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall_Back" unique_id=359405874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8929348, 0)
 shape = SubResource("WorldBoundaryShape3D_ebs18")
 
 [node name="Wall_Front" type="StaticBody3D" parent="World" unique_id=2114089449]
@@ -124,11 +124,8 @@ collision_layer = 32
 collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall_Left" unique_id=104359218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14684772, 0)
 shape = SubResource("WorldBoundaryShape3D_ebs18")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Wall_Left" unique_id=241659150]
-transform = Transform3D(1, -8.742278e-08, -3.821371e-15, -8.742278e-08, -1, -8.742278e-08, 3.821371e-15, 8.742278e-08, -1, -14.000808, -1.0805035, 0)
-mesh = SubResource("PlaneMesh_i6rbu")
 
 [node name="Wall_Right" type="StaticBody3D" parent="World" unique_id=2106777256]
 transform = Transform3D(-5.7320566e-15, -1.3113416e-07, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, 1.3113416e-07, 2, 14, 16)
@@ -162,6 +159,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3371849, 0, 12.476064)
 [node name="Esquerda" type="Node3D" parent="Engrenagens" unique_id=825416544]
 
 [node name="Engrenagem2" parent="Engrenagens/Esquerda" unique_id=499007636 instance=ExtResource("5_u5lmb")]
+angular_velocity = Vector3(0, -3.142, 0)
 
 [node name="Engrenagem3" parent="Engrenagens/Esquerda" unique_id=1784875562 instance=ExtResource("5_u5lmb")]
 transform = Transform3D(0.9848562, 0, 0.17337316, 0, 1, 0, -0.17337316, 0, 0.9848562, 4.7090626, 0, -1.0409508)
@@ -170,12 +168,14 @@ transform = Transform3D(0.9848562, 0, 0.17337316, 0, 1, 0, -0.17337316, 0, 0.984
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.629, 0, -1.086)
 
 [node name="Engrenagem4" parent="Engrenagens/Esquerda" unique_id=1390754452 instance=ExtResource("5_u5lmb")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 10.019, 0, 1.374)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 8.876552, 0, 1.4369812)
+angular_velocity = Vector3(0, -3.142, 0)
 
 [node name="Direita" type="Node3D" parent="Engrenagens" unique_id=2127367233]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 24.884697)
 
 [node name="Engrenagem2" parent="Engrenagens/Direita" unique_id=106264834 instance=ExtResource("5_u5lmb")]
+angular_velocity = Vector3(0, -3.142, 0)
 
 [node name="Engrenagem3" parent="Engrenagens/Direita" unique_id=535781498 instance=ExtResource("5_u5lmb")]
 transform = Transform3D(0.9848562, 0, 0.17337316, 0, 1, 0, -0.17337316, 0, 0.9848562, 4.7090626, 0, -1.0409508)
@@ -184,7 +184,8 @@ transform = Transform3D(0.9848562, 0, 0.17337316, 0, 1, 0, -0.17337316, 0, 0.984
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.629, 0, -1.086)
 
 [node name="Engrenagem4" parent="Engrenagens/Direita" unique_id=818324208 instance=ExtResource("5_u5lmb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.314, 0, 1.457)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.426444, 0, -0.2202568)
+angular_velocity = Vector3(0, -3.142, 0)
 
 [node name="ArenaMagnetismo" type="MeshInstance3D" parent="." unique_id=890726414]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.0020411015, 5, 0.0003323555)
@@ -209,4 +210,3 @@ stream = ExtResource("11_fpred")
 volume_db = -18.015
 autoplay = true
 bus = &"Musica"
-

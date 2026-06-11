@@ -53,7 +53,7 @@ func setupBulletSpawnRing():
 
 
 func soul_shoot():
-	var amountOfShots = 3
+	var amountOfShots = 1 + 4*(1-healthComponent.health_percent())
 	var deltaAngle = 2*PI/bullet_spawn_ring.get_child_count()/amountOfShots
 	for i in range(1,amountOfShots+1):
 		ghost_shot_sfx.play()

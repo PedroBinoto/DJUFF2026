@@ -1,3 +1,4 @@
+class_name MagBox
 extends RigidBody3D
 
 var target_position: Vector3

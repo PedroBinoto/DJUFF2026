@@ -5,6 +5,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nk2kv"]
 resource_name = "Untitled.002"
+specular_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_6ishe")
 roughness = 0.5
@@ -13,6 +14,7 @@ texture_repeat = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtib4"]
 resource_name = "Untitled.001"
+specular_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("2_1lfjl")
 metallic_specular = 0.0
