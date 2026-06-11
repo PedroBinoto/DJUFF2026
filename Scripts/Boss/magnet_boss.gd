@@ -46,8 +46,8 @@ func _ready() -> void:
 	moveSpeed = player.playerSpeed*movePercent
 	hand_origin = [left_hand.position, right_hand.position]
 	body_origin = body.position
-	
-	
+
+
 func _physics_process(delta: float) -> void:
 	timer += delta
 	velocity = 4*Vector3(-2*sin(timer), 0, cos(timer)-2.3*cos(2.3*timer))

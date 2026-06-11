@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://lkrjq7sy8y4y" path="res://Scenes/engrenagem.tscn" id="5_u5lmb"]
 [ext_resource type="PackedScene" uid="uid://cai47x8vc1tx0" path="res://Scenes/Esteira.tscn" id="7_rmxy5"]
 [ext_resource type="ArrayMesh" uid="uid://dlhs6goyfh62l" path="res://Graphics/Meshes/Arena_Magnetismo.tres" id="9_0tywp"]
+[ext_resource type="AudioStream" uid="uid://boc1jwvko3se0" path="res://Music/POLAR.mp3" id="11_fpred"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebs18"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -195,3 +196,8 @@ transform = Transform3D(0.1231513, 0, 0.99238783, 0, 1, 0, -0.99238783, 0, 0.123
 [node name="ArenaMagnetismo" type="MeshInstance3D" parent="." unique_id=890726414]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.0020411015, 5, 0.0003323555)
 mesh = ExtResource("9_0tywp")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1267983033]
+stream = ExtResource("11_fpred")
+volume_db = -18.015
+autoplay = true
