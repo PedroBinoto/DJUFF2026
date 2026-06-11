@@ -1,6 +1,6 @@
 [gd_resource type="ArrayMesh" format=4 uid="uid://dlhs6goyfh62l"]
 
-[ext_resource type="Texture2D" uid="uid://chvledypwhbfq" path="res://Graphics/Meshes/Arena_magnetismo_Untitled.png" id="1_6ishe"]
+[ext_resource type="Texture2D" uid="uid://c6208gbt4bv1m" path="res://Graphics/Meshes/textures/Arena_Magneto.png" id="1_6ishe"]
 [ext_resource type="Texture2D" uid="uid://bhadrr6m82aib" path="res://Graphics/Meshes/Arena_magnetismo_tile_magneto_v1-modified.png" id="2_1lfjl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nk2kv"]
