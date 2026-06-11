@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://ce771pi383o18" path="res://Scripts/engrenagem.gd" id="1_j3f2a"]
 [ext_resource type="Texture2D" uid="uid://biw8dl5kxiaf3" path="res://Graphics/Meshes/Engrenagem_Cog.png" id="2_j3f2a"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_omh0y"]
+height = 0.538
+radius = 2.0493164
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qc2pk"]
 resource_name = "Cog"
 albedo_texture = ExtResource("2_j3f2a")
@@ -69,13 +73,13 @@ _data = {
 &"rotate": SubResource("Animation_j3f2a")
 }
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_omh0y"]
-height = 0.538
-radius = 2.0493164
-
-[node name="Engrenagem" type="Area3D" unique_id=696910798]
-collision_layer = 32
+[node name="Engrenagem" type="Node3D" unique_id=1335668305]
 script = ExtResource("1_j3f2a")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1374883060]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1014173543]
+shape = SubResource("CylinderShape3D_omh0y")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=185091214]
 transform = Transform3D(8.108243, 0, 18.28268, 0, 20, 0, -18.28268, 0, 8.108243, 0, 0, 0)
@@ -85,8 +89,5 @@ mesh = SubResource("ArrayMesh_v81ux")
 libraries/ = SubResource("AnimationLibrary_qc2pk")
 autoplay = &"rotate"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1014173543]
-shape = SubResource("CylinderShape3D_omh0y")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_body_exited"]

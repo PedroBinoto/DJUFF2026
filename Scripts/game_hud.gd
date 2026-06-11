@@ -4,6 +4,7 @@ extends Control
 @onready var boss_title: Label = %BossTitle
 @onready var boss_health: ProgressBar = %BossHealth
 @onready var player_health: ProgressBar = $PlayerHealth
+@onready var panel: Panel = %Panel
 
 
 # TODO: Animação de Título/Barra de vida funcional
@@ -45,11 +46,17 @@ func playBarAnimation() -> void:
 	await bosstitleFadeOut.finished
 	await bossbarMove.finished
 	
+	var panelOpacityTween = create_tween()
+	panelOpacityTween.tween_property(panel, "self_modulate", Color(1, 1, 1, 0), 0.5).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
+	
 	await get_tree().create_timer(1).timeout
 	
+	
 	boss_title.position = Vector2(boss_title.position.x, boss_health.position.y + 25)
+	boss_title.add_theme_font_size_override("font_size", 48)
 	
 	var bosstitleFadeIn = create_tween()
 	bosstitleFadeIn.tween_property(boss_title, "self_modulate", Color(1,1,1,1), 0.5).set_ease(Tween.EASE_OUT)
 	await bosstitleFadeIn.finished
-	pass
+	
+	

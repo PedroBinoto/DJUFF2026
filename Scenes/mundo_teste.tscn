@@ -33,6 +33,9 @@ volumetric_fog_sky_affect = 0.0
 size = Vector2(10, 32)
 orientation = 1
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_i6rbu"]
+size = Vector2(20, 40)
+
 [node name="MundoTeste2" type="Node3D" unique_id=69006548 node_paths=PackedStringArray("bossNode")]
 script = ExtResource("1_o0lqk")
 bossName = "Magnetro"
@@ -122,6 +125,10 @@ collision_mask = 17
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall_Left" unique_id=104359218]
 shape = SubResource("WorldBoundaryShape3D_ebs18")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Wall_Left" unique_id=241659150]
+transform = Transform3D(1, -8.742278e-08, -3.821371e-15, -8.742278e-08, -1, -8.742278e-08, 3.821371e-15, 8.742278e-08, -1, -14.000808, -1.0805035, 0)
+mesh = SubResource("PlaneMesh_i6rbu")
+
 [node name="Wall_Right" type="StaticBody3D" parent="World" unique_id=2106777256]
 transform = Transform3D(-5.7320566e-15, -1.3113416e-07, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, 1.3113416e-07, 2, 14, 16)
 collision_layer = 32
@@ -146,7 +153,7 @@ shape = SubResource("WorldBoundaryShape3D_ebs18")
 unique_name_in_owner = true
 
 [node name="Engrenagens" type="Node3D" parent="." unique_id=1649969401]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0881443, 0.3491634, -12.500889)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.088, 0.2, -12.501)
 
 [node name="Engrenagem2" parent="Engrenagens" unique_id=696910798 instance=ExtResource("5_u5lmb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3371849, 0, 12.476064)
@@ -159,10 +166,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3371849, 0, 12.476064)
 transform = Transform3D(0.9848562, 0, 0.17337316, 0, 1, 0, -0.17337316, 0, 0.9848562, 4.7090626, 0, -1.0409508)
 
 [node name="Engrenagem" parent="Engrenagens/Esquerda" unique_id=315811595 instance=ExtResource("5_u5lmb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6292143, -0.13569659, -1.0857811)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.629, 0, -1.086)
 
 [node name="Engrenagem4" parent="Engrenagens/Esquerda" unique_id=1390754452 instance=ExtResource("5_u5lmb")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 10.019169, 0.4342978, 1.3741598)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 10.019, 0, 1.374)
 
 [node name="Direita" type="Node3D" parent="Engrenagens" unique_id=2127367233]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 24.884697)
@@ -173,25 +180,25 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0
 transform = Transform3D(0.9848562, 0, 0.17337316, 0, 1, 0, -0.17337316, 0, 0.9848562, 4.7090626, 0, -1.0409508)
 
 [node name="Engrenagem" parent="Engrenagens/Direita" unique_id=1195247439 instance=ExtResource("5_u5lmb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6292143, -0.13569659, -1.0857811)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.629, 0, -1.086)
 
 [node name="Engrenagem4" parent="Engrenagens/Direita" unique_id=818324208 instance=ExtResource("5_u5lmb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.313711, -0.27139318, 1.4567461)
-
-[node name="Esteiras" type="Node3D" parent="." unique_id=809961336]
-transform = Transform3D(0.64931536, 0, 0.76051927, 0, 1, 0, -0.76051927, 0, 0.64931536, 4.0545917, -0.22008342, -6.419346)
-
-[node name="esteira" parent="Esteiras" unique_id=1344009382 instance=ExtResource("7_rmxy5")]
-
-[node name="esteira2" parent="Esteiras" unique_id=1076443264 instance=ExtResource("7_rmxy5")]
-transform = Transform3D(-0.041143328, 0, -0.99915326, 0, 1, 0, 0.99915326, 0, -0.041143328, -9.329781, 0, 7.9655733)
-
-[node name="esteira3" parent="Esteiras" unique_id=746348004 instance=ExtResource("7_rmxy5")]
-transform = Transform3D(-0.9966146, 0, 0.08221698, 0, 1, 0, -0.08221698, 0, -0.9966146, -19.579964, 0, 0.6000035)
-
-[node name="esteira4" parent="Esteiras" unique_id=1828664223 instance=ExtResource("7_rmxy5")]
-transform = Transform3D(0.1231513, 0, 0.99238783, 0, 1, 0, -0.99238783, 0, 0.1231513, -7.416129, 0, -10.073946)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.314, 0, 1.457)
 
 [node name="ArenaMagnetismo" type="MeshInstance3D" parent="." unique_id=890726414]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.0020411015, 5, 0.0003323555)
 mesh = ExtResource("9_0tywp")
+
+[node name="Esteiras" type="Node3D" parent="." unique_id=881352502]
+
+[node name="esteira" parent="Esteiras" unique_id=1344009382 instance=ExtResource("7_rmxy5")]
+transform = Transform3D(0.64931536, 0, 0.76051927, 0, 1, 0, -0.76051927, 0, 0.64931536, 4.0545917, -0.22008342, -6.419346)
+
+[node name="esteira2" parent="Esteiras" unique_id=1076443264 instance=ExtResource("7_rmxy5")]
+transform = Transform3D(0.7331603, 0, -0.68005586, 0, 1, 0, 0.68005586, 0, 0.7331603, 4.0545936, -0.22008342, 5.848301)
+
+[node name="esteira3" parent="Esteiras" unique_id=746348004 instance=ExtResource("7_rmxy5")]
+transform = Transform3D(-0.70964473, 0, -0.70455986, 0, 1, 0, 0.70455986, 0, -0.70964473, -8.202665, -0.22008342, 8.861185)
+
+[node name="esteira4" parent="Esteiras" unique_id=1828664223 instance=ExtResource("7_rmxy5")]
+transform = Transform3D(-0.23169687, 0, 0.972788, 0, 1, 0, -0.972788, 0, -0.23169687, -8.422245, -0.22008342, -7.3204045)

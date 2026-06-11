@@ -45,8 +45,7 @@ shadow_mesh = SubResource("ArrayMesh_gfrcm")
 [sub_resource type="BoxShape3D" id="BoxShape3D_olip6"]
 size = Vector3(4, 1.384, 1.592)
 
-[node name="Esteira" type="Area3D" unique_id=1344009382]
-collision_layer = 32
+[node name="Esteira" type="Node3D" unique_id=1129812855]
 script = ExtResource("1_74ayo")
 linear_velocity = Vector3(-3.142, 0, 0)
 
@@ -55,9 +54,11 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021254897, 0.041009665, 0.034484744)
 mesh = SubResource("ArrayMesh_ltq30")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=786167303]
+[node name="Area3D" type="Area3D" parent="." unique_id=1857791015]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=786167303]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00017356873, 0.40441895, -0.005706787)
 shape = SubResource("BoxShape3D_olip6")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_body_exited"]

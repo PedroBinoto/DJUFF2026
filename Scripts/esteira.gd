@@ -1,4 +1,4 @@
-extends Area3D
+extends Node3D
 
 @export var linear_velocity: Vector3 = Vector3.LEFT * PI
 var player: Node3D
