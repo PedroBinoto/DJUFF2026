@@ -7,24 +7,21 @@ var active = true
 
 var material:StandardMaterial3D = null
 
-@onready var projetil_2: Node3D = %Projetil
-@onready var projetil: Node3D = %Projetil2
-
 
 func _ready() -> void:
-	projetil.visible = true
-	projetil_2.visible = false
+	material = mesh.get_active_material(0).duplicate() as StandardMaterial3D
+	mesh.set_surface_override_material(0, material)
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	material.albedo_color.a = 1
 	
 	super._ready()
 
 
 func setActive(state:bool):
 	if state == true:
-		projetil.visible = true
-		projetil_2.visible = false
+		material.albedo_color.a = 1
 	else:
-		projetil.visible = false
-		projetil_2.visible = true
+		material.albedo_color.a = 0.1
 	active = state
 
 
