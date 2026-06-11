@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bog3b5d3ngwy0" path="res://Graphics/Sprites/Bosses/Magnético/Sheets/giro_vermelho_para_azul.png" id="11_4exl0"]
 [ext_resource type="AudioStream" uid="uid://c1mvoekpnpip" path="res://SFX/robot_talk.wav" id="13_1mcog"]
 [ext_resource type="AudioStream" uid="uid://cody4ivdkgmxf" path="res://SFX/boss_shoot.mp3" id="14_n0vj7"]
-[ext_resource type="AudioStream" uid="uid://crdsndkji51m2" path="res://SFX/Random15.wav" id="15_vh4ij"]
+[ext_resource type="AudioStream" uid="uid://cdm3qnjvhr4ri" path="res://SFX/Random15.wav" id="15_vh4ij"]
 [ext_resource type="AudioStream" uid="uid://bern5g5xdnwun" path="res://SFX/Hit28 (1).wav" id="16_u2ii0"]
 
 [sub_resource type="Animation" id="Animation_8gamq"]
@@ -735,7 +735,7 @@ bus = &"SFX"
 
 [node name="magnetimsSFX" type="AudioStreamPlayer" parent="SFX" unique_id=1369170878]
 stream = ExtResource("15_vh4ij")
-volume_db = -10.0
+volume_db = 0.947
 bus = &"SFX"
 
 [node name="collisionSFX" type="AudioStreamPlayer" parent="SFX" unique_id=739621023]
