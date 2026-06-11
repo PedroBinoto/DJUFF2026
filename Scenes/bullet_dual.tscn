@@ -1,22 +1,53 @@
 [gd_scene format=3 uid="uid://dm5q0iog4k31t"]
 
 [ext_resource type="Script" uid="uid://b33300ut4afv5" path="res://Scripts/bullet_dual.gd" id="1_32sfv"]
+[ext_resource type="Shader" uid="uid://b4wo6th50wwax" path="res://Graphics/pan_shader.tres" id="2_4j8ll"]
+[ext_resource type="Texture2D" uid="uid://desvidmlcu1br" path="res://Graphics/Meshes/textures/Voronoi.png" id="3_lgym0"]
+[ext_resource type="Texture2D" uid="uid://c6ka53w5yu2dd" path="res://Graphics/Meshes/textures/Circle.png" id="4_xordq"]
+[ext_resource type="Material" uid="uid://dwrakkb65uie2" path="res://Graphics/Shaders/particle2.tres" id="5_j4dfp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rf0ko"]
 radius = 0.25
 
-[sub_resource type="SphereMesh" id="SphereMesh_32sfv"]
-radius = 0.25
-height = 0.5
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ip8sl"]
+render_priority = 0
+shader = ExtResource("2_4j8ll")
+shader_parameter/MainTexSpeed = Vector2(0.3, 0.3)
+shader_parameter/MainTex = ExtResource("3_lgym0")
+shader_parameter/MainTexPower = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rf0ko"]
-albedo_color = Color(0, 0, 1, 1)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hcyd3"]
+gravity = Vector3(0, 0, 0)
+color = Color(0.047058824, 0.9019608, 0.9490196, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_vxmml"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ip8sl"]
+transparency = 1
+blend_mode = 4
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_xordq")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_pacpc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_o1t1p"]
 radius = 0.25
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_838p6"]
-albedo_color = Color(1, 0, 0, 1)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nvq1m"]
+gravity = Vector3(0, 0, 0)
+color = Color(1, 0, 0, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3pog4"]
+gravity = Vector3(0, 0, 0)
+scale_min = 1.4
+scale_max = 1.4
+color = Color(0.38431373, 0, 0, 1)
 
 [node name="Bullet_Dual" type="CharacterBody3D" unique_id=1262462104]
 script = ExtResource("1_32sfv")
@@ -32,10 +63,25 @@ unique_name_in_owner = true
 [node name="A" type="Node3D" parent="BulletSpinners" unique_id=212895737]
 unique_name_in_owner = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BulletSpinners/A" unique_id=39289]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
-mesh = SubResource("SphereMesh_32sfv")
-surface_material_override/0 = SubResource("StandardMaterial3D_rf0ko")
+[node name="Projetil" type="Node3D" parent="BulletSpinners/A" unique_id=1406690424]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 1.5)
+
+[node name="Esfera" type="GPUParticles3D" parent="BulletSpinners/A/Projetil" unique_id=361899452]
+material_override = SubResource("ShaderMaterial_ip8sl")
+amount = 1
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_hcyd3")
+draw_pass_1 = SubResource("SphereMesh_vxmml")
+
+[node name="Flare" type="GPUParticles3D" parent="BulletSpinners/A/Projetil" unique_id=198776589]
+sorting_offset = -1.0
+material_override = SubResource("StandardMaterial3D_ip8sl")
+amount = 1
+fixed_fps = 60
+local_coords = true
+process_material = ExtResource("5_j4dfp")
+draw_pass_1 = SubResource("QuadMesh_pacpc")
 
 [node name="Area3D" type="Area3D" parent="BulletSpinners/A" unique_id=1487238350]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
@@ -53,10 +99,25 @@ light_energy = 2.0
 [node name="B" type="Node3D" parent="BulletSpinners" unique_id=534138870]
 unique_name_in_owner = true
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="BulletSpinners/B" unique_id=1909030486]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
-mesh = SubResource("SphereMesh_32sfv")
-surface_material_override/0 = SubResource("StandardMaterial3D_838p6")
+[node name="Projetil" type="Node3D" parent="BulletSpinners/B" unique_id=1383327529]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -1.5)
+
+[node name="Esfera" type="GPUParticles3D" parent="BulletSpinners/B/Projetil" unique_id=1034186755]
+material_override = SubResource("ShaderMaterial_ip8sl")
+amount = 1
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_nvq1m")
+draw_pass_1 = SubResource("SphereMesh_vxmml")
+
+[node name="Flare" type="GPUParticles3D" parent="BulletSpinners/B/Projetil" unique_id=499504567]
+sorting_offset = -1.0
+material_override = SubResource("StandardMaterial3D_ip8sl")
+amount = 1
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_3pog4")
+draw_pass_1 = SubResource("QuadMesh_pacpc")
 
 [node name="Area3D2" type="Area3D" parent="BulletSpinners/B" unique_id=177189423]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
