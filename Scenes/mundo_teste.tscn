@@ -42,7 +42,7 @@ bossName = "Magnetro"
 bossNode = NodePath("MagnetBoss")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=153898119]
-transform = Transform3D(-0.17850977, 0.91061354, -0.37271613, 0.07858313, 0.39078474, 0.9171216, 0.9807951, 0.13442597, -0.14131774, 4.083887, 16.849815, -2.7724543)
+transform = Transform3D(-0.19166756, 0.5301115, -0.8259815, -0.036119193, 0.8372047, 0.5456959, 0.9807951, 0.13442597, -0.14131774, 4.083887, 16.849815, -2.7724543)
 light_energy = 0.25
 shadow_enabled = true
 shadow_opacity = 0.9
