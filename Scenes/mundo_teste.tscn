@@ -50,8 +50,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.686607, 0.0071653128, 0)
 collision_mask = 108
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2056829280]
-transform = Transform3D(-0.17456079, 0.9144808, -0.36503905, 0.4182915, 0.40448725, 0.81327885, 0.89138144, -0.010726176, -0.45312715, -3.1112142, 3.8421087, -5.0194416)
-light_energy = 0.418
+transform = Transform3D(0.41932622, 0.7082562, -0.56792486, 0.41829157, 0.40448725, 0.81327873, 0.80572814, -0.5785873, -0.12664542, -3.1112142, 3.8421087, -5.0194416)
+light_energy = 0.308
+light_angular_distance = 9.2
+light_specular = 0.0
 shadow_enabled = true
 shadow_opacity = 0.9
 directional_shadow_pancake_size = 0.0
