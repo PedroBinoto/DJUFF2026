@@ -63,7 +63,7 @@ func _move_player() -> void:
 	if magnet_active:
 		return
 	magnet_active = true
-	for i in range(90):
+	for i in range(50):
 		var dir
 		if currentPolo == polo.POSITIVO:
 			dir = 1

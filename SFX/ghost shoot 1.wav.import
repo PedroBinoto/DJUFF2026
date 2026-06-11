@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b6qnuiyjpppnm"
+path="res://.godot/imported/ghost shoot 1.wav-ff45d7be823dc4ac77851dfd7fbf56e3.sample"
+
+[deps]
+
+source_file="res://SFX/ghost shoot 1.wav"
+dest_files=["res://.godot/imported/ghost shoot 1.wav-ff45d7be823dc4ac77851dfd7fbf56e3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
