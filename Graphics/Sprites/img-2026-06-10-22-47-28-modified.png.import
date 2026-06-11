@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d11vp6w2so4bt"
-path="res://.godot/imported/giro_cabeca_azul_para_vermelho.png-048778d00ef823a0bc6b3b6a1f7eead8.ctex"
+uid="uid://djsdrgorr4rpw"
+path.s3tc="res://.godot/imported/img-2026-06-10-22-47-28-modified.png-e488bc4161af8219e31703c2b5cf132c.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://Graphics/Sprites/Bosses/Magnético/Sheets/giro_cabeca_azul_para_vermelho.png"
-dest_files=["res://.godot/imported/giro_cabeca_azul_para_vermelho.png-048778d00ef823a0bc6b3b6a1f7eead8.ctex"]
+source_file="res://Graphics/Sprites/img-2026-06-10-22-47-28-modified.png"
+dest_files=["res://.godot/imported/img-2026-06-10-22-47-28-modified.png-e488bc4161af8219e31703c2b5cf132c.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

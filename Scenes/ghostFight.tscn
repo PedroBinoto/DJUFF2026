@@ -5,8 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://y4wj6ivt28dc" path="res://Scenes/player.tscn" id="4_aeqmw"]
 [ext_resource type="PackedScene" uid="uid://da4cqasbhr7ne" path="res://Scenes/Boss/ghost_boss.tscn" id="4_wb0a8"]
 [ext_resource type="Texture2D" uid="uid://2f82gigc4r56" path="res://Graphics/Meshes/textures/Caixa_Fantasma.png" id="5_aeqmw"]
-[ext_resource type="PackedScene" uid="uid://dbn3rlsvclrqg" path="res://Scenes/light_area.tscn" id="5_bxuwn"]
+[ext_resource type="PackedScene" uid="uid://cs06lrpr5uy8t" path="res://Scenes/light_area.tscn" id="5_bxuwn"]
 [ext_resource type="PackedScene" uid="uid://c3uqqg6glh3wy" path="res://Scenes/game_hud.tscn" id="6_v46jx"]
+[ext_resource type="Texture2D" uid="uid://d38rdc1fb4v14" path="res://Graphics/Sprites/Enviroment/tile_fantasma.png" id="7_u3jfm"]
 [ext_resource type="ArrayMesh" uid="uid://cti3e737wg6um" path="res://Graphics/Meshes/Arena_fantasma.tres" id="8_qu405"]
 [ext_resource type="Script" uid="uid://bnrkmagxipeqg" path="res://Scripts/camera_3d.gd" id="9_rr2ko"]
 [ext_resource type="AudioStream" uid="uid://dlnu5x761tffq" path="res://Music/antithesisOfSoulAndBody.mp3" id="10_mkh8b"]
@@ -71,16 +72,14 @@ shadow_mesh = SubResource("ArrayMesh_rr2ko")
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ebs18"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_puaij"]
-size = Vector2(10, 32)
-orientation = 1
-
-[sub_resource type="QuadMesh" id="QuadMesh_u5lmb"]
-size = Vector2(10, 28)
-orientation = 1
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jfghu"]
+albedo_texture = ExtResource("7_u3jfm")
+uv1_scale = Vector3(16, 16, 16)
+texture_filter = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_bmojv"]
-size = Vector2(28, 32)
+material = SubResource("StandardMaterial3D_jfghu")
+size = Vector2(34, 34)
 orientation = 1
 
 [node name="MundoTeste" type="Node3D" unique_id=69006548 node_paths=PackedStringArray("bossNode")]
@@ -114,6 +113,16 @@ shadow_enabled = true
 shadow_opacity = 0.9
 directional_shadow_pancake_size = 0.0
 
+[node name="Camera3D" type="Camera3D" parent="." unique_id=375353091]
+unique_name_in_owner = true
+transform = Transform3D(-4.280071e-08, 0.58801115, -0.80885285, 8.876066e-09, 0.80885285, 0.58801115, 1, 1.7987862e-08, -3.9838703e-08, -41.867462, 29.695732, 0)
+fov = 25.0
+near = 0.1
+far = 100.0
+script = ExtResource("9_rr2ko")
+period = 0.15
+magnitude = 0.2
+
 [node name="Box" type="StaticBody3D" parent="." unique_id=395401012]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.773, 0.8, 0)
 collision_layer = 8
@@ -127,17 +136,12 @@ mesh = SubResource("ArrayMesh_mkh8b")
 [node name="World" type="Node3D" parent="." unique_id=191690115]
 
 [node name="Wall_Back" type="StaticBody3D" parent="World" unique_id=1732412098]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 14, 14, 0)
-visible = false
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 11.539621, 14, 0)
 collision_layer = 32
 collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall_Back" unique_id=359405874]
 shape = SubResource("WorldBoundaryShape3D_ebs18")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Wall_Back" unique_id=1394786070]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 9.536743e-07, 0)
-mesh = SubResource("QuadMesh_puaij")
 
 [node name="Wall_Front" type="StaticBody3D" parent="World" unique_id=2114089449]
 transform = Transform3D(4.371139e-08, 1, -8.742278e-08, 1, -4.371139e-08, 0, -3.821371e-15, -8.742278e-08, -1, -14, 14, 0)
@@ -145,37 +149,26 @@ collision_layer = 32
 collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall_Front" unique_id=1306949191]
+transform = Transform3D(1, 3.3407487e-22, 0, 3.3407487e-22, 1, 0, 0, 0, 1, 0, -2.280116, 1.9933418e-07)
 shape = SubResource("WorldBoundaryShape3D_ebs18")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Wall_Front" unique_id=642684645]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 9.536743e-07, 0)
-mesh = SubResource("QuadMesh_puaij")
 
 [node name="Wall_Left" type="StaticBody3D" parent="World" unique_id=2021796951]
 transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, -2, 14, -16)
-visible = false
 collision_layer = 32
 collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall_Left" unique_id=104359218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7205906, 0)
 shape = SubResource("WorldBoundaryShape3D_ebs18")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Wall_Left" unique_id=143080573]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 2)
-mesh = SubResource("QuadMesh_u5lmb")
 
 [node name="Wall_Right" type="StaticBody3D" parent="World" unique_id=2106777256]
 transform = Transform3D(-5.7320566e-15, -1.3113416e-07, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, 1.3113416e-07, 2, 14, 16)
-visible = false
 collision_layer = 32
 collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall_Right" unique_id=410385654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.721, 0)
 shape = SubResource("WorldBoundaryShape3D_ebs18")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Wall_Right" unique_id=459847471]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 2)
-mesh = SubResource("QuadMesh_u5lmb")
 
 [node name="Floor" type="StaticBody3D" parent="World" unique_id=943130965]
 collision_layer = 64
@@ -185,6 +178,7 @@ collision_mask = 17
 shape = SubResource("WorldBoundaryShape3D_ebs18")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Floor" unique_id=2140429861]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3187807, 0, 0)
 mesh = SubResource("QuadMesh_bmojv")
 
 [node name="Light_Area_Left" parent="World" unique_id=618606862 instance=ExtResource("5_bxuwn")]
@@ -200,16 +194,6 @@ transform = Transform3D(6.205, 0, 2.842171e-14, 0, 6.205, 0, -2.842171e-14, 0, 6
 [node name="ArenaFantasma" type="MeshInstance3D" parent="." unique_id=1241060484]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.681, 0)
 mesh = ExtResource("8_qu405")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=375353091]
-unique_name_in_owner = true
-transform = Transform3D(-4.280071e-08, 0.58801115, -0.80885285, 8.876066e-09, 0.80885285, 0.58801115, 1, 1.7987862e-08, -3.9838703e-08, -41.867462, 29.695732, 0)
-fov = 25.0
-near = 0.1
-far = 100.0
-script = ExtResource("9_rr2ko")
-period = 0.15
-magnitude = 0.2
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=2049864032]
 stream = ExtResource("10_mkh8b")

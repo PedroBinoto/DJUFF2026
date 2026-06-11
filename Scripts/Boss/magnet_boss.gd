@@ -56,9 +56,11 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 
+var changingSide := false
 
 func _process(delta: float) -> void:
-	shootTimer += delta
+	if !changingSide:
+		shootTimer += delta
 
 	if shootTimer >= shootTimeLimit:
 		shootTimer = 0
@@ -91,14 +93,77 @@ func _move_player() -> void:
 		await get_tree().create_timer(0.05).timeout
 	magnet_active = false
 	
-	
+
+@onready var head: AnimatedSprite3D = %Head
+@onready var torso: AnimatedSprite3D = %Torso
+@onready var hand_left: AnimatedSprite3D = %Hand_Left
+@onready var hand_right: AnimatedSprite3D = %Hand_Right
+
+## RED = POS
+## BLUE = NEG
+
 func _switchPolo():
+	changingSide = true
+	var leftHandPos = hand_left.position
+	var leftHandTween = create_tween()
+	leftHandTween.tween_property(hand_left, "position", Vector3(hand_left.position.x, hand_left.position.y, 0), 0.3)
+	var rightHandPos = hand_right.position
+	var rightHandTween = create_tween()
+	rightHandTween.tween_property(hand_right, "position", Vector3(hand_right.position.x, hand_right.position.y, 0), 0.3)
+	
 	if currentPolo == polo.POSITIVO:
 		currentPolo = polo.NEGATIVO
+		
+		torso.play("before_rtb")
+		torso.position.y += 1
+		await torso.animation_finished
+		torso.play("red_to_blue")
+		await torso.animation_finished
+		torso.play("after_rtb")
+		await torso.animation_finished
+		torso.position.y -= 1
+		torso.play("default")
+		torso.pause()
+		torso.frame = 0
+		hand_left.frame = 0
+		hand_right.frame = 0
+		leftHandTween = create_tween()
+		leftHandTween.tween_property(hand_left, "position", leftHandPos, 0.3)
+		rightHandTween = create_tween()
+		rightHandTween.tween_property(hand_right, "position", rightHandPos, 0.3)
+		head.play("rtb")
+		await head.animation_finished
+		head.play("default")
+		head.pause()
+		head.frame = 0
 	else:
 		currentPolo = polo.POSITIVO
-	print("polo trocado")
+		
+		torso.play("before_btr")
+		torso.position.y += 1
+		await torso.animation_finished
+		torso.play("blue_to_red")
+		await torso.animation_finished
+		torso.play("after_btr")
+		await torso.animation_finished
+		torso.position.y -= 1
+		torso.play("default")
+		torso.pause()
+		torso.frame = 1
+		hand_left.frame = 1
+		hand_right.frame = 1
+		leftHandTween = create_tween()
+		leftHandTween.tween_property(hand_left, "position", leftHandPos, 0.3)
+		rightHandTween = create_tween()
+		rightHandTween.tween_property(hand_right, "position", rightHandPos, 0.3)
+		head.play("btr")
+		await head.animation_finished
+		head.play("default")
+		head.pause()
+		head.frame = 1
 	
+	print("polo trocado")
+	changingSide = false
 	
 func _hand_attack():
 	if hand_attacking:
