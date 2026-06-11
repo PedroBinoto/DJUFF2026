@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bvrfpnoeogist"]
+[gd_scene format=4 uid="uid://bvrfpnoeogist"]
 
 [ext_resource type="Script" uid="uid://4vcl3xgugl7c" path="res://Scripts/mundo_teste.gd" id="1_wb0a8"]
 [ext_resource type="PackedScene" uid="uid://bbu3h1ybllvq8" path="res://Scenes/in_game_menu.tscn" id="2_bxuwn"]
@@ -12,16 +12,12 @@
 [ext_resource type="Script" uid="uid://bnrkmagxipeqg" path="res://Scripts/camera_3d.gd" id="9_rr2ko"]
 [ext_resource type="AudioStream" uid="uid://dlnu5x761tffq" path="res://Music/antithesisOfSoulAndBody.mp3" id="10_mkh8b"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebs18"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=688906120]
-script = ExtResource("1_xrcvd")
-
-[node name="Panel" type="Panel" parent="." unique_id=1062014639]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="Sky" id="Sky_o0lqk"]
+sky_material = SubResource("ProceduralSkyMaterial_ebs18")
 
 [sub_resource type="Environment" id="Environment_bxuwn"]
 background_mode = 1
