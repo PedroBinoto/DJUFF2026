@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("attack_b"):
 			_handle_attack(false)
 	if !is_on_floor():
-		velocity.y -= 1000 * delta
+		velocity.y -= 50 * delta
 		move_and_slide()
 
 var dashDirection: Vector2 = Vector2.ZERO
