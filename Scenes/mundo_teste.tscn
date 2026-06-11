@@ -162,6 +162,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3371849, 0, 12.476064)
 [node name="Esquerda" type="Node3D" parent="Engrenagens" unique_id=825416544]
 
 [node name="Engrenagem2" parent="Engrenagens/Esquerda" unique_id=499007636 instance=ExtResource("5_u5lmb")]
+angular_velocity = Vector3(0, -3.142, 0)
 
 [node name="Engrenagem3" parent="Engrenagens/Esquerda" unique_id=1784875562 instance=ExtResource("5_u5lmb")]
 transform = Transform3D(0.9848562, 0, 0.17337316, 0, 1, 0, -0.17337316, 0, 0.9848562, 4.7090626, 0, -1.0409508)
@@ -170,12 +171,14 @@ transform = Transform3D(0.9848562, 0, 0.17337316, 0, 1, 0, -0.17337316, 0, 0.984
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.629, 0, -1.086)
 
 [node name="Engrenagem4" parent="Engrenagens/Esquerda" unique_id=1390754452 instance=ExtResource("5_u5lmb")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 10.019, 0, 1.374)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 8.876552, 0, 1.4369812)
+angular_velocity = Vector3(0, -3.142, 0)
 
 [node name="Direita" type="Node3D" parent="Engrenagens" unique_id=2127367233]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 24.884697)
 
 [node name="Engrenagem2" parent="Engrenagens/Direita" unique_id=106264834 instance=ExtResource("5_u5lmb")]
+angular_velocity = Vector3(0, -3.142, 0)
 
 [node name="Engrenagem3" parent="Engrenagens/Direita" unique_id=535781498 instance=ExtResource("5_u5lmb")]
 transform = Transform3D(0.9848562, 0, 0.17337316, 0, 1, 0, -0.17337316, 0, 0.9848562, 4.7090626, 0, -1.0409508)
@@ -184,7 +187,8 @@ transform = Transform3D(0.9848562, 0, 0.17337316, 0, 1, 0, -0.17337316, 0, 0.984
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.629, 0, -1.086)
 
 [node name="Engrenagem4" parent="Engrenagens/Direita" unique_id=818324208 instance=ExtResource("5_u5lmb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.314, 0, 1.457)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.426444, 0, -0.2202568)
+angular_velocity = Vector3(0, -3.142, 0)
 
 [node name="ArenaMagnetismo" type="MeshInstance3D" parent="." unique_id=890726414]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.0020411015, 5, 0.0003323555)
@@ -209,4 +213,3 @@ stream = ExtResource("11_fpred")
 volume_db = -18.015
 autoplay = true
 bus = &"Musica"
-
