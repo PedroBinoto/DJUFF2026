@@ -735,7 +735,7 @@ bus = &"SFX"
 
 [node name="magnetimsSFX" type="AudioStreamPlayer" parent="SFX" unique_id=1369170878]
 stream = ExtResource("15_vh4ij")
-volume_db = 0.947
+volume_db = 2.0
 bus = &"SFX"
 
 [node name="collisionSFX" type="AudioStreamPlayer" parent="SFX" unique_id=739621023]
