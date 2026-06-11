@@ -6,10 +6,11 @@ extends CharacterBody3D
 @export var shootTimeLimit = 1.5
 @export var movePercent = 0.5
 @onready var bulletScene = preload("res://Scenes/bullet_dual.tscn")
-@onready var left_hand: Node3D = $Body/Hand_L
-@onready var right_hand: Node3D = $Body/Hand_R
 @onready var boxes: Node3D = $"../Boxes"
 @onready var body: Node3D = $Body
+
+@onready var left_hand: Node3D = $Body/Hand_L
+@onready var right_hand: Node3D = $Body/Hand_R
 
 @onready var dual_shot_sfx: AudioStreamPlayer = $SFX/dualShotSFX
 @onready var magnetims_sfx: AudioStreamPlayer = $SFX/magnetimsSFX
@@ -22,6 +23,7 @@ var hand_origin = []
 var hand_attacking = false
 var magnet_active = false
 var box_locked = false
+var isDead = false
 
 var timer = 0;
 
@@ -49,6 +51,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if isDead:
+		return
 	timer += delta
 	velocity = 4*Vector3(-2*sin(timer), 0, cos(timer)-2.3*cos(2.3*timer))
 	if !is_on_floor():
@@ -61,6 +65,9 @@ var changingSide := false
 func _process(delta: float) -> void:
 	if !changingSide:
 		shootTimer += delta
+	if isDead:
+		return
+	shootTimer += delta
 
 	if shootTimer >= shootTimeLimit:
 		shootTimer = 0
@@ -203,8 +210,16 @@ func _hand_attack():
 	
 	
 func die() -> void:
-	print("Uogh")
-	pass
+	isDead = true
+	
+	var sprites = [head, torso, hand_left, hand_right]
+	var tweens = []
+	for sprite in sprites:
+		var fadeOut = create_tween()
+		tweens.append(fadeOut)
+		fadeOut.tween_property(sprite, "modulate", Color(1,1,1,0), 3).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
+	await tweens[0].finished
+	get_tree().change_scene_to_file("res://Scenes/MenuPrincipal.tscn") # MUDAR PRO HUB
 
 
 func _box_attack():

@@ -207,6 +207,6 @@ transform = Transform3D(-0.23169687, 0, 0.972788, 0, 1, 0, -0.972788, 0, -0.2316
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1267983033]
 stream = ExtResource("11_fpred")
-volume_db = -18.015
+volume_db = 0.5
 autoplay = true
 bus = &"Musica"

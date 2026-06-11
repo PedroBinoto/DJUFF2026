@@ -20,13 +20,16 @@ var currentState: bodyStates = bodyStates.IDLE
 @onready var body_attack_pivot: Node3D = $AttackPivot
 @onready var physical_attack_area: Area3D = %PhysicalAttackArea
 @onready var sword_range: Area3D = $SwordRange
-@onready var body_sprite: AnimatedSprite3D = %AnimatedSprite3D
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var player: Player = $"../Player"
 
 @onready var ghost_shot_sfx: AudioStreamPlayer = $SFX/ghostShotSFX
 @onready var body_shot_sfx: AudioStreamPlayer = $SFX/bodyShotSFX
 @onready var body_sword_sfx: AudioStreamPlayer = $SFX/bodySwordSFX
+
+@onready var body_sprite: AnimatedSprite3D = %AnimatedSprite3D
+@onready var soul_sprite: AnimatedSprite3D = $Sprite/Soul/Head
+
 
 
 var bodyTimer = 0
@@ -36,6 +39,7 @@ var moveSpeed = 1
 var isSeeingPlayer = false
 var isPlayerInRange = false
 var isUnderLight = false
+var isDead = false
 
 
 func _ready():
@@ -97,6 +101,8 @@ func seePlayer(state:bool) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if isDead:
+		return
 	var lastVelocity = velocity
 	var distance = player.global_position - global_position
 	velocity = (distance).normalized()*moveSpeed*delta
@@ -123,6 +129,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
+	if isDead:
+		return
+		
 	soulTimer += delta
 	if(!isUnderLight and soulTimer >= soulShootTimeLimit):
 		soul_shoot()
@@ -139,7 +148,18 @@ func _process(delta: float) -> void:
 
 
 func die() -> void:
-	print("Uogh")
+	isDead = true
+	
+	var sprites = [body_sprite, soul_sprite]
+	var tweens = []
+	for sprite in sprites:
+		var fadeOut = create_tween()
+		tweens.append(fadeOut)
+		fadeOut.tween_property(sprite, "modulate", Color(1,1,1,0), 3).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
+	await tweens[0].finished
+	get_tree().change_scene_to_file("res://Scenes/MenuPrincipal.tscn") # MUDAR PRO HUB
+
+	get_tree().change_scene_to_file("res://Scenes/mundo_teste.tscn")
 
 
 func _on_sword_range_body_entered(body: Node3D) -> void:
