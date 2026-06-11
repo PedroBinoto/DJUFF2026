@@ -201,3 +201,4 @@ mesh = ExtResource("9_0tywp")
 stream = ExtResource("11_fpred")
 volume_db = -18.015
 autoplay = true
+bus = &"Musica"

@@ -215,3 +215,4 @@ magnitude = 0.2
 stream = ExtResource("10_mkh8b")
 volume_db = -9.827
 autoplay = true
+bus = &"Musica"
