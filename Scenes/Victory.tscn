@@ -65,7 +65,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_w158h")
 theme_override_font_sizes/font_size = 85
-text = "Obrigado por jogar \"Jogo Foda!\""
+text = "Obrigado por jogar \"Duplici Mortem!\""
 
 [node name="Button" type="Button" parent="." unique_id=456760301]
 layout_mode = 1
