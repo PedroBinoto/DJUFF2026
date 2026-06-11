@@ -1,6 +1,9 @@
 class_name BulletPlayer
 extends Bullet
 
+
+
+
 func _ready() -> void:
 	definedSpeed = bulletSpeed * Vector3(moveDirection.x, 0, moveDirection.y)
 
@@ -12,4 +15,5 @@ func _on_bullet_collide(body: Node3D) -> void:
 	if "healthComponent" in body:
 		print("damage!")
 		queue_free()
+	AudioManager.playAudio("res://SFX/Hit28 (1).wav", "SFX")
 	super._on_bullet_collide(body)

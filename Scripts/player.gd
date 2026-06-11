@@ -23,6 +23,7 @@ extends CharacterBody3D
 @onready var sword_sfx: AudioStreamPlayer = $AttackPivot/PhysicalAttackArea/Sword2
 @onready var shoot_sfx: AudioStreamPlayer = $AttackPivot/CharShoot
 
+
 @onready var bulletScene = preload("uid://qgqordv3giya")
 
 enum playerStates {
@@ -38,6 +39,7 @@ var velocity_modifier: Vector3 = Vector3.ZERO
 
 var appliedForces: Dictionary[Node, Vector3]
 
+	
 func _process(delta: float) -> void:
 	gun.flip_v = gun.global_position.z < global_position.z
 
@@ -127,7 +129,7 @@ func _handle_attack(attackType: bool) -> void:
 	canAttack = true
 
 func die() -> void:
-	print("Health Depleted!")
+	get_tree().call_deferred("change_scene_to_file", "res://Scenes/death_scene.tscn")
 
 func spawn_dash_ghost_timeout() -> void:
 	var ghost = PlayerDashEffect.new()

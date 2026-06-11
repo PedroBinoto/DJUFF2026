@@ -27,11 +27,11 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="InputEventKey" id="InputEventKey_c42cd"]
+[sub_resource type="InputEventKey" id="InputEventKey_bn643"]
 keycode = 4194306
 
-[sub_resource type="Shortcut" id="Shortcut_5crhr"]
-events = [SubResource("InputEventKey_c42cd")]
+[sub_resource type="Shortcut" id="Shortcut_ucpqp"]
+events = [SubResource("InputEventKey_bn643")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5crhr"]
 corner_radius_top_left = 15
@@ -109,6 +109,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0.47058824)
 
 [node name="PauseMenu" type="Control" parent="." unique_id=61598918]
@@ -142,7 +143,7 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_n0mag")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2rnyg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_01cmc")
-shortcut = SubResource("Shortcut_5crhr")
+shortcut = SubResource("Shortcut_ucpqp")
 text = "Voltar"
 icon_alignment = 1
 

@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c3uqqg6glh3wy" path="res://Scenes/game_hud.tscn" id="6_v46jx"]
 [ext_resource type="ArrayMesh" uid="uid://cti3e737wg6um" path="res://Graphics/Meshes/Arena_fantasma.tres" id="8_qu405"]
 [ext_resource type="Script" uid="uid://bnrkmagxipeqg" path="res://Scripts/camera_3d.gd" id="9_rr2ko"]
+[ext_resource type="AudioStream" uid="uid://dlnu5x761tffq" path="res://Music/antithesisOfSoulAndBody.mp3" id="10_mkh8b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebs18"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -209,3 +210,9 @@ far = 100.0
 script = ExtResource("9_rr2ko")
 period = 0.15
 magnitude = 0.2
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=2049864032]
+stream = ExtResource("10_mkh8b")
+volume_db = -9.827
+autoplay = true
+bus = &"Musica"

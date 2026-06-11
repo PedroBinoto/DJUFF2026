@@ -12,6 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://cklf6nfwf3gb" path="res://Graphics/Sprites/Player/espada-Sheet.png" id="10_gh1bl"]
 [ext_resource type="AudioStream" uid="uid://cxaga00xqusb2" path="res://SFX/sword.wav" id="11_y6ibw"]
 [ext_resource type="Texture2D" uid="uid://bgo01qn6uguhd" path="res://Graphics/Sprites/Player/arma-Sheet.png" id="12_y6ibw"]
+[ext_resource type="AudioStream" uid="uid://d4cntkhf4ljql" path="res://SFX/ghost.wav" id="13_pycug"]
+[ext_resource type="AudioStream" uid="uid://b6qnuiyjpppnm" path="res://SFX/ghost shoot 1.wav" id="14_cjn4e"]
+[ext_resource type="AudioStream" uid="uid://67fph5xhr712" path="res://SFX/ghost shoot 2.wav" id="15_bhijx"]
+[ext_resource type="AudioStream" uid="uid://dpe26rhx8gjri" path="res://SFX/ghost shoot 3.wav" id="16_2ehj7"]
+[ext_resource type="AudioStream" uid="uid://e2yfv0iyvtrb" path="res://SFX/char_shoot.wav" id="18_pycug"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y6ibw"]
 atlas = ExtResource("2_wiw7d")
@@ -334,6 +339,12 @@ _data = {
 &"physical_swing": SubResource("Animation_fkybt")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_j28dh"]
+streams_count = 3
+stream_0/stream = ExtResource("14_cjn4e")
+stream_1/stream = ExtResource("15_bhijx")
+stream_2/stream = ExtResource("16_2ehj7")
+
 [node name="GhostBoss" type="CharacterBody3D" unique_id=208974275 node_paths=PackedStringArray("healthComponent")]
 collision_layer = 8
 collision_mask = 225
@@ -483,6 +494,27 @@ shape = SubResource("CylinderShape3D_gh1bl")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1270697915]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_y6ibw")
+
+[node name="SFX" type="Node" parent="." unique_id=2133761503]
+
+[node name="crySFX" type="AudioStreamPlayer" parent="SFX" unique_id=1048004744]
+stream = ExtResource("13_pycug")
+autoplay = true
+bus = &"SFX"
+
+[node name="ghostShotSFX" type="AudioStreamPlayer" parent="SFX" unique_id=753505572]
+stream = SubResource("AudioStreamRandomizer_j28dh")
+bus = &"SFX"
+
+[node name="bodyShotSFX" type="AudioStreamPlayer" parent="SFX" unique_id=1911591566]
+stream = ExtResource("18_pycug")
+pitch_scale = 0.63
+bus = &"SFX"
+
+[node name="bodySwordSFX" type="AudioStreamPlayer" parent="SFX" unique_id=1313827605]
+stream = ExtResource("11_y6ibw")
+pitch_scale = 0.65
+bus = &"SFX"
 
 [connection signal="body_entered" from="AttackPivot/PhysicalAttackArea" to="." method="_attack_body"]
 [connection signal="body_entered" from="SwordRange" to="." method="_on_sword_range_body_entered"]

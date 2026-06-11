@@ -11,6 +11,10 @@ extends CharacterBody3D
 @onready var boxes: Node3D = $"../Boxes"
 @onready var body: Node3D = $Body
 
+@onready var dual_shot_sfx: AudioStreamPlayer = $SFX/dualShotSFX
+@onready var magnetims_sfx: AudioStreamPlayer = $SFX/magnetimsSFX
+@onready var collision_sfx: AudioStreamPlayer = $SFX/collisionSFX
+
 
 var shootTimer = 0
 var moveSpeed = 1
@@ -37,11 +41,13 @@ enum polo{
 }
 var currentPolo: polo = polo.POSITIVO
 
+
 func _ready() -> void:
 	moveSpeed = player.playerSpeed*movePercent
 	hand_origin = [left_hand.position, right_hand.position]
 	body_origin = body.position
-	
+
+
 func _physics_process(delta: float) -> void:
 	timer += delta
 	velocity = 4*Vector3(-2*sin(timer), 0, cos(timer)-2.3*cos(2.3*timer))
@@ -50,12 +56,14 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 
+
 func _process(delta: float) -> void:
 	shootTimer += delta
 
 	if shootTimer >= shootTimeLimit:
 		shootTimer = 0
 		use_attack()
+
 
 func _shoot() -> void:
 	if player == null:
@@ -67,11 +75,12 @@ func _shoot() -> void:
 		get_tree().current_scene.add_child(bullet)
 		bullet.global_position = spawn.global_position
 	
+	
 func _move_player() -> void:
 	if magnet_active:
 		return
 	magnet_active = true
-	for i in range(90):
+	for i in range(50):
 		var dir
 		if currentPolo == polo.POSITIVO:
 			dir = 1
@@ -82,12 +91,14 @@ func _move_player() -> void:
 		await get_tree().create_timer(0.05).timeout
 	magnet_active = false
 	
+	
 func _switchPolo():
 	if currentPolo == polo.POSITIVO:
 		currentPolo = polo.NEGATIVO
 	else:
 		currentPolo = polo.POSITIVO
 	print("polo trocado")
+	
 	
 func _hand_attack():
 	if hand_attacking:
@@ -124,6 +135,7 @@ func _hand_attack():
 	await tween.finished
 
 	hand_attacking = false
+	
 	
 func die() -> void:
 	print("Uogh")
@@ -173,12 +185,15 @@ func choose_attack() -> int:
 func use_attack():
 	match choose_attack():
 		Attacks.SHOOT:
+			dual_shot_sfx.play()
 			_shoot()
 		Attacks.MAGNET:
+			magnetims_sfx.play()
 			_move_player()
 		Attacks.HAND:
 			_hand_attack()
 		Attacks.BOX:
+			magnetims_sfx.play()
 			box_locked = true
 			_box_attack()
 		Attacks.SWITCH:
