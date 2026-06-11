@@ -39,6 +39,13 @@ script = ExtResource("1_o0lqk")
 bossName = "Magnetro"
 bossNode = NodePath("MagnetBoss")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=153898119]
+transform = Transform3D(-0.17850977, 0.91061354, -0.37271613, 0.07858313, 0.39078474, 0.9171216, 0.9807951, 0.13442597, -0.14131774, 4.083887, 16.849815, -2.7724543)
+light_energy = 0.25
+shadow_enabled = true
+shadow_opacity = 0.9
+directional_shadow_pancake_size = 0.0
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1064319974]
 environment = SubResource("Environment_ebs18")
 
@@ -48,15 +55,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.325873, -0.044001102, 0.067
 [node name="Player" parent="." unique_id=1750106946 instance=ExtResource("1_ebs18")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.686607, 0.0071653128, 0)
 collision_mask = 108
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2056829280]
-transform = Transform3D(0.41932622, 0.7082562, -0.56792486, 0.41829157, 0.40448725, 0.81327873, 0.80572814, -0.5785873, -0.12664542, -3.1112142, 3.8421087, -5.0194416)
-light_energy = 0.308
-light_angular_distance = 9.2
-light_specular = 0.0
-shadow_enabled = true
-shadow_opacity = 0.9
-directional_shadow_pancake_size = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=935099992]
 unique_name_in_owner = true

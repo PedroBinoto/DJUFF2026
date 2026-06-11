@@ -69,16 +69,16 @@ bbcode_enabled = true
 text = "[center][font_size=40][b]CRÉDITOS[/b][/font_size]
 
 [font_size=24][b]Arte[/b][/font_size]
-Renato Villard
-Taylor Horta
+Natongo
+BrookyyM
 
 [font_size=24][b]Trilha Sonora[/b][/font_size]
-Guilherme Brito
-Evandro Rhari
+NAOMI
+E-Rhari
 
 [font_size=24][b]Programação[/b][/font_size]
-Pedro Binoto
-Thiago Lelles
+Binoto
+ThiLelles
 [/center]"
 
 [node name="Button" type="Button" parent="Container/MarginContainer" unique_id=403164131]
