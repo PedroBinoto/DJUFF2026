@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://pbj02vkl5jks"]
 
 [ext_resource type="Script" uid="uid://ca2metsmspqft" path="res://Scripts/bullet_player.gd" id="1_e0o6h"]
+[ext_resource type="AudioStream" uid="uid://bern5g5xdnwun" path="res://SFX/Hit28 (1).wav" id="2_10oju"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_4mw4s"]
 radius = 0.25
@@ -29,5 +30,10 @@ collision_mask = 173
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=258684477]
 shape = SubResource("SphereShape3D_oduel")
+
+[node name="collisionSFX" type="AudioStreamPlayer" parent="." unique_id=653786519]
+stream = ExtResource("2_10oju")
+volume_db = 10.4
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_bullet_collide"]

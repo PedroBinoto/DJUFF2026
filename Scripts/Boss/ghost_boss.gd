@@ -24,6 +24,11 @@ var currentState: bodyStates = bodyStates.IDLE
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var player: Player = $"../Player"
 
+@onready var ghost_shot_sfx: AudioStreamPlayer = $SFX/ghostShotSFX
+@onready var body_shot_sfx: AudioStreamPlayer = $SFX/bodyShotSFX
+@onready var body_sword_sfx: AudioStreamPlayer = $SFX/bodySwordSFX
+
+
 var bodyTimer = 0
 var soulTimer = 0
 var moveSpeed = 1
@@ -51,6 +56,7 @@ func soul_shoot():
 	var amountOfShots = 3
 	var deltaAngle = 2*PI/bullet_spawn_ring.get_child_count()/amountOfShots
 	for i in range(1,amountOfShots+1):
+		ghost_shot_sfx.play()
 		for spawn in bullet_spawn_ring.get_children():
 			var bullet = soulBullet.instantiate()
 			bullet.bulletSpeed = 300 + i*50
@@ -63,13 +69,13 @@ func body_shoot():
 	var bullet = bodyBullet.instantiate()
 	bullet.spawn(body_attack_pivot.get_child(0).global_position, self)
 	animation_player.play("gun_shot")
-	#shoot_sfx.splay()
+	body_shot_sfx.play()
 
 
 func body_sword():
 		physical_attack_area.monitoring = true
 		animation_player.play("physical_swing")
-		#sword_sfx.play()
+		body_sword_sfx.play()
 		await animation_player.animation_finished
 		physical_attack_area.monitoring = false
 
