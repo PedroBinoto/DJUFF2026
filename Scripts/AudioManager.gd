@@ -1,9 +1,10 @@
 extends Node
 
-func playAudio(audioFilepath: String, audioBus: String) -> void:
+func playAudio(audioFilepath: String, audioBus: String, volume: float) -> void:
 	var audioPlayer = AudioStreamPlayer.new()
 	audioPlayer.stream = load(audioFilepath)
 	audioPlayer.bus = audioBus
 	get_tree().root.add_child(audioPlayer)
 	audioPlayer.finished.connect(audioPlayer.queue_free)
+	audioPlayer.volume_db = volume
 	audioPlayer.play()

@@ -15,5 +15,5 @@ func _on_bullet_collide(body: Node3D) -> void:
 	if "healthComponent" in body:
 		print("damage!")
 		queue_free()
-	AudioManager.playAudio("res://SFX/Hit28 (1).wav", "SFX")
+	AudioManager.playAudio("res://SFX/Hit28 (1).wav", "SFX", 0)
 	super._on_bullet_collide(body)

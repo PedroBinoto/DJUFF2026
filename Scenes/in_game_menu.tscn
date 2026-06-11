@@ -406,6 +406,7 @@ layout_mode = 2
 
 [node name="ControlConfig" type="Label" parent="Controles/VBoxContainer/HBoxContainer5" unique_id=1069201931]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_5crhr")
 theme_override_font_sizes/font_size = 40
 text = "Controles"
@@ -419,7 +420,6 @@ size_flags_horizontal = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="Controles/VBoxContainer/HBoxContainer5" unique_id=1236410161]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
 alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="Controles/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=646489496]
