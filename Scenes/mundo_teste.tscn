@@ -1,46 +1,17 @@
 [gd_scene format=3 uid="uid://hcvcj2ye8egq"]
 
-[ext_resource type="PackedScene" uid="uid://y4wj6ivt28dc" path="res://Scenes/player.tscn" id="1_ebs18"]
-[ext_resource type="Script" uid="uid://4vcl3xgugl7c" path="res://Scripts/mundo_teste.gd" id="1_o0lqk"]
-[ext_resource type="PackedScene" uid="uid://bbu3h1ybllvq8" path="res://Scenes/in_game_menu.tscn" id="2_bmojv"]
-[ext_resource type="Script" uid="uid://bnrkmagxipeqg" path="res://Scripts/camera_3d.gd" id="4_i6rbu"]
-[ext_resource type="PackedScene" uid="uid://hymci7y26od1" path="res://Scenes/Boss/magnet_boss.tscn" id="4_puaij"]
-[ext_resource type="PackedScene" uid="uid://bistbwq8ojeym" path="res://Scenes/box.tscn" id="4_tcipn"]
-[ext_resource type="PackedScene" uid="uid://c3uqqg6glh3wy" path="res://Scenes/game_hud.tscn" id="4_u5lmb"]
-[ext_resource type="PackedScene" uid="uid://lkrjq7sy8y4y" path="res://Scenes/engrenagem.tscn" id="5_u5lmb"]
-[ext_resource type="PackedScene" uid="uid://cai47x8vc1tx0" path="res://Scenes/Esteira.tscn" id="7_rmxy5"]
-[ext_resource type="ArrayMesh" uid="uid://dlhs6goyfh62l" path="res://Graphics/Meshes/Arena_Magnetismo.tres" id="9_0tywp"]
-[ext_resource type="AudioStream" uid="uid://boc1jwvko3se0" path="res://Music/POLAR.mp3" id="11_fpred"]
+[ext_resource type="Script" uid="uid://bn62wc5wdk2f4" path="res://canvas_layer.gd" id="1_o0lqk"]
+[ext_resource type="FontFile" uid="uid://c68ob7wtloq5y" path="res://RetroGaming.ttf" id="2_bmojv"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebs18"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_o0lqk"]
-sky_material = SubResource("ProceduralSkyMaterial_ebs18")
-
-[sub_resource type="Environment" id="Environment_ebs18"]
-background_mode = 1
-sky = SubResource("Sky_o0lqk")
-tonemap_mode = 2
-volumetric_fog_density = 0.0221
-volumetric_fog_albedo = Color(0, 0, 0, 1)
-volumetric_fog_ambient_inject = 1.37
-volumetric_fog_sky_affect = 0.0
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ebs18"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_puaij"]
-size = Vector2(10, 32)
-orientation = 1
-
-[node name="MundoTeste2" type="Node3D" unique_id=69006548 node_paths=PackedStringArray("bossNode")]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=688906120]
 script = ExtResource("1_o0lqk")
-bossName = "Magnetro"
-bossNode = NodePath("MagnetBoss")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1064319974]
-environment = SubResource("Environment_ebs18")
+[node name="Panel" type="Panel" parent="." unique_id=1062014639]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MagnetBoss" parent="." unique_id=208974275 instance=ExtResource("4_puaij")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.325873, -0.044001102, 0.067)
