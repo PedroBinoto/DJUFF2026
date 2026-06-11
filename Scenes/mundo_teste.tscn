@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://cai47x8vc1tx0" path="res://Scenes/Esteira.tscn" id="7_rmxy5"]
 [ext_resource type="ArrayMesh" uid="uid://dlhs6goyfh62l" path="res://Graphics/Meshes/Arena_Magnetismo.tres" id="9_0tywp"]
 [ext_resource type="AudioStream" uid="uid://boc1jwvko3se0" path="res://Music/POLAR.mp3" id="11_fpred"]
+[ext_resource type="PackedScene" uid="uid://dm5q0iog4k31t" path="res://Scenes/bullet_dual.tscn" id="12_1fvpw"]
+[ext_resource type="PackedScene" uid="uid://qgqordv3giya" path="res://Scenes/bullet_player.tscn" id="13_l67a4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebs18"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -208,3 +210,9 @@ stream = ExtResource("11_fpred")
 volume_db = 0.5
 autoplay = true
 bus = &"Musica"
+
+[node name="Bullet_Dual" parent="." unique_id=1262462104 instance=ExtResource("12_1fvpw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8687763, -7.193392, 0.5036926)
+
+[node name="Bullet" parent="." unique_id=1725720013 instance=ExtResource("13_l67a4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.163982, -6.7451973, -0.88661957)

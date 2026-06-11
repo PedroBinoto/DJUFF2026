@@ -717,7 +717,7 @@ transform = Transform3D(0.9168999, -0.39911717, 0, 0.39911717, 0.9168999, 0, 0, 
 [node name="HealthComponent" type="Node" parent="Components" unique_id=1341032175 node_paths=PackedStringArray("component_owner")]
 script = ExtResource("10_00scm")
 component_owner = NodePath("../..")
-maxHealth = 500.0
+maxHealth = 250.0
 metadata/_custom_type_script = "uid://qj0g5jalgycx"
 
 [node name="SFX" type="Node" parent="." unique_id=484308804]

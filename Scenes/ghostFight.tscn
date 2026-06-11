@@ -11,6 +11,9 @@
 [ext_resource type="ArrayMesh" uid="uid://cti3e737wg6um" path="res://Graphics/Meshes/Arena_fantasma.tres" id="8_qu405"]
 [ext_resource type="Script" uid="uid://bnrkmagxipeqg" path="res://Scripts/camera_3d.gd" id="9_rr2ko"]
 [ext_resource type="AudioStream" uid="uid://dlnu5x761tffq" path="res://Music/antithesisOfSoulAndBody.mp3" id="10_mkh8b"]
+[ext_resource type="PackedScene" uid="uid://b83onsyjngaor" path="res://Scenes/bullet_ghost.tscn" id="12_vbrsi"]
+[ext_resource type="PackedScene" uid="uid://pbj02vkl5jks" path="res://Scenes/bullet_body.tscn" id="13_sifyx"]
+[ext_resource type="PackedScene" uid="uid://qgqordv3giya" path="res://Scenes/bullet_player.tscn" id="14_hnkth"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebs18"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -200,3 +203,12 @@ stream = ExtResource("10_mkh8b")
 volume_db = -1.0
 autoplay = true
 bus = &"Musica"
+
+[node name="Bullet" parent="." unique_id=1725720013 instance=ExtResource("12_vbrsi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.919556, 0, -0.4434741)
+
+[node name="Bullet2" parent="." unique_id=531472412 instance=ExtResource("13_sifyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.861786, 0, -0.19178009)
+
+[node name="Bullet3" parent="." unique_id=1606506821 instance=ExtResource("14_hnkth")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.69954, 0, -2.836029)
