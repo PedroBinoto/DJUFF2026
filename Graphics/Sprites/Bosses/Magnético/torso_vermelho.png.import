@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bqgfw7pvoefso"
-path.s3tc="res://.godot/imported/torso_vermelho.png-685a472576bd21c52e08ae6601fab6c4.s3tc.ctex"
+path="res://.godot/imported/torso_vermelho.png-685a472576bd21c52e08ae6601fab6c4.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Graphics/Sprites/Bosses/Magnético/torso_vermelho.png"
-dest_files=["res://.godot/imported/torso_vermelho.png-685a472576bd21c52e08ae6601fab6c4.s3tc.ctex"]
+dest_files=["res://.godot/imported/torso_vermelho.png-685a472576bd21c52e08ae6601fab6c4.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
