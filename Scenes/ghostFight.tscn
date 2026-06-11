@@ -213,6 +213,6 @@ magnitude = 0.2
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=2049864032]
 stream = ExtResource("10_mkh8b")
-volume_db = -9.827
+volume_db = -1.0
 autoplay = true
 bus = &"Musica"
