@@ -90,6 +90,11 @@ bossNode = NodePath("GhostBoss")
 [node name="Pause" parent="." unique_id=1812854460 instance=ExtResource("2_bxuwn")]
 unique_name_in_owner = true
 
+[node name="RectScreenFade" type="ColorRect" parent="." unique_id=1521308891]
+offset_right = 1924.0
+offset_bottom = 1072.0
+color = Color(0, 0, 0, 0)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1064319974]
 environment = SubResource("Environment_bxuwn")
 

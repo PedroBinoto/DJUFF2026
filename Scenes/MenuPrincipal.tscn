@@ -187,7 +187,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_qovuk")
 text = "Sair"
 
 [node name="Controles" type="Panel" parent="." unique_id=1591096661]
-visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Controles" unique_id=301650891]
@@ -466,6 +465,7 @@ layout_mode = 2
 
 [node name="ControlConfig" type="Label" parent="Controles/VBoxContainer/HBoxContainer5" unique_id=1958385028]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_l10t8")
 theme_override_font_sizes/font_size = 40
 text = "Controles"
@@ -479,7 +479,6 @@ size_flags_horizontal = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="Controles/VBoxContainer/HBoxContainer5" unique_id=1377717899]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
 alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="Controles/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=857179501]

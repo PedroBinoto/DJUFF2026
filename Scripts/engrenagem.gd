@@ -7,6 +7,7 @@ func _ready() -> void:
 		$AnimationPlayer.play("rotate", -1, angular_velocity.y)
 
 func _on_body_entered(body: Node3D) -> void:
+	print("WOW!")
 	player = body
 	player.create_force(self, Vector3.ZERO)
 
