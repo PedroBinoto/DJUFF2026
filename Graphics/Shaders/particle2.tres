@@ -1,0 +1,7 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://dwrakkb65uie2"]
+
+[resource]
+gravity = Vector3(0, 0, 0)
+scale_min = 1.4
+scale_max = 1.4
+color = Color(0.11764706, 0.34117648, 0.6117647, 1)

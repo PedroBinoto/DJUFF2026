@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://bvrfpnoeogist"]
+[gd_scene format=3 uid="uid://bvrfpnoeogist"]
 
 [ext_resource type="Script" uid="uid://4vcl3xgugl7c" path="res://Scripts/mundo_teste.gd" id="1_wb0a8"]
 [ext_resource type="PackedScene" uid="uid://bbu3h1ybllvq8" path="res://Scenes/in_game_menu.tscn" id="2_bxuwn"]
@@ -12,18 +12,21 @@
 [ext_resource type="Script" uid="uid://bnrkmagxipeqg" path="res://Scripts/camera_3d.gd" id="9_rr2ko"]
 [ext_resource type="AudioStream" uid="uid://dlnu5x761tffq" path="res://Music/antithesisOfSoulAndBody.mp3" id="10_mkh8b"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebs18"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_o0lqk"]
-sky_material = SubResource("ProceduralSkyMaterial_ebs18")
+[node name="CanvasLayer" type="CanvasLayer" unique_id=688906120]
+script = ExtResource("1_xrcvd")
+
+[node name="Panel" type="Panel" parent="." unique_id=1062014639]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [sub_resource type="Environment" id="Environment_bxuwn"]
 background_mode = 1
 sky = SubResource("Sky_o0lqk")
 tonemap_mode = 2
-glow_enabled = true
 volumetric_fog_density = 0.1
 volumetric_fog_length = 5.0
 volumetric_fog_sky_affect = 0.3
@@ -87,9 +90,6 @@ script = ExtResource("1_wb0a8")
 bossName = "Ghoulst"
 bossNode = NodePath("GhostBoss")
 
-[node name="Pause" parent="." unique_id=1812854460 instance=ExtResource("2_bxuwn")]
-unique_name_in_owner = true
-
 [node name="RectScreenFade" type="ColorRect" parent="." unique_id=1521308891]
 offset_right = 1924.0
 offset_bottom = 1072.0
@@ -108,7 +108,8 @@ bulletSpawnRingRadius = 0.24
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2056829280]
 transform = Transform3D(-0.17456079, 0.9144808, -0.36503905, 0.4182915, 0.40448725, 0.81327885, 0.89138144, -0.010726176, -0.45312715, -3.1112142, 3.8421087, -5.0194416)
-light_energy = 0.25
+light_color = Color(0.77254903, 0.7764706, 0.7764706, 1)
+light_energy = 0.2
 shadow_enabled = true
 shadow_opacity = 0.9
 directional_shadow_pancake_size = 0.0
@@ -121,7 +122,7 @@ near = 0.1
 far = 100.0
 script = ExtResource("9_rr2ko")
 period = 0.15
-magnitude = 0.2
+magnitude = 0.1
 
 [node name="Box" type="StaticBody3D" parent="." unique_id=395401012]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.773, 0.8, 0)
@@ -190,6 +191,9 @@ transform = Transform3D(6.205, 0, 2.842171e-14, 0, 6.205, 0, -2.842171e-14, 0, 6
 [node name="HUD" type="CanvasLayer" parent="." unique_id=900597551]
 
 [node name="GameHUD" parent="HUD" unique_id=1756257545 instance=ExtResource("6_v46jx")]
+
+[node name="Pause" parent="." unique_id=1812854460 instance=ExtResource("2_bxuwn")]
+unique_name_in_owner = true
 
 [node name="ArenaFantasma" type="MeshInstance3D" parent="." unique_id=1241060484]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.681, 0)
