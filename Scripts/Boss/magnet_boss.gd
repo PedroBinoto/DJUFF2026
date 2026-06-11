@@ -87,7 +87,7 @@ func _move_player() -> void:
 		else:
 			dir = -1
 		var direction = (global_position - player.global_position).normalized()
-		player.velocity_modifier += dir * direction * 2
+		player.velocity_modifier += dir * direction
 		await get_tree().create_timer(0.05).timeout
 	magnet_active = false
 	

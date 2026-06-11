@@ -142,6 +142,8 @@ billboard = 1
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_u2ii0")
+frame = 1
+frame_progress = 0.83795357
 
 [node name="Torso" type="Node3D" parent="Body" unique_id=176405271]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 1.25, 0, 0)
@@ -153,6 +155,8 @@ billboard = 1
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_7lnnt")
+frame = 1
+frame_progress = 0.14367059
 
 [node name="Hand_L" type="Node3D" parent="Body" unique_id=222405930]
 script = ExtResource("6_fdddd")
