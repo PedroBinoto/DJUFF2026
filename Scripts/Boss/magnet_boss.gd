@@ -219,7 +219,8 @@ func die() -> void:
 		tweens.append(fadeOut)
 		fadeOut.tween_property(sprite, "modulate", Color(1,1,1,0), 3).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
 	await tweens[0].finished
-	get_tree().change_scene_to_file("res://Scenes/MenuPrincipal.tscn") # MUDAR PRO HUB
+	SignalBus.isMagnetroAlive = false
+	get_tree().change_scene_to_file("res://Scenes/hub.tscn") # MUDAR PRO HUB
 
 
 func _box_attack():

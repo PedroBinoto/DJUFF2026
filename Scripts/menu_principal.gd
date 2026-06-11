@@ -20,7 +20,7 @@ func _ready() -> void:
 	aura.play()
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("uid://hcvcj2ye8egq")
+	get_tree().change_scene_to_file("res://Scenes/hub.tscn")
 
 
 func _on_controls_pressed() -> void:
