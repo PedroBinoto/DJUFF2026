@@ -15,7 +15,7 @@ func _physics_process(delta):
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if moving and "healthComponent" in body:
+	if moving and "healthComponent" in body and body is not MagnetBoss:
 		body.healthComponent.damage(10)
 	#audio_stream_player.play()
 	

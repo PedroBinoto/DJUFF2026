@@ -3,8 +3,6 @@ extends CanvasLayer
 # true = direita / magnetro
 var choose_boss: bool
 
-var isMagnetroAlive := true
-var isGhoulstAlive := true
 #func _input(event: InputEvent) -> void:
 	#if event is InputEventKey:
 		#if event.keycode == KEY_A or event.keycode == KEY_LEFT:
@@ -13,7 +11,7 @@ var isGhoulstAlive := true
 			#choose_boss = true
 		
 func _process(delta: float) -> void:
-	if not isMagnetroAlive and not isGhoulstAlive:
+	if not SignalBus.isMagnetroAlive and not SignalBus.isGhoulstAlive:
 		get_tree().change_scene_to_file("res://Scenes/Victory.tscn")
 
 func _on_passado_pressed() -> void:
